@@ -30,6 +30,7 @@ import { Button } from "@/components/ui/button"
 import { Slider } from "@/components/ui/slider"
 import { cn } from "@/lib/utils"
 import { services } from "@/components/pricing/service-tabs"
+import { PackagesSection } from "@/components/pricing/packages-section"
 import {
   DYNAMIC_PRICING_TAB_ORDER,
   type DynamicPricingFeatureIcon,
@@ -83,18 +84,27 @@ export function DynamicPricingSection({
   content = dynamicPricingContent,
 }: DynamicPricingSectionProps) {
   const [activeTab, setActiveTab] = useState<DynamicPricingTabId>(defaultTabId)
-  const [tierIndex, setTierIndex] = useState(0)
+  const [tierIndex, setTierIndex] = useState(2)
   const tabsScrollRef = useRef<HTMLDivElement>(null)
 
   const tabConfigs = DYNAMIC_PRICING_TAB_ORDER.map((id) => services.find((s) => s.id === id)).filter(Boolean) as typeof services
 
   useEffect(() => {
-    setTierIndex(0)
+    const nextService = content[activeTab]
+    const defaultIndex = Math.min(2, Math.max(0, nextService.tiers.length - 1))
+    setTierIndex(defaultIndex)
   }, [activeTab])
 
   const service = content[activeTab]
   const tier = service.tiers[tierIndex] ?? service.tiers[0]
   const maxTier = Math.max(0, service.tiers.length - 1)
+  const fallbackTier = service.tiers[0]
+  const packagePlans = [
+    { id: "starter" as const, label: "Starter", tier: service.tiers[0] ?? fallbackTier, tierIndex: 0 },
+    { id: "standard" as const, label: "Standard", tier: service.tiers[1] ?? fallbackTier, tierIndex: Math.min(1, maxTier) },
+    { id: "plus" as const, label: "Plus", tier: service.tiers[2] ?? service.tiers[maxTier], tierIndex: Math.min(2, maxTier) },
+  ]
+  const selectedPackageId = tierIndex <= 0 ? "starter" : tierIndex === 1 ? "standard" : "plus"
 
   const scrollTabs = useCallback((dir: "left" | "right") => {
     const el = tabsScrollRef.current
@@ -154,13 +164,21 @@ export function DynamicPricingSection({
           </button>
         </div>
 
-        {/* Main card */}
-        <div className="rounded-2xl border border-border/80 bg-card shadow-[0_8px_30px_rgb(0,0,0,0.06)] overflow-hidden">
-          <div className="flex items-center gap-2 border-b border-border/60 bg-muted/40 px-4 py-3 text-sm text-muted-foreground sm:px-6">
-            <LayoutGrid className="h-4 w-4 shrink-0 text-foreground/70" aria-hidden />
-            <span>Combine any services &amp; add-ons during checkout</span>
-          </div>
+        <PackagesSection
+          service={service}
+          plans={packagePlans}
+          selectedPlanId={selectedPackageId}
+          onSelectPlan={(plan) => setTierIndex(plan.tierIndex)}
+          checkoutHref={checkoutHref}
+          featureIcons={FEATURE_ICONS}
+        />
 
+        <div className="mb-4 flex items-center gap-2 rounded-xl border border-border/80 bg-muted/40 px-4 py-3 text-sm text-muted-foreground sm:px-6">
+          <LayoutGrid className="h-4 w-4 shrink-0 text-foreground/70" aria-hidden />
+          <span>Combine any services &amp; add-ons during checkout</span>
+        </div>
+
+        <div className="rounded-2xl border border-border/80 bg-card shadow-[0_8px_30px_rgb(0,0,0,0.06)] overflow-hidden">
           <div
             key={activeTab}
             className="animate-in fade-in slide-in-from-bottom-1 duration-300"
