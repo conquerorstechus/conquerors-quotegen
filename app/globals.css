@@ -1,0 +1,249 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Professional Blue and White SaaS Theme */
+  /* Primary Colors */
+  --primary-dark: #0B2A4A;
+  --primary-blue: #1E5AA8;
+  --accent-blue: #3FA9F5;
+  --background: #FFFFFF;
+  --section-bg: #F5F9FF;
+  --text-primary: #0B2A4A;
+  --text-secondary: #6B7280;
+  
+  /* Design System */
+  --background: oklch(1 0 0);
+  --foreground: rgb(11 42 74);
+  --card: oklch(1 0 0);
+  --card-foreground: rgb(11 42 74);
+  --popover: oklch(1 0 0);
+  --popover-foreground: rgb(11 42 74);
+  --primary: rgb(30 90 168);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: rgb(245 249 255);
+  --secondary-foreground: rgb(11 42 74);
+  --muted: rgb(219 224 228);
+  --muted-foreground: rgb(107 114 128);
+  --accent: rgb(63 169 245);
+  --accent-foreground: rgb(11 42 74);
+  --destructive: rgb(220 38 38);
+  --destructive-foreground: oklch(1 0 0);
+  --border: rgb(219 224 228);
+  --input: oklch(1 0 0);
+  --ring: rgb(30 90 168);
+  --chart-1: rgb(30 90 168);
+  --chart-2: rgb(63 169 245);
+  --chart-3: rgb(11 42 74);
+  --chart-4: rgb(96 165 250);
+  --chart-5: rgb(191 219 254);
+  --radius: 0.75rem;
+  --sidebar: oklch(1 0 0);
+  --sidebar-foreground: rgb(11 42 74);
+  --sidebar-primary: rgb(30 90 168);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: rgb(245 249 255);
+  --sidebar-accent-foreground: rgb(11 42 74);
+  --sidebar-border: rgb(219 224 228);
+  --sidebar-ring: rgb(30 90 168);
+}
+
+.dark {
+  --background: oklch(1 0 0);
+  --foreground: rgb(11 42 74);
+  --card: oklch(1 0 0);
+  --card-foreground: rgb(11 42 74);
+  --popover: oklch(1 0 0);
+  --popover-foreground: rgb(11 42 74);
+  --primary: rgb(30 90 168);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: rgb(245 249 255);
+  --secondary-foreground: rgb(11 42 74);
+  --muted: rgb(219 224 228);
+  --muted-foreground: rgb(107 114 128);
+  --accent: rgb(63 169 245);
+  --accent-foreground: rgb(11 42 74);
+  --destructive: rgb(220 38 38);
+  --destructive-foreground: oklch(1 0 0);
+  --border: rgb(219 224 228);
+  --input: oklch(1 0 0);
+  --ring: rgb(30 90 168);
+  --chart-1: rgb(30 90 168);
+  --chart-2: rgb(63 169 245);
+  --chart-3: rgb(11 42 74);
+  --chart-4: rgb(96 165 250);
+  --chart-5: rgb(191 219 254);
+  --sidebar: oklch(1 0 0);
+  --sidebar-foreground: rgb(11 42 74);
+  --sidebar-primary: rgb(30 90 168);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: rgb(245 249 255);
+  --sidebar-accent-foreground: rgb(11 42 74);
+  --sidebar-border: rgb(219 224 228);
+  --sidebar-ring: rgb(30 90 168);
+}
+
+@theme inline {
+  --font-sans: "Inter", "Geist", "Geist Fallback";
+  --font-mono: "Geist Mono", "Geist Mono Fallback";
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Carousel animations */
+@keyframes scroll-up {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-100%);
+  }
+}
+
+@keyframes scroll-up-slow {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-100%);
+  }
+}
+
+@keyframes scroll-up-slower {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-100%);
+  }
+}
+
+.carousel-column {
+  animation: scroll-up 40s linear infinite;
+}
+
+.carousel-column.slow {
+  animation: scroll-up-slow 50s linear infinite;
+}
+
+.carousel-column.slower {
+  animation: scroll-up-slower 60s linear infinite;
+}
+
+.carousel-column:hover {
+  animation-play-state: paused;
+}
+
+/* Brand scroll animation */
+@keyframes scroll-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.brand-scroll {
+  animation: scroll-left 30s linear infinite;
+}
+
+.brand-scroll:hover {
+  animation-play-state: paused;
+}
+
+.brand-scroll-wrapper {
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+}
+
+/* Video testimonial carousel */
+@keyframes scroll-horizontal {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.testimonial-scroll {
+  animation: scroll-horizontal 40s linear infinite;
+}
+
+.testimonial-scroll:hover {
+  animation-play-state: paused;
+}
+
+.testimonial-scroll-wrapper {
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 5%,
+    black 95%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 5%,
+    black 95%,
+    transparent 100%
+  );
+}

@@ -1,0 +1,151 @@
+'use client'
+
+import { useState } from 'react'
+import { Mail, Phone, MapPin, Send } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+
+export default function ContactPage() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  })
+  const [submitted, setSubmitted] = useState(false)
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target
+    setFormData(prev => ({ ...prev, [name]: value }))
+  }
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    // Handle form submission
+    setSubmitted(true)
+    setTimeout(() => {
+      setFormData({ name: '', email: '', subject: '', message: '' })
+      setSubmitted(false)
+    }, 3000)
+  }
+
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
+      {/* Hero Section */}
+      <div className="max-w-4xl mx-auto px-4 py-16">
+        <h1 className="text-4xl md:text-5xl font-bold text-center mb-4">Contact Us</h1>
+        <p className="text-center text-gray-600 text-lg">
+          Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.
+        </p>
+      </div>
+
+      {/* Content Section */}
+      <div className="max-w-6xl mx-auto px-4 pb-20">
+        <div className="grid md:grid-cols-2 gap-12">
+          {/* Contact Form */}
+          <div>
+            <h2 className="text-2xl font-bold mb-6">Send us a message</h2>
+            {submitted ? (
+              <div className="bg-green-50 border border-green-200 rounded-lg p-6 text-center">
+                <p className="text-green-800 font-semibold">Thank you for your message!</p>
+                <p className="text-green-700">We'll get back to you shortly.</p>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div>
+                  <label className="block text-sm font-medium mb-2">Name</label>
+                  <Input
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    placeholder="Your name"
+                    required
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium mb-2">Email</label>
+                  <Input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="your@email.com"
+                    required
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium mb-2">Subject</label>
+                  <Input
+                    type="text"
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleChange}
+                    placeholder="How can we help?"
+                    required
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium mb-2">Message</label>
+                  <textarea
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    placeholder="Tell us more about your inquiry..."
+                    rows={5}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    required
+                  />
+                </div>
+                <Button type="submit" className="bg-blue-600 hover:bg-blue-700 text-white w-full flex items-center justify-center gap-2">
+                  <Send className="w-4 h-4" />
+                  Send Message
+                </Button>
+              </form>
+            )}
+          </div>
+
+          {/* Contact Info */}
+          <div>
+            <h2 className="text-2xl font-bold mb-6">Other ways to reach us</h2>
+            <div className="space-y-6">
+              <div className="flex gap-4">
+                <Mail className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" />
+                <div>
+                  <h3 className="font-semibold mb-1">Email</h3>
+                  <p className="text-gray-600">support@conquerorsdigital.com</p>
+                  <p className="text-sm text-gray-500">We'll respond within 24 hours</p>
+                </div>
+              </div>
+              <div className="flex gap-4">
+                <Phone className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" />
+                <div>
+                  <h3 className="font-semibold mb-1">Phone</h3>
+                  <p className="text-gray-600">+1 (555) 123-4567</p>
+                  <p className="text-sm text-gray-500">Mon-Fri, 9am-6pm EST</p>
+                </div>
+              </div>
+              <div className="flex gap-4">
+                <MapPin className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" />
+                <div>
+                  <h3 className="font-semibold mb-1">Office</h3>
+                  <p className="text-gray-600">123 Digital Avenue</p>
+                  <p className="text-gray-600">San Francisco, CA 94102</p>
+                </div>
+              </div>
+            </div>
+
+            {/* FAQ Link */}
+            <div className="mt-8 bg-blue-50 rounded-lg p-6">
+              <h3 className="font-semibold mb-2">Quick Help</h3>
+              <p className="text-gray-600 mb-4">Check our Help Center for quick answers to common questions.</p>
+              <Button variant="outline" className="w-full">
+                <a href="/help">Visit Help Center</a>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
