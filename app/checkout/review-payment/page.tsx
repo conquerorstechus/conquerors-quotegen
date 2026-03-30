@@ -474,21 +474,6 @@ export default function ReviewPaymentPage() {
                   </div>
                 </div>
 
-                {/* Success Notice */}
-                <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-6">
-                  <div className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                    <div>
-                      <p className="text-xs font-semibold text-green-900">
-                        Qualifies for onboarding & monthly calls
-                      </p>
-                      <p className="text-xs text-green-700 mt-1">
-                        Onboarding call + monthly review meetings included with any plan.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
                 {/* Testimonial Card */}
                 <div className="bg-gradient-to-br from-blue-50 to-slate-50 border border-blue-100 rounded-lg p-4">
                   <div className="mb-3">

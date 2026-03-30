@@ -45,8 +45,8 @@ const allServices: ServiceCardConfig[] = [
     quantityOptions: [
       { quantity: 5, price: 99, label: "5 posts" },
       { quantity: 10, price: 149, label: "10 posts" },
-      { quantity: 15, price: 199, label: "15 posts" },
-      { quantity: 30, price: 329, label: "30 posts" },
+      { quantity: 12, price: 199, label: "12posts" },
+      
     ],
     link: "/services/posts",
   },

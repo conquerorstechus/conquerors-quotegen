@@ -57,7 +57,7 @@ export function WhyChooseUsSection() {
             {/* Highlighted Warning Box */}
             <div className="bg-gradient-to-r from-red-50 to-orange-50 border border-red-200 rounded-2xl p-4 mt-8">
               <p className="text-[#0B2A4A] font-bold text-sm">
-                Hiring a full-time marketer can cost <span className="text-red-600">$999 per month.</span>
+                Hiring a full-time marketer can cost <span className="text-black-600">$999 / month.</span>
               </p>
             </div>
           </div>
@@ -99,7 +99,7 @@ export function WhyChooseUsSection() {
             {/* Highlighted Quote */}
             <div className="bg-gradient-to-r from-emerald-50 to-teal-50 border border-emerald-200 rounded-2xl p-4">
               <p className="text-[#0B2A4A] font-semibold italic text-sm">
-                "You approve the content — we handle the rest. Just $99/month
+                "You approve the content — we handle the rest @ Just $99/month"
               </p>
             </div>
           </div>

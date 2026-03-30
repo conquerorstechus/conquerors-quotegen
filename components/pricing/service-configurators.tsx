@@ -55,22 +55,21 @@ const serviceConfigs: ServiceConfig[] = [
     title: "Social Media Posts",
     icon: <ImageIcon className="w-6 h-6" />,
     description:
-      "Static, single-image social media posts custom made with your branding. Created & posted monthly to your social media channels. Includes strategy, engaging captions, and relevant hashtags tailored for your audience.",
+      "Static social posts custom-made with your branding—4, 8, or 12 posts per month for 2 social channels (Facebook & Instagram), with engaging captions and hashtags.",
     baseQuantity: 4,
-    quantityOptions: [4, 8, 15, 30],
+    quantityOptions: [4, 8, 12],
     pricingTiers: {
       4: 99,
       8: 149,
-      15: 199,
-      30: 329
+      12: 199,
     },
     features: [
       { icon: <Paintbrush className="w-4 h-4" />, text: "Posts in your branding" },
       { icon: <FileSearch className="w-4 h-4" />, text: "Captions and hashtags" },
       { icon: <CalendarCheck className="w-4 h-4" />, text: "Posted for you (optional)" },
       { icon: <Phone className="w-4 h-4" />, text: "Onboarding call (optional)" },
-      { icon: <BadgeCheck className="w-4 h-4" />, text: "1 social channel included" },
-      { icon: <CopyCheck className="w-4 h-4" />, text: "+$10/mo each extra channel" },
+      { icon: <BadgeCheck className="w-4 h-4" />, text: "2 social channels (FB/Insta)" },
+      { icon: <CopyCheck className="w-4 h-4" />, text: "+$60/mo each additional social channel" },
     ],
     platforms: [
       { icon: <Facebook className="w-5 h-5" />, name: "Facebook" },
@@ -84,7 +83,7 @@ const serviceConfigs: ServiceConfig[] = [
     id: "carousel-posts",
     title: "Carousel Posts",
     icon: <ImageIcon className="w-6 h-6" />,
-    description: "Multi-slide carousel posts for social media engagement.",
+    description: "Additional carousel post—multi-slide creative for social engagement.",
     baseQuantity: 1,
     basePrice: 55,
     pricePerUnit: 55,
@@ -102,18 +101,18 @@ const serviceConfigs: ServiceConfig[] = [
     title: "Short-Form Videos",
     icon: <Video className="w-6 h-6" />,
     description:
-      "Engaging 15-60 second short-form videos for TikTok, Reels, and Shorts. Edited with premium stock footage or raw footage provided by client.",
+      "4 short-form videos (15–60 sec) per month for Instagram Reels, TikTok, and YouTube Shorts. Edited with premium stock footage or client-provided footage.",
     baseQuantity: 4,
     basePrice: 149,
-    quantityOptions: [4, 8, 12, 16, 20],
+    quantityOptions: [4],
+    pricingTiers: { 4: 149 },
     pricePerUnit: 37.25,
     features: [
       { icon: <Paintbrush className="w-4 h-4" />, text: "Videos in your branding" },
-      { icon: <FileSearch className="w-4 h-4" />, text: "Captions & hashtags" },
-      { icon: <CalendarCheck className="w-4 h-4" />, text: "Posted for you (optional)" },
+      { icon: <FileSearch className="w-4 h-4" />, text: "Captions & on-screen text" },
+      { icon: <CalendarCheck className="w-4 h-4" />, text: "Monthly delivery cadence" },
       { icon: <Phone className="w-4 h-4" />, text: "Onboarding call (optional)" },
-      { icon: <BadgeCheck className="w-4 h-4" />, text: "1 social channel included" },
-      { icon: <CopyCheck className="w-4 h-4" />, text: "$10/mo each extra channel" },
+      { icon: <BadgeCheck className="w-4 h-4" />, text: "Platform-native aspect ratios" },
     ],
     platforms: [
       { icon: <Instagram className="w-5 h-5" />, name: "Instagram" },
@@ -125,13 +124,14 @@ const serviceConfigs: ServiceConfig[] = [
     id: "ugc-videos",
     title: "UGC Videos",
     icon: <Video className="w-6 h-6" />,
-    description: "User generated style videos optimized for social media ads.",
+    description: "3 user-generated videos per month—authentic-style creative optimized for social ads.",
     baseQuantity: 3,
     basePrice: 649,
     pricePerUnit: 216.33,
-    quantityOptions: [3, 6, 9],
+    quantityOptions: [3],
+    pricingTiers: { 3: 649 },
     features: [
-      { icon: <Check className="w-4 h-4" />, text: "3 UGC style videos" },
+      { icon: <Check className="w-4 h-4" />, text: "3 user-generated videos" },
       { icon: <Check className="w-4 h-4" />, text: "Short form content" },
       { icon: <Check className="w-4 h-4" />, text: "Optimized for social media ads" },
       { icon: <Check className="w-4 h-4" />, text: "Edited and ready to publish" }
@@ -143,10 +143,11 @@ const serviceConfigs: ServiceConfig[] = [
     title: "Static Ads",
     icon: <LayoutGrid className="w-6 h-6" />,
     description:
-      "Performance-focused static ad creatives built to grab attention and convert. From research and concept ideation to design, copy, and headlines, we handle it all.",
+      "5 static ad creatives per month—research-backed concepts, design, and conversion-focused copy for paid social.",
     baseQuantity: 5,
     basePrice: 149,
-    quantityOptions: [5, 10, 20, 30],
+    quantityOptions: [5],
+    pricingTiers: { 5: 149 },
     pricePerUnit: 29.8,
     features: [
       { icon: <Paintbrush className="w-4 h-4" />, text: "Static ads in your branding" },
@@ -162,10 +163,11 @@ const serviceConfigs: ServiceConfig[] = [
     title: "Video Ads",
     icon: <Film className="w-6 h-6" />,
     description:
-      "High-performing video ads designed for paid social. We handle research, scripting, editing, and copywriting - using a mix of client-provided clips, stock UGC-style footage, premium stock libraries, or AI-generated content.",
+      "2 video ads per month for paid social—research, scripting, editing, and copy using client clips, stock, UGC-style, or AI-assisted assets.",
     baseQuantity: 2,
     basePrice: 149,
-    quantityOptions: [2, 4, 6, 8, 12],
+    quantityOptions: [2],
+    pricingTiers: { 2: 149 },
     pricePerUnit: 74.5,
     features: [
       { icon: <Paintbrush className="w-4 h-4" />, text: "Video ads in your branding" },
@@ -181,10 +183,11 @@ const serviceConfigs: ServiceConfig[] = [
     title: "Email Design",
     icon: <Mail className="w-6 h-6" />,
     description:
-      "Professional email templates and designs crafted for your brand. Get 2 custom-designed, responsive emails per month.",
+      "2 custom designed emails per month—responsive, on-brand templates ready for your ESP.",
     baseQuantity: 2,
     basePrice: 199,
-    quantityOptions: [2, 4, 6, 8],
+    quantityOptions: [2],
+    pricingTiers: { 2: 199 },
     pricePerUnit: 99.5,
     features: [
       { icon: <Paintbrush className="w-4 h-4" />, text: "Custom email templates" },
@@ -201,11 +204,12 @@ const serviceConfigs: ServiceConfig[] = [
     baseQuantity: 2,
     basePrice: 149,
     pricePerUnit: 74.5,
-    quantityOptions: [2, 4, 6, 8],
-    description: "SEO optimized blog content to increase search visibility.",
+    quantityOptions: [2],
+    pricingTiers: { 2: 149 },
+    description: "2 SEO-optimized blog posts per month to increase search visibility.",
     features: [
-      { icon: <FileSearch className="w-4 h-4" />, text: "Keyword research" },
-      { icon: <FileSearch className="w-4 h-4" />, text: "2 SEO optimized blog posts" },
+      { icon: <FileSearch className="w-4 h-4" />, text: "Keyword-informed outlines" },
+      { icon: <FileSearch className="w-4 h-4" />, text: "2 SEO-optimized blog posts" },
       { icon: <FileSearch className="w-4 h-4" />, text: "On-page SEO optimization" },
       { icon: <FileSearch className="w-4 h-4" />, text: "Content formatting" }
     ],
@@ -215,14 +219,15 @@ const serviceConfigs: ServiceConfig[] = [
     id: "seo-backlinks",
     title: "SEO Backlinks",
     icon: <Link2 className="w-6 h-6" />,
-    description: "High quality backlinks to improve search engine rankings.",
+    description: "3 backlinks per month (DA20–65) to improve authority and rankings.",
     baseQuantity: 3,
     basePrice: 299,
     pricePerUnit: 99.67,
-    quantityOptions: [3, 6, 9, 12],
+    quantityOptions: [3],
+    pricingTiers: { 3: 299 },
     features: [
-      { icon: <FileSearch className="w-4 h-4" />, text: "3 high quality backlinks" },
-      { icon: <FileSearch className="w-4 h-4" />, text: "DA 20–65 websites" },
+      { icon: <FileSearch className="w-4 h-4" />, text: "3 backlinks" },
+      { icon: <FileSearch className="w-4 h-4" />, text: "DA20–65 websites" },
       { icon: <FileSearch className="w-4 h-4" />, text: "White-hat link building" },
       { icon: <FileSearch className="w-4 h-4" />, text: "SEO performance improvement" }
     ],
@@ -232,11 +237,11 @@ const serviceConfigs: ServiceConfig[] = [
     id: "managed-seo",
     title: "Managed SEO",
     icon: <Search className="w-6 h-6" />,
-    description: "Full SEO management to improve website ranking and organic traffic.",
+    description: "Full SEO management—strategy, on-page, technical work, and monthly performance visibility.",
     baseQuantity: 1,
     basePrice: 549,
     pricePerUnit: 549,
-    quantityOptions: [1, 2, 3, 4, 5],
+    quantityOptions: [1],
     features: [
       { icon: <FileSearch className="w-4 h-4" />, text: "Keyword research & strategy" },
       { icon: <FileSearch className="w-4 h-4" />, text: "On-page SEO optimization" },
@@ -250,10 +255,10 @@ const serviceConfigs: ServiceConfig[] = [
     title: "Meta Ads Management",
     icon: <Target className="w-6 h-6" />,
     description:
-      "Strategic Facebook and Instagram advertising campaigns optimized for results. Full campaign management and daily optimization.",
+      "Facebook & Instagram ads management—campaign setup, testing, and ongoing optimization.",
     baseQuantity: 1,
     basePrice: 549,
-    quantityOptions: [1, 2, 3],
+    quantityOptions: [1],
     pricePerUnit: 549,
     features: [
       { icon: <FileSearch className="w-4 h-4" />, text: "Campaign strategy" },
@@ -268,10 +273,10 @@ const serviceConfigs: ServiceConfig[] = [
     title: "Google Ads Management",
     icon: <Search className="w-6 h-6" />,
     description:
-      "Results-driven Google Ads campaigns to increase visibility and conversions. Strategic campaign management with continuous optimization.",
+      "Google Ads campaign management—search and performance campaigns with ongoing optimization.",
     baseQuantity: 1,
     basePrice: 549,
-    quantityOptions: [1, 2, 3],
+    quantityOptions: [1],
     pricePerUnit: 549,
     features: [
       { icon: <FileSearch className="w-4 h-4" />, text: "Keyword research" },
@@ -285,16 +290,16 @@ const serviceConfigs: ServiceConfig[] = [
     id: "instagram-growth",
     title: "Instagram Growth",
     icon: <TrendingUp className="w-6 h-6" />,
-    description: "Organic Instagram growth through strategic engagement and content optimization.",
+    description: "Targeted follower growth through compliant, engagement-led strategy.",
     baseQuantity: 1,
-    basePrice: 199,
-    pricePerUnit: 199,
-    quantityOptions: [1, 2, 3],
+    basePrice: 179,
+    pricePerUnit: 179,
+    quantityOptions: [1],
     features: [
-      { icon: <Check className="w-4 h-4" />, text: "Organic follower growth" },
-      { icon: <Check className="w-4 h-4" />, text: "Engagement optimization" },
-      { icon: <Check className="w-4 h-4" />, text: "Hashtag strategy" },
-      { icon: <Check className="w-4 h-4" />, text: "Content scheduling" }
+      { icon: <Check className="w-4 h-4" />, text: "Targeted follower growth" },
+      { icon: <Check className="w-4 h-4" />, text: "Audience alignment with your niche" },
+      { icon: <Check className="w-4 h-4" />, text: "Engagement-led growth strategy" },
+      { icon: <Check className="w-4 h-4" />, text: "Platform-rules-friendly approach" }
     ],
     category: "instagram-growth"
   },
@@ -302,13 +307,14 @@ const serviceConfigs: ServiceConfig[] = [
     id: "instagram-stories",
     title: "Instagram Stories",
     icon: <Instagram className="w-6 h-6" />,
-    description: "Engaging Instagram story content for your brand.",
+    description: "10 Instagram stories per month—branded story creative for your feed.",
     baseQuantity: 10,
     basePrice: 99,
     pricePerUnit: 9.9,
-    quantityOptions: [10, 20, 30],
+    quantityOptions: [10],
+    pricingTiers: { 10: 99 },
     features: [
-      { icon: <Check className="w-4 h-4" />, text: "10 story designs" },
+      { icon: <Check className="w-4 h-4" />, text: "10 stories" },
       { icon: <Check className="w-4 h-4" />, text: "Branded visuals" },
       { icon: <Check className="w-4 h-4" />, text: "Optimized captions" },
       { icon: <Check className="w-4 h-4" />, text: "Ready for publishing" }
@@ -333,7 +339,6 @@ function ServiceCard({ config }: { config: ServiceConfig }) {
   }
 
   const price = calculatePrice()
-  const qualifiesForCalls = price >= 149
 
   return (
     <div className="bg-card border border-border rounded-2xl overflow-hidden">
@@ -435,14 +440,6 @@ function ServiceCard({ config }: { config: ServiceConfig }) {
           </div>
         </div>
 
-        {/* Qualification Notice */}
-        <div
-          className={`p-3 rounded-lg text-sm ${qualifiesForCalls ? "bg-primary/10 text-primary" : "bg-muted text-muted-foreground"}`}
-        >
-          {qualifiesForCalls
-            ? "✓ Your order is over $149+ and qualifies for onboarding & monthly calls"
-            : "Orders over $149+ qualify for monthly content review calls"}
-        </div>
       </div>
 
       <div className="p-6 bg-secondary/30">

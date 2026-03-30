@@ -31,7 +31,6 @@ export function PackagesSection({
   featureIcons,
 }: PackagesSectionProps) {
   const selectedPlan = plans.find((plan) => plan.id === selectedPlanId) ?? plans[plans.length - 1]
-  const qualifiesForCalls = selectedPlan.tier.price >= 149
 
   return (
     <div className="mb-4 rounded-2xl border border-border/80 bg-card p-4 shadow-sm sm:p-6">
@@ -42,6 +41,9 @@ export function PackagesSection({
             {plans.map((plan) => {
               const isSelected = selectedPlanId === plan.id
               const [primaryFeature, secondaryFeature] = service.features
+              const PackageDetailIcon = primaryFeature
+                ? (featureIcons[primaryFeature.icon] ?? Check)
+                : Check
               return (
                 <button
                   key={plan.id}
@@ -67,7 +69,7 @@ export function PackagesSection({
                       {plan.tier.selectionLabel}
                     </li>
                     <li className="flex items-center gap-2">
-                      <Check className="h-4 w-4 text-primary" />
+                      <PackageDetailIcon className="h-4 w-4 text-primary" />
                       {primaryFeature?.text ?? secondaryFeature?.text ?? "Core deliverables included"}
                     </li>
                   </ul>
@@ -85,16 +87,6 @@ export function PackagesSection({
             })}
           </div>
 
-          <div
-            className={cn(
-              "mt-4 rounded-lg px-3 py-2 text-sm",
-              qualifiesForCalls ? "bg-primary/10 text-primary" : "bg-muted text-muted-foreground",
-            )}
-          >
-            {qualifiesForCalls
-              ? "Your order qualifies for onboarding & monthly calls"
-              : "Orders over $149 qualify for onboarding & monthly calls"}
-          </div>
         </div>
 
         <aside className="lg:col-span-3">

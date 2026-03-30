@@ -15,7 +15,6 @@ export function OrderSummary({
 }: OrderSummaryProps) {
   const [promoCode, setPromoCode] = useState('')
   const totalPrice = selectedServices.reduce((sum, service) => sum + service.totalPrice, 0)
-  const qualifiesForOnboarding = totalPrice >= 149
 
   return (
     <div className="bg-white border border-slate-200 rounded-xl p-6 sticky top-24 h-fit">
@@ -73,20 +72,6 @@ export function OrderSummary({
         <p className="text-xs text-[#6B7280] mt-1">USD</p>
       </div>
 
-      {/* Onboarding Message */}
-      <div
-        className={`p-3 rounded-lg text-xs ${
-          qualifiesForOnboarding
-            ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
-            : 'bg-slate-50 text-[#6B7280] border border-slate-200'
-        }`}
-      >
-        {qualifiesForOnboarding ? (
-          <p className="font-semibold">✓ Qualifies for onboarding & monthly calls</p>
-        ) : (
-          <p>Orders over $149 qualify for onboarding and monthly calls.</p>
-        )}
-      </div>
     </div>
   )
 }

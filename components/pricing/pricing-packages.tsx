@@ -34,14 +34,13 @@ const includedFeatures = [
   { icon: "📝", text: "Captions & hashtags" },
  
   { icon: "✅", text: "2 social channel included" },
-  { icon: "📋", text: "$10/mo each extra channel" },
+  { icon: "📋", text: "$60/mo additional social channel" },
  
 ];
 
 export function PricingPackages() {
   const [selectedPackage, setSelectedPackage] = useState("plus")
   const selected = packages.find((p) => p.id === selectedPackage)
-  const qualifiesForCalls = selected && selected.price >= 149
 
   return (
     <section className="py-12 px-4 sm:px-6 lg:px-8">
@@ -111,18 +110,6 @@ export function PricingPackages() {
               })}
             </div>
 
-            {/* NOTICE */}
-            <div
-              className={`mt-6 p-3 rounded-lg text-sm ${
-                qualifiesForCalls
-                  ? "bg-primary/10 text-primary"
-                  : "bg-muted text-muted-foreground"
-              }`}
-            >
-              {qualifiesForCalls
-                ? "✓ Your order qualifies for onboarding & monthly calls"
-                : "Orders over $149 qualify for onboarding & monthly calls"}
-            </div>
           </div>
 
           {/* RIGHT SIDE */}

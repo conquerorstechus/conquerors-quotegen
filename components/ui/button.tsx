@@ -53,6 +53,8 @@ function Button({
       data-slot="button"
       className={cn(buttonVariants({ variant, size, className }))}
       {...props}
+      // Browser extensions (e.g. form fillers) inject attrs like fdprocessedid before hydrate.
+      suppressHydrationWarning
     />
   )
 }

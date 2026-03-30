@@ -68,20 +68,17 @@ export const dynamicPricingContent: Record<DynamicPricingTabId, DynamicPricingSe
   posts: {
     title: "Social Media Posts",
     description:
-      "Static, single-image social posts custom-made with your branding, posted monthly across the channels that matter for your business.",
+      "Static social posts custom-made with your branding—4, 8, or 12 posts per month for 2 social channels (Facebook & Instagram).",
     sliderLabel: "Select monthly number of posts",
     tiers: [
-      { quantity: 5, price: 99, tickLabel: "5", selectionLabel: "5 posts" },
-      { quantity: 10, price: 149, tickLabel: "10", selectionLabel: "10 posts" },
-      { quantity: 15, price: 199, tickLabel: "15", selectionLabel: "15 posts" },
-      { quantity: 30, price: 329, tickLabel: "30", selectionLabel: "30 posts" },
+      { quantity: 4, price: 99, tickLabel: "4", selectionLabel: "4 posts" },
+      { quantity: 8, price: 149, tickLabel: "8", selectionLabel: "8 posts" },
+      { quantity: 12, price: 199, tickLabel: "12", selectionLabel: "12 posts" },
     ],
     features: [
+      { icon: "users", text: "2 social channels (FB/Insta)" },
       { icon: "check", text: "Posts in your branding" },
       { icon: "hash", text: "Captions & hashtags" },
-      { icon: "send", text: "Posted for you (optional)" },
-      { icon: "calendar", text: "Onboarding call (optional)" },
-      { icon: "users", text: "All major social channels included" },
     ],
     timelineUrl: "/help",
     examplesUrl: "/services/posts",
@@ -90,13 +87,10 @@ export const dynamicPricingContent: Record<DynamicPricingTabId, DynamicPricingSe
   videos: {
     title: "Short-Form Videos",
     description:
-      "Engaging 20–60 second short-form videos for TikTok, Instagram Reels, and YouTube Shorts—built to stop the scroll and drive engagement.",
+      "4 short-form videos (15–60 sec) per month for Instagram Reels, TikTok, and YouTube Shorts.",
     sliderLabel: "Select monthly number of videos",
     tiers: [
-      { quantity: 5, price: 199, tickLabel: "5", selectionLabel: "5 videos" },
-      { quantity: 10, price: 349, tickLabel: "10", selectionLabel: "10 videos" },
-      { quantity: 15, price: 499, tickLabel: "15", selectionLabel: "15 videos" },
-      { quantity: 20, price: 649, tickLabel: "20", selectionLabel: "20 videos" },
+      { quantity: 4, price: 149, tickLabel: "4", selectionLabel: "4 videos" },
     ],
     features: [
       { icon: "video", text: "Videos in your branding" },
@@ -112,14 +106,9 @@ export const dynamicPricingContent: Record<DynamicPricingTabId, DynamicPricingSe
   "static-ads": {
     title: "Static Ads",
     description:
-      "Performance-focused static ad creatives built with research, strong concepts, scroll-stopping design, and copy tuned for conversions.",
+      "5 static ad creatives per month—performance-focused design and copy for your paid social campaigns.",
     sliderLabel: "Select monthly number of static ads",
-    tiers: [
-      { quantity: 5, price: 99, tickLabel: "5", selectionLabel: "5 static ads" },
-      { quantity: 10, price: 179, tickLabel: "10", selectionLabel: "10 static ads" },
-      { quantity: 20, price: 329, tickLabel: "20", selectionLabel: "20 static ads" },
-      { quantity: 30, price: 469, tickLabel: "30", selectionLabel: "30 static ads" },
-    ],
+    tiers: [{ quantity: 5, price: 149, tickLabel: "5", selectionLabel: "5 static ad creatives" }],
     features: [
       { icon: "palette", text: "Static ads in your branding" },
       { icon: "zap", text: "Fast, research-backed concepts" },
@@ -134,14 +123,9 @@ export const dynamicPricingContent: Record<DynamicPricingTabId, DynamicPricingSe
   "video-ads": {
     title: "Video Ads",
     description:
-      "High-performing paid social video ads—scripting, editing, and messaging tailored for Meta, TikTok, and YouTube campaigns.",
+      "2 video ads per month—scripting, editing, and messaging tailored for paid social campaigns.",
     sliderLabel: "Select monthly number of video ads",
-    tiers: [
-      { quantity: 2, price: 99, tickLabel: "2", selectionLabel: "2 video ads" },
-      { quantity: 4, price: 179, tickLabel: "4", selectionLabel: "4 video ads" },
-      { quantity: 6, price: 249, tickLabel: "6", selectionLabel: "6 video ads" },
-      { quantity: 8, price: 319, tickLabel: "8", selectionLabel: "8 video ads" },
-    ],
+    tiers: [{ quantity: 2, price: 149, tickLabel: "2", selectionLabel: "2 video ads" }],
     features: [
       { icon: "video", text: "Video ads optimized for paid social" },
       { icon: "target", text: "Strategic hooks & offer messaging" },
@@ -156,14 +140,9 @@ export const dynamicPricingContent: Record<DynamicPricingTabId, DynamicPricingSe
   emails: {
     title: "Email Design",
     description:
-      "Take your email marketing further with stunning, on-brand emails—copy and design from specialists who understand conversion.",
+      "2 custom designed emails per month—on-brand layouts and copy for your campaigns.",
     sliderLabel: "Select monthly number of emails",
-    tiers: [
-      { quantity: 2, price: 149, tickLabel: "2", selectionLabel: "2 emails" },
-      { quantity: 4, price: 279, tickLabel: "4", selectionLabel: "4 emails" },
-      { quantity: 6, price: 399, tickLabel: "6", selectionLabel: "6 emails" },
-      { quantity: 8, price: 519, tickLabel: "8", selectionLabel: "8 emails" },
-    ],
+    tiers: [{ quantity: 2, price: 199, tickLabel: "2", selectionLabel: "2 custom designed emails" }],
     features: [
       { icon: "palette", text: "Emails in your branding" },
       { icon: "pen", text: "Design & persuasive copy" },
@@ -176,16 +155,11 @@ export const dynamicPricingContent: Record<DynamicPricingTabId, DynamicPricingSe
     howItWorksHref: "/help",
   },
   blogs: {
-    title: "Blog Posts",
+    title: "SEO Blog Posts",
     description:
-      "Fully SEO-optimized blog articles for your site—research-backed outlines, structured headings, and copy that ranks and reads well.",
+      "2 SEO-optimized blog posts per month—research-backed content structured to rank and read well.",
     sliderLabel: "Select monthly number of articles",
-    tiers: [
-      { quantity: 2, price: 99, tickLabel: "2", selectionLabel: "2 articles" },
-      { quantity: 4, price: 179, tickLabel: "4", selectionLabel: "4 articles" },
-      { quantity: 6, price: 249, tickLabel: "6", selectionLabel: "6 articles" },
-      { quantity: 8, price: 319, tickLabel: "8", selectionLabel: "8 articles" },
-    ],
+    tiers: [{ quantity: 2, price: 149, tickLabel: "2", selectionLabel: "2 SEO-optimized blog posts" }],
     features: [
       { icon: "search", text: "Keyword-informed outlines" },
       { icon: "pen", text: "Long-form SEO content & structure" },
@@ -200,17 +174,12 @@ export const dynamicPricingContent: Record<DynamicPricingTabId, DynamicPricingSe
   backlinks: {
     title: "SEO Backlinks",
     description:
-      "High-quality backlinks from real sites (DA30–65) to strengthen authority, improve rankings, and support sustainable organic growth.",
+      "3 backlinks per month from real sites (DA20–65) to strengthen authority and support organic growth.",
     sliderLabel: "Select monthly backlink volume",
-    tiers: [
-      { quantity: 3, price: 249, tickLabel: "3", selectionLabel: "3 SEO backlinks" },
-      { quantity: 6, price: 449, tickLabel: "6", selectionLabel: "6 SEO backlinks" },
-      { quantity: 9, price: 629, tickLabel: "9", selectionLabel: "9 SEO backlinks" },
-      { quantity: 12, price: 799, tickLabel: "12", selectionLabel: "12 SEO backlinks" },
-    ],
+    tiers: [{ quantity: 3, price: 299, tickLabel: "3", selectionLabel: "3 backlinks (DA20–65)" }],
     features: [
       { icon: "shield", text: "Real outreach—not spam directories" },
-      { icon: "link", text: "DA30–65 publisher quality" },
+      { icon: "link", text: "DA20–65 publisher quality" },
       { icon: "calendar", text: "Predictable monthly delivery" },
       { icon: "barChart", text: "Transparent reporting" },
       { icon: "check", text: "White-glove campaign management" },
@@ -222,20 +191,21 @@ export const dynamicPricingContent: Record<DynamicPricingTabId, DynamicPricingSe
   "meta-ads": {
     title: "Meta Ads Management",
     description:
-      "Facebook & Instagram advertising managed end-to-end—strategy, creatives, testing, and optimization. Ad spend is billed separately by Meta.",
+      "Facebook & Instagram ads management—strategy, setup, testing, and ongoing optimization. Ad spend is billed separately by Meta.",
     sliderLabel: "Select management tier",
     tiers: [
-      { quantity: 1, price: 499, tickLabel: "1", selectionLabel: "Tier 1 management" },
-      { quantity: 2, price: 899, tickLabel: "2", selectionLabel: "Tier 2 management" },
-      { quantity: 3, price: 1249, tickLabel: "3", selectionLabel: "Tier 3 management" },
+      {
+        quantity: 1,
+        price: 549,
+        tickLabel: "1",
+        selectionLabel: "Facebook & Instagram ads management",
+      },
     ],
     features: [
-      { icon: "target", text: "Expert media buyer + creative strategy" },
-      { icon: "palette", text: "5 static + 2 video assets monthly" },
-      { icon: "trending", text: "Weekly performance optimization" },
-      { icon: "zap", text: "Structured testing roadmap" },
-      { icon: "users", text: "Audience research & targeting" },
-      { icon: "check", text: "Pixel & tracking setup (optional add-on)" },
+      { icon: "target", text: "Facebook & Instagram campaign management" },
+      { icon: "trending", text: "Ongoing optimization & testing" },
+      { icon: "barChart", text: "Performance reporting" },
+      { icon: "check", text: "Strategic account structure & creative guidance" },
     ],
     timelineUrl: "/help",
     examplesUrl: "/meta-ads",
@@ -244,20 +214,22 @@ export const dynamicPricingContent: Record<DynamicPricingTabId, DynamicPricingSe
   "google-ads": {
     title: "Google Ads Management",
     description:
-      "Search and performance campaigns managed by specialists who focus on qualified leads, efficient spend, and conversion clarity—not vanity metrics.",
+      "Google Ads campaign management—search and performance campaigns tuned for qualified leads and efficient spend.",
     sliderLabel: "Select management tier",
     tiers: [
-      { quantity: 1, price: 499, tickLabel: "1", selectionLabel: "Tier 1 management" },
-      { quantity: 2, price: 899, tickLabel: "2", selectionLabel: "Tier 2 management" },
-      { quantity: 3, price: 1249, tickLabel: "3", selectionLabel: "Tier 3 management" },
+      {
+        quantity: 1,
+        price: 549,
+        tickLabel: "1",
+        selectionLabel: "Google Ads campaign management",
+      },
     ],
     features: [
-      { icon: "search", text: "Certified account strategy & buildout" },
-      { icon: "barChart", text: "Search, Display & Performance Max coverage" },
-      { icon: "trending", text: "Weekly bid & creative iteration" },
-      { icon: "target", text: "Conversion-led audience design" },
-      { icon: "shield", text: "Tracking & attribution hygiene" },
-      { icon: "check", text: "Executive-ready reporting" },
+      { icon: "search", text: "Google Ads campaign management" },
+      { icon: "barChart", text: "Search & performance coverage" },
+      { icon: "trending", text: "Bid, keyword & ad iteration" },
+      { icon: "target", text: "Conversion-focused structure" },
+      { icon: "check", text: "Reporting & optimization" },
     ],
     timelineUrl: "/help",
     examplesUrl: "/google-ads",
@@ -266,19 +238,14 @@ export const dynamicPricingContent: Record<DynamicPricingTabId, DynamicPricingSe
   "instagram-growth": {
     title: "Instagram Growth",
     description:
-      "Real, targeted follower growth through manual engagement in your niche—no bots, no risky automation, and strategies aligned with platform rules.",
+      "Targeted follower growth through strategic, compliant engagement—no bots or risky automation.",
     sliderLabel: "Select growth package",
-    tiers: [
-      { quantity: 1, price: 149, tickLabel: "1", selectionLabel: "Starter growth" },
-      { quantity: 2, price: 279, tickLabel: "2", selectionLabel: "Accelerated growth" },
-      { quantity: 3, price: 399, tickLabel: "3", selectionLabel: "Maximum growth" },
-    ],
+    tiers: [{ quantity: 1, price: 179, tickLabel: "1", selectionLabel: "Targeted follower growth" }],
     features: [
-      { icon: "users", text: "Human-led outreach in your target niche" },
-      { icon: "trending", text: "100–400+ monthly follower velocity (tiered)" },
-      { icon: "target", text: "Audience & competitor insights" },
-      { icon: "calendar", text: "Content cadence recommendations" },
-      { icon: "shield", text: "Compliance-first playbook" },
+      { icon: "users", text: "Targeted follower growth" },
+      { icon: "target", text: "Audience alignment with your niche" },
+      { icon: "trending", text: "Engagement-led growth strategy" },
+      { icon: "shield", text: "Platform-rules-friendly approach" },
     ],
     timelineUrl: "/help",
     examplesUrl: "/instagram-growth",
