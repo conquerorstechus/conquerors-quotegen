@@ -264,9 +264,9 @@ export const googleAdsPageContent: DedicatedServicePageContent = {
 
 export const seoServicesPageContent: DedicatedServicePageContent = {
   path: "/seo",
-  metaTitle: "SEO Services — Content, Links & Managed SEO | Conquerors",
+  metaTitle: "SEO Services — Content, Links & SEO | Conquerors",
   metaDescription:
-    "SEO blog posts, authoritative backlinks, and full managed SEO to grow organic visibility.",
+    "SEO blog posts, authoritative backlinks, and full SEO to grow organic visibility.",
   hero: {
     badge: "Organic growth",
     title: "SEO Services",
@@ -287,7 +287,7 @@ export const seoServicesPageContent: DedicatedServicePageContent = {
     items: [
       "SEO blog posts (2/mo tier available)",
       "SEO backlinks—3/mo from DA20–65 publishers (tier)",
-      "Managed SEO—full ongoing program (tier)",
+      "SEO—full ongoing program (tier)",
       "Reporting you can actually use",
     ],
   },

@@ -76,8 +76,8 @@ export default function CheckoutPage() {
     },
     {
       id: 'managed-seo',
-      name: 'Managed SEO',
-      description: 'Improve rankings, grow organic traffic, and manage SEO strategy.',
+      name: 'SEO',
+      description: 'Improve rankings, grow organic traffic, and execute SEO strategy.',
       priceRange: '$499 – $1,999',
       priceLabel: '/ month',
       type: 'dropdown' as const,
@@ -189,15 +189,12 @@ export default function CheckoutPage() {
                 <p className="text-lg text-[#6B7280] mb-4">
                   Pick your services, cancel anytime.
                 </p>
-                <p className="text-sm text-[#6B7280] mb-6">
-                  Onboarding call + monthly review meetings included with any plan.
-                </p>
 
                 {/* Benefits List */}
                 <div className="space-y-2 mb-8">
                   <div className="flex items-start gap-3">
                     <span className="text-[#1E5AA8] font-bold mt-1">•</span>
-                    <span className="text-sm text-[#6B7280]">15+ marketing services in one platform</span>
+                    <span className="text-sm text-[#6B7280]">Top Digital Marketing Services in one platform</span>
                   </div>
                   <div className="flex items-start gap-3">
                     <span className="text-[#1E5AA8] font-bold mt-1">•</span>

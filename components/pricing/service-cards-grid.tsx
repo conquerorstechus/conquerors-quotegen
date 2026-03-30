@@ -138,9 +138,9 @@ const serviceCardsData: ServiceCardConfig[] = [
   },
   {
     id: "managed-seo",
-    title: "Managed SEO",
+    title: "SEO",
     icon: <Search className="w-5 h-5" />,
-    description: "Full SEO management—strategy, execution, and monthly visibility into performance.",
+    description: "Full SEO—strategy, execution, and monthly visibility into performance.",
     badge: "SEO",
     badgeColor: "bg-emerald-100 text-emerald-700",
     basePrice: 549,
@@ -285,7 +285,8 @@ const ALL_SERVICES_DESCRIPTION =
 export function ServiceCardsGrid({ activeTab = "posts", mode = "filtered" }: ServiceCardsGridProps) {
   const pathname = usePathname()
   const hideOnPricingAll = mode === "all" && pathname === "/pricing"
-  const hiddenOnPricingAllIds = new Set(["static-ads", "video-ads", "ugc-videos"])
+  /* Temporarily disabled for future use */
+  const hiddenOnPricingAllIds = new Set(["static-ads", "video-ads"])
 
   const filteredCards =
     mode === "all"

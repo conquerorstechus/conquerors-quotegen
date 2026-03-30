@@ -23,8 +23,10 @@ const serviceMenu = [
     category: 'Ads',
     icon: BarChart3,
     items: [
-      { name: 'Static Ads', icon: ImageIcon, description: 'Professional ad creatives', link: '/static-ads' },
-      { name: 'Video Ads', icon: Video, description: 'Engaging video advertisements', link: '/video-ads' },
+      /* Temporarily disabled for future use
+        { name: 'Static Ads', icon: ImageIcon, description: 'Professional ad creatives', link: '/static-ads' },
+        { name: 'Video Ads', icon: Video, description: 'Engaging video advertisements', link: '/video-ads' },
+      */
       { name: 'Meta Ads Management', icon: Share2, description: 'Facebook & Instagram ads', link: '/meta-ads' },
       { name: 'Google Ads Management', icon: PieChart, description: 'Google Ads optimization', link: '/google-ads' },
     ]

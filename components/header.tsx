@@ -11,8 +11,10 @@ const mobileServices = [
   {
     category: 'Ads',
     items: [
-      { label: 'Static Ads', href: '/static-ads' },
-      { label: 'Video Ads', href: '/video-ads' },
+      /* Temporarily disabled for future use
+        { label: 'Static Ads', href: '/static-ads' },
+        { label: 'Video Ads', href: '/video-ads' },
+      */
       { label: 'Meta Ads Management', href: '/meta-ads' },
       { label: 'Google Ads Management', href: '/google-ads' }
     ]

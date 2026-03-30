@@ -235,9 +235,9 @@ const serviceConfigs: ServiceConfig[] = [
   },
   {
     id: "managed-seo",
-    title: "Managed SEO",
+    title: "SEO",
     icon: <Search className="w-6 h-6" />,
-    description: "Full SEO management—strategy, on-page, technical work, and monthly performance visibility.",
+    description: "Full SEO—strategy, on-page, technical work, and monthly performance visibility.",
     baseQuantity: 1,
     basePrice: 549,
     pricePerUnit: 549,
