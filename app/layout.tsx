@@ -10,7 +10,13 @@ export const metadata: Metadata = {
   title: "Conquerors Digital | Expert Social Media Management from $99/mo",
   description:
     "Premium social media management, content creation, and digital marketing services. Trusted By Growing Brands & Businesses. Start from only $99/month.",
-    generator: 'v0.app'
+  generator: "v0.app",
+  icons: {
+    // Use the custom favicon for every page tab.
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/apple-icon.png",
+  },
 }
 
 export default function RootLayout({
