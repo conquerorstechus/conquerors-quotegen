@@ -54,8 +54,8 @@ export type DynamicPricingServiceContent = {
 export const DYNAMIC_PRICING_TAB_ORDER: DynamicPricingTabId[] = [
   "posts",
   "videos",
-  "static-ads",
-  "video-ads",
+  // "static-ads", // hidden from /pricing tab on request
+  // "video-ads", // hidden from /pricing tab on request
   "emails",
   "blogs",
   "backlinks",

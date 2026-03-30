@@ -3,6 +3,7 @@
 import type React from "react"
 import { useEffect, useState } from "react"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import {
   ArrowRight,
@@ -282,8 +283,14 @@ const ALL_SERVICES_DESCRIPTION =
   "Browse every service we offer and bundle what you need—mix, match, and add extras at checkout."
 
 export function ServiceCardsGrid({ activeTab = "posts", mode = "filtered" }: ServiceCardsGridProps) {
+  const pathname = usePathname()
+  const hideOnPricingAll = mode === "all" && pathname === "/pricing"
+  const hiddenOnPricingAllIds = new Set(["static-ads", "video-ads", "ugc-videos"])
+
   const filteredCards =
-    mode === "all" ? serviceCardsData : serviceCardsData.filter((card) => card.category === activeTab)
+    mode === "all"
+      ? serviceCardsData.filter((card) => !hideOnPricingAll || !hiddenOnPricingAllIds.has(card.id))
+      : serviceCardsData.filter((card) => card.category === activeTab)
 
   return (
     <section
