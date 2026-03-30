@@ -2,7 +2,7 @@ import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Check, ChevronRight } from "lucide-react"
+import { ArrowRight, Check, Film, LayoutGrid, Mail, Search, SearchCheck, Target, TrendingUp, Video, ChevronRight } from "lucide-react"
 import {
   type DedicatedServicePageContent,
   EXPLORE_SERVICE_LINKS,
@@ -27,12 +27,92 @@ export function DedicatedServicePage({ content }: DedicatedServicePageProps) {
   const exploreCategoryOrder = ["Ads", "SEO", "Videos", "Social Media Management"]
   const sortedExploreCategories = exploreCategoryOrder.filter((c) => exploreByCategory[c]?.length)
 
+  const iconByHref: Record<string, React.ComponentType<{ className?: string }>> = {
+    "/static-ads": LayoutGrid,
+    "/video-ads": Film,
+    "/meta-ads": Target,
+    "/google-ads": Search,
+    "/seo": SearchCheck,
+    "/videos": Video,
+    "/instagram-growth": TrendingUp,
+    "/email-design": Mail,
+  }
+
+  const featuredByHref = new Set(["/meta-ads", "/google-ads", "/instagram-growth"])
+
   return (
     <>
       <Header />
       <main className="min-h-screen bg-white">
+        {/* Explore other services (moved to top) */}
+        <section className="pt-24 pb-6 px-4 sm:px-6 lg:px-8 bg-white border-b border-slate-100">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-xl sm:text-2xl font-bold text-[#0B2A4A] mb-1 text-center">
+              Explore other services
+            </h2>
+            <p className="text-xs sm:text-sm text-[#6B7280] mb-4 text-center max-w-3xl mx-auto">
+              Jump to another offering—mix and match at checkout.
+            </p>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+              {exploreLinks.map((link) => {
+                const Icon = iconByHref[link.href]
+                const isFeatured = featuredByHref.has(link.href)
+
+                const tag =
+                  link.category === "Social Media Management"
+                    ? "Social"
+                    : link.category === "Videos"
+                      ? "Videos"
+                      : link.category === "SEO"
+                        ? "SEO"
+                        : "Ads"
+
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className={[
+                      "group rounded-2xl border transition-all h-[74px] px-4 py-3 flex items-center",
+                      "bg-white hover:shadow-sm hover:border-[#1E5AA8]/40",
+                      isFeatured ? "bg-[#1E5AA8]/5 border-[#1E5AA8]/25" : "border-slate-200",
+                    ].join(" ")}
+                  >
+                    <div className="flex items-center gap-3 w-full">
+                      <div
+                        className={[
+                          "w-10 h-10 rounded-xl flex items-center justify-center shrink-0",
+                          "bg-[#1E5AA8]/10 text-[#1E5AA8] group-hover:bg-[#1E5AA8] group-hover:text-white transition-colors",
+                        ].join(" ")}
+                      >
+                        {Icon ? <Icon className="w-4 h-4" /> : <Check className="w-4 h-4" />}
+                      </div>
+
+                      <div className="min-w-0 flex-1">
+                        <div className="flex items-center gap-2">
+                          <span className="text-[10px] font-bold uppercase tracking-wider text-[#1E5AA8] bg-[#1E5AA8]/10 px-2 py-0.5 rounded-full">
+                            {tag}
+                          </span>
+                          <span className="text-sm font-semibold text-[#0B2A4A] truncate">
+                            {link.label}
+                          </span>
+                        </div>
+                        <p className="text-[11px] text-[#6B7280] truncate mt-1">
+                          Explore deliverables & pricing tiers
+                        </p>
+                      </div>
+
+                      <ArrowRight className="ml-auto h-4 w-4 text-[#1E5AA8] opacity-80 group-hover:opacity-100 transition-opacity" />
+                    </div>
+                  </Link>
+                )
+              })}
+            </div>
+          </div>
+        </section>
+
         {/* 1. Hero */}
-        <section className="pt-28 sm:pt-32 pb-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#F5F9FF] to-white">
+        <section className="pt-10 sm:pt-14 pb-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#F5F9FF] to-white">
           <div className="max-w-4xl mx-auto text-center">
             {content.hero.badge ? (
               <p className="inline-block text-sm font-semibold text-[#1E5AA8] bg-blue-50 px-4 py-1.5 rounded-full mb-6">
@@ -187,40 +267,6 @@ export function DedicatedServicePage({ content }: DedicatedServicePageProps) {
           </div>
         </section>
 
-        {/* 8. Explore other services */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-slate-50 border-t border-slate-200">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-2xl sm:text-3xl font-bold text-[#0B2A4A] mb-2 text-center">Explore other services</h2>
-            <p className="text-center text-[#6B7280] mb-10 max-w-2xl mx-auto">
-              Jump to another offering from the same menu you used to get here—mix and match at checkout.
-            </p>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-              {sortedExploreCategories.map((category) => {
-                const links = exploreByCategory[category]!
-                return (
-                  <div key={category}>
-                    <p className="text-xs font-bold uppercase tracking-wider text-[#1E5AA8] mb-3">{category}</p>
-                    <ul className="space-y-2">
-                      {links.map((link) => (
-                        <li key={link.href}>
-                          <Link
-                            href={link.href}
-                            className="group flex items-center justify-between gap-2 py-2 px-3 rounded-lg hover:bg-white hover:shadow-sm border border-transparent hover:border-blue-100 transition-all"
-                          >
-                            <span className="text-sm font-medium text-[#0B2A4A] group-hover:text-[#1E5AA8]">
-                              {link.label}
-                            </span>
-                            <ChevronRight className="h-4 w-4 text-[#6B7280] group-hover:text-[#1E5AA8] shrink-0" />
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )
-              })}
-            </div>
-          </div>
-        </section>
       </main>
       <Footer />
     </>
