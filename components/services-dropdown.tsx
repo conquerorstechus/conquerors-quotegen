@@ -41,7 +41,7 @@ const serviceMenu = [
     category: 'Videos',
     icon: Video,
     items: [
-      { name: 'Short-Form Videos', icon: Video, description: 'TikTok, Reels, Shorts content', link: '/videos' },
+      { name: 'Videos', icon: Video, description: 'TikTok, Reels, Shorts content', link: '/videos' },
     
     ]
   },

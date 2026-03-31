@@ -27,7 +27,7 @@ const mobileServices = [
   {
     category: 'Videos',
     items: [
-      { label: 'Short-Form Videos', href: '/videos' }
+      { label: 'Videos', href: '/videos' }
     ]
   },
   {

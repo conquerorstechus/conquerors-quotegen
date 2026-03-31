@@ -47,12 +47,10 @@ export type DedicatedServicePageContent = {
 
 /** Same groups as `services-dropdown` / mobile header — for cross-links only. */
 export const EXPLORE_SERVICE_LINKS: { label: string; href: string; category: string }[] = [
-  { label: "Static Ads", href: "/static-ads", category: "Ads" },
-  { label: "Video Ads", href: "/video-ads", category: "Ads" },
   { label: "Meta Ads Management", href: "/meta-ads", category: "Ads" },
   { label: "Google Ads Management", href: "/google-ads", category: "Ads" },
   { label: "SEO Services", href: "/seo", category: "SEO" },
-  { label: "Short-Form Videos", href: "/videos", category: "Videos" },
+  { label: "Videos", href: "/videos", category: "Videos" },
   { label: "Instagram Growth", href: "/instagram-growth", category: "Social Media Management" },
   { label: "Email Design", href: "/email-design", category: "Social Media Management" },
 ]
@@ -166,7 +164,6 @@ export const metaAdsPageContent: DedicatedServicePageContent = {
   metaDescription:
     "Facebook and Instagram campaign management: structure, testing, optimization, and clear reporting.",
   hero: {
-    badge: "Paid media",
     title: "Meta Ads Management",
     tagline: "Facebook & Instagram campaigns managed end-to-end—testing, learning, and scaling what works.",
   },
@@ -178,7 +175,7 @@ export const metaAdsPageContent: DedicatedServicePageContent = {
       { title: "Audit & goals", description: "Clarify offers, audiences, budgets, and success metrics." },
       { title: "Account setup", description: "Campaign structure, tracking, and initial ad sets." },
       { title: "Launch & test", description: "Structured experiments on creative and targeting." },
-      { title: "Optimize & report", description: "Shift budget to winners; share performance in plain language." },
+      { title: "Optimize & report", description: "Optimize campaign performance and provide detailed monthly reports." },
     ],
   },
   included: {
@@ -218,7 +215,6 @@ export const googleAdsPageContent: DedicatedServicePageContent = {
   metaDescription:
     "Search and performance campaigns on Google Ads—structure, keywords, bidding, and ongoing improvement.",
   hero: {
-    badge: "Paid media",
     title: "Google Ads Management",
     tagline: "Get found by people actively searching—search and performance campaigns tuned for leads and revenue.",
   },
@@ -257,7 +253,7 @@ export const googleAdsPageContent: DedicatedServicePageContent = {
   },
   pricing: {
     teaser:
-      "Starter (1 campaign) from $549/mo, Standard (2) $749/mo, Plus (3) $999/mo. Management fee is separate from your Google Ads spend.",
+      "Starter (1 campaign) from $549/mo, Standard (2) $749/mo, Plus (3) $999/mo. Management fee only—your ad spend is paid directly to Google.",
     priceDisplay: "From $549/mo",
     planNameForCheckout: "Google Ads Management",
     checkoutPrice: 549,
@@ -270,7 +266,6 @@ export const seoServicesPageContent: DedicatedServicePageContent = {
   metaDescription:
     "SEO blog posts, authoritative backlinks, and full SEO to grow organic visibility.",
   hero: {
-    badge: "Organic growth",
     title: "SEO Services",
     tagline: "Rankings and traffic the sustainable way—content, links, and technical focus without gimmicks.",
   },
@@ -282,15 +277,15 @@ export const seoServicesPageContent: DedicatedServicePageContent = {
       { title: "Strategy plan", description: "Topics, goals, and realistic timelines based on your niche." },
       { title: "Publish & earn links", description: "Optimized articles plus outreach for quality backlinks." },
       { title: "On-site improvements", description: "Structure, metadata, and technical fixes that support rankings." },
-      { title: "Review & next month", description: "What moved, what to double down on, and what to adjust." },
+      { title: "Review & next month", description: "Analyze, refine, and optimize for the month ahead." },
     ],
   },
   included: {
     items: [
       "SEO blog posts—2, 4, or 6 articles/mo (Starter / Standard / Plus)",
-      "SEO backlinks—3, 6, or 9/mo from DA20–65 publishers",
+      "Get SEO Backlinks.",
       "Managed SEO—full ongoing program from $549/mo",
-      "Reporting you can actually use",
+      "Reports that you can actually use.",
     ],
   },
   examples: {
@@ -318,12 +313,11 @@ export const seoServicesPageContent: DedicatedServicePageContent = {
 
 export const shortFormVideosPageContent: DedicatedServicePageContent = {
   path: "/videos",
-  metaTitle: "Short-Form Videos — 4–8/mo from $149 | Conquerors",
+  metaTitle: "Videos — 4–8/mo from $149 | Conquerors",
   metaDescription:
     "15–60 second videos for TikTok, Instagram Reels, and YouTube Shorts—Starter through Plus tiers, on-brand.",
   hero: {
-    badge: "Social video",
-    title: "Short-Form Videos",
+    title: "Videos",
     tagline: "Vertical video for Reels, TikTok, and Shorts—4, 6, or 8 pieces per month, ready to post.",
   },
   whatIs: {
@@ -362,7 +356,7 @@ export const shortFormVideosPageContent: DedicatedServicePageContent = {
   pricing: {
     teaser: "Starter 4 videos ($149/mo), Standard 6 ($199/mo), Plus 8 ($249/mo). Add other services at checkout.",
     priceDisplay: "From $149/mo",
-    planNameForCheckout: "Short-Form Videos",
+    planNameForCheckout: "Videos",
     checkoutPrice: 149,
   },
 }
@@ -373,7 +367,6 @@ export const instagramGrowthPageContent: DedicatedServicePageContent = {
   metaDescription:
     "Starter, Standard, and Plus growth programs—ethical, engagement-led strategies without bots or risky automation.",
   hero: {
-    badge: "Social growth",
     title: "Instagram Growth",
     tagline: "Grow with the right followers—Starter, Standard, or Plus engagement depth, all platform-safe.",
   },
@@ -424,7 +417,6 @@ export const emailDesignPageContent: DedicatedServicePageContent = {
   metaDescription:
     "On-brand, responsive email design and copy—Starter through Plus tiers, ready for your ESP and campaigns.",
   hero: {
-    badge: "Email marketing",
     title: "Email Design",
     tagline: "Emails people actually want to open—2, 4, or 6 custom layouts per month with mobile-first design.",
   },

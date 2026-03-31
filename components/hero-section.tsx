@@ -27,7 +27,7 @@ const carouselCards = [
   },
   {
     id: 4,
-    title: "Short Form Videos",
+    title: "Videos",
     color: "bg-gradient-to-br from-green-500 to-teal-500",
     image: "/instagram-carousel-design.jpg",
   },

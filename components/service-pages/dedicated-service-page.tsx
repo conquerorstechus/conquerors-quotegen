@@ -50,10 +50,6 @@ export function DedicatedServicePage({ content }: DedicatedServicePageProps) {
             <h2 className="text-xl sm:text-2xl font-bold text-[#0B2A4A] mb-1 text-center">
               Explore other services
             </h2>
-            <p className="text-xs sm:text-sm text-[#6B7280] mb-4 text-center max-w-3xl mx-auto">
-              Jump to another offering—mix and match at checkout.
-            </p>
-
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
               {exploreLinks.map((link) => {
                 const Icon = iconByHref[link.href]
@@ -155,9 +151,11 @@ export function DedicatedServicePage({ content }: DedicatedServicePageProps) {
             <h2 className="text-3xl sm:text-4xl font-bold text-[#0B2A4A] mb-4 text-center">
               {content.howItWorks.heading ?? "How it works"}
             </h2>
-            <p className="text-center text-[#6B7280] max-w-2xl mx-auto mb-12">
-              A simple flow from kickoff to delivery—no jargon required.
-            </p>
+            {content.path !== "/seo" ? (
+              <p className="text-center text-[#6B7280] max-w-2xl mx-auto mb-12">
+                A simple flow from kickoff to delivery—no jargon required.
+              </p>
+            ) : null}
             <ol className="space-y-6">
               {content.howItWorks.steps.map((step, i) => (
                 <li
@@ -183,9 +181,6 @@ export function DedicatedServicePage({ content }: DedicatedServicePageProps) {
             <h2 className="text-3xl sm:text-4xl font-bold text-[#0B2A4A] mb-4 text-center">
               {content.included.heading ?? "What's included"}
             </h2>
-            <p className="text-center text-[#6B7280] max-w-2xl mx-auto mb-12">
-              Deliverables based on our standard packages—adjust tiers anytime on the Pricing page.
-            </p>
             <ul className="grid sm:grid-cols-2 gap-4 max-w-3xl mx-auto">
               {content.included.items.map((item) => (
                 <li key={item} className="flex items-start gap-3 text-[#0B2A4A]">
@@ -197,30 +192,7 @@ export function DedicatedServicePage({ content }: DedicatedServicePageProps) {
           </div>
         </section>
 
-        {/* 5. Examples */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-[#F5F9FF]/60">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl sm:text-4xl font-bold text-[#0B2A4A] mb-4 text-center">
-              {content.examples.heading ?? "Examples & use cases"}
-            </h2>
-            <p className="text-center text-[#6B7280] max-w-2xl mx-auto mb-12">
-              Real-world ways teams use this service—not generic fluff.
-            </p>
-            <div className="grid md:grid-cols-3 gap-6">
-              {content.examples.cases.map((c) => (
-                <div
-                  key={c.title}
-                  className="p-6 rounded-2xl bg-white border border-blue-100 hover:border-[#1E5AA8]/40 hover:shadow-md transition-all"
-                >
-                  <h3 className="text-lg font-semibold text-[#0B2A4A] mb-3">{c.title}</h3>
-                  <p className="text-sm text-[#6B7280] leading-relaxed">{c.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* 6. Why we're different */}
+        {/* 5. Why we're different */}
         <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl sm:text-4xl font-bold text-[#0B2A4A] mb-4 text-center">
@@ -243,7 +215,7 @@ export function DedicatedServicePage({ content }: DedicatedServicePageProps) {
           </div>
         </section>
 
-        {/* 7. Pricing preview / CTA */}
+        {/* 6. Pricing preview / CTA */}
         <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#0B2A4A] to-[#152d52] text-white">
           <div className="max-w-3xl mx-auto text-center rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-10 sm:p-12">
             <h2 className="text-2xl sm:text-3xl font-bold mb-3">Pricing preview</h2>
@@ -257,8 +229,7 @@ export function DedicatedServicePage({ content }: DedicatedServicePageProps) {
                 </Link>
               </Button>
               <Button
-                variant="outline"
-                className="border-white/40 text-white hover:bg-white/10 px-8 py-6 text-base"
+                className="bg-white text-[#0B2A4A] hover:bg-blue-50 px-8 py-6 text-base"
                 asChild
               >
                 <Link href="/pricing">Compare all plans</Link>

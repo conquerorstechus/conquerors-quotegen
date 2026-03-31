@@ -102,7 +102,7 @@ const serviceConfigs: ServiceConfig[] = [
   },
   {
     id: "videos",
-    title: "Short-Form Videos",
+    title: "Videos",
     icon: <Video className="w-6 h-6" />,
     description:
       "4–8 short-form videos (15–60 sec) per month for Instagram Reels, TikTok, and YouTube Shorts. Edited with premium stock footage or client-provided footage.",
@@ -112,7 +112,7 @@ const serviceConfigs: ServiceConfig[] = [
     pricingTiers: { 4: 149, 6: 199, 8: 249 },
     pricePerUnit: 37.25,
     features: [
-      { icon: <Paintbrush className="w-4 h-4" />, text: "Videos in your branding" },
+      { icon: <Paintbrush className="w-4 h-4" />, text: "Videos for your branding" },
       { icon: <FileSearch className="w-4 h-4" />, text: "Captions & on-screen text" },
       { icon: <CalendarCheck className="w-4 h-4" />, text: "Monthly delivery cadence" },
       { icon: <Phone className="w-4 h-4" />, text: "Onboarding call (optional)" },

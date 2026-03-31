@@ -19,6 +19,7 @@ import {
   Link2,
   Info,
   ChevronDown,
+  Share2,
 } from "lucide-react"
 
 type ServiceQuantityOption = {
@@ -61,8 +62,20 @@ const serviceCardsData: ServiceCardConfig[] = [
     category: "posts",
   },
   {
+    id: "additional-social-channel",
+    title: "Additional Social Channel",
+    icon: <Share2 className="w-5 h-5" />,
+    description: "Add another social platform to your plan—monthly per channel.",
+    badge: "SOCIAL MEDIA",
+    badgeColor: "bg-blue-100 text-blue-700",
+    basePrice: 10,
+    quantityOptions: [{ quantity: 1, price: 10, label: "Add another social platform" }],
+    link: "/services/posts",
+    category: "posts",
+  },
+  {
     id: "short-form-videos",
-    title: "Short-Form Videos",
+    title: "Videos",
     icon: <Video className="w-5 h-5" />,
     description: "4–8 videos (15–60 sec) per month for Reels, TikTok, and Shorts.",
     badge: "SOCIAL MEDIA",

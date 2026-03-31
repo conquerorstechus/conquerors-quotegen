@@ -30,7 +30,7 @@ export default function ReviewPaymentPage() {
       'Meta Ads Management',
       'Google Ads Management',
       'SEO',
-      'Short-Form Videos',
+      'Videos',
       'Instagram Growth',
       'Email Design',
       'Landing Page Design',

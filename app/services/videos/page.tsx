@@ -10,7 +10,7 @@ export default function VideosPage() {
   const videoServices = [
     {
       id: 'short-form',
-      title: 'Short-Form Videos',
+      title: 'Videos',
       description: 'Professional short-form content for TikTok, Instagram Reels, and YouTube Shorts',
       icon: Video,
       href: '/services/videos/short-form-videos',

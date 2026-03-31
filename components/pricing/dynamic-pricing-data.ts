@@ -87,7 +87,7 @@ export const dynamicPricingContent: Record<DynamicPricingTabId, DynamicPricingSe
     howItWorksHref: "/help",
   },
   videos: {
-    title: "Short-Form Videos",
+    title: "Videos",
     description:
       "4–8 short-form videos (15–60 sec) per month for Instagram Reels, TikTok, and YouTube Shorts.",
     sliderLabel: "Select monthly number of videos",
@@ -97,7 +97,7 @@ export const dynamicPricingContent: Record<DynamicPricingTabId, DynamicPricingSe
       { quantity: 8, price: 249, tickLabel: "8", selectionLabel: "8 videos" },
     ],
     features: [
-      { icon: "video", text: "Videos in your branding" },
+      { icon: "video", text: "Videos for your branding" },
       { icon: "zap", text: "Hook-first concepts & pacing" },
       { icon: "pen", text: "Captions & on-screen text" },
       { icon: "palette", text: "Platform-native aspect ratios" },

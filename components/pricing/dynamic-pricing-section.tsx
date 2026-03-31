@@ -202,20 +202,6 @@ export function DynamicPricingSection({
                         <span className="text-2xl font-bold text-foreground">{`$${tier.price}`}</span>
                         <span className="text-sm text-muted-foreground">/mo</span>
                       </div>
-                      <div className="flex flex-wrap gap-2">
-                        <Button variant="outline" size="sm" className="h-8 gap-1.5 text-xs" asChild>
-                          <Link href={service.timelineUrl}>
-                            Timeline
-                            <ExternalLink className="h-3 w-3" />
-                          </Link>
-                        </Button>
-                        <Button variant="outline" size="sm" className="h-8 gap-1.5 text-xs" asChild>
-                          <Link href={service.examplesUrl}>
-                            Examples
-                            <ExternalLink className="h-3 w-3" />
-                          </Link>
-                        </Button>
-                      </div>
                     </div>
                   </div>
                   <p className="max-w-xl text-sm leading-relaxed text-muted-foreground">{service.description}</p>

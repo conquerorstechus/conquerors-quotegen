@@ -5,8 +5,6 @@ import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
 import {
   ArrowRight,
-  Film,
-  LayoutGrid,
   Mail,
   Search,
   Target,
@@ -28,24 +26,6 @@ type ExploreService = {
 }
 
 const exploreServices: ExploreService[] = [
-  {
-    id: 'static-ads',
-    title: 'Static Ads',
-    description: '5 scroll-stopping still creatives per month for paid social.',
-    href: '/static-ads',
-    group: 'Ads',
-    icon: LayoutGrid,
-    featured: false,
-  },
-  {
-    id: 'video-ads',
-    title: 'Video Ads',
-    description: '2 short paid social video ads per month with hooks + CTA copy.',
-    href: '/video-ads',
-    group: 'Ads',
-    icon: Film,
-    featured: false,
-  },
   {
     id: 'meta-ads',
     title: 'Meta Ads Management',

@@ -19,10 +19,11 @@ export default function CheckoutPage() {
       id: 'social-posts',
       name: 'Social Media Posts',
       description: 'Static social media posts created and published monthly.',
-      priceRange: '$199 – $499',
+      priceRange: '$99 – $199',
       priceLabel: '/ month',
       type: 'dropdown' as const,
       options: ['4 posts', '8 posts', '12 posts'],
+      optionPrices: { '4 posts': 99, '8 posts': 149, '12 posts': 199 },
     },
     {
       id: 'instagram-stories',
@@ -43,7 +44,7 @@ export default function CheckoutPage() {
     },
     {
       id: 'short-form-videos',
-      name: 'Short Form Videos',
+      name: 'Videos',
       description: '20–60 second TikTok, Reels, and Shorts videos.',
       priceRange: '$199 – $499',
       priceLabel: '/ month',
@@ -208,7 +209,7 @@ export default function CheckoutPage() {
               </div>
 
               {/* Services Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-8">
+              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3 mb-8">
                 {services.map((service) => (
                   <ServiceCard
                     key={service.id}

@@ -3,15 +3,12 @@ import { Instagram, Facebook, X, Linkedin, Youtube } from "lucide-react"
 import Image from "next/image"
 
 const footerLinks = {
-  Company: ["Our Work", "About", "Pricing",  "Blog"],
+  "": ["Our Work", "About", "Pricing"],
   Services: [
-    "Static Ads",
-    "Video Ads", 
     "Meta Ads Management",
     "Google Ads Management",
     "SEO",
-    "Short-Form Videos",
-    "UGC Videos",
+    "Videos",
     "Instagram Growth",
     "Email Design"
   ],
@@ -61,7 +58,7 @@ export function Footer() {
           {/* Links */}
           {Object.entries(footerLinks).map(([title, links]) => (
             <div key={title}>
-              <h4 className="text-white font-semibold mb-4">{title}</h4>
+              {title ? <h4 className="text-white font-semibold mb-4">{title}</h4> : <div className="mb-9" />}
               <ul className="space-y-3">
                 {links.map((link) => {
                   let href = "#"
@@ -72,12 +69,10 @@ export function Footer() {
                   if (link === "Blog") href = "/blog"
                   
                   // Services links
-                  if (link === "Static Ads") href = "/static-ads"
-                  if (link === "Video Ads") href = "/video-ads"
                   if (link === "Meta Ads Management") href = "/meta-ads"
                   if (link === "Google Ads Management") href = "/google-ads"
                   if (link === "SEO") href = "/seo"
-                  if (link === "Short-Form Videos") href = "/videos"
+                  if (link === "Videos") href = "/videos"
                   if (link === "UGC Videos") href = "#"
                   if (link === "Instagram Growth") href = "/instagram-growth"
                   if (link === "Email Design") href = "/email-design"
