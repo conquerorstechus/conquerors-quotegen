@@ -119,6 +119,10 @@ export function ServiceCard({
 
   const showTierPricing = optionPrices != null && tierPrice !== null && selectedOption
   const CardIcon = SERVICE_ICONS[id] ?? FileText
+  const formatOptionLabel = (option: string) => {
+    if (!optionPrices || optionPrices[option] === undefined) return option
+    return `${option} - $${optionPrices[option]}/mo`
+  }
 
   return (
     <div
@@ -176,7 +180,7 @@ export function ServiceCard({
             >
               {options.map((option) => (
                 <option key={option} value={option}>
-                  {option}
+                  {formatOptionLabel(option)}
                 </option>
               ))}
             </select>

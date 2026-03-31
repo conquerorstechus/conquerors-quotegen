@@ -14,7 +14,18 @@ export default function CheckoutPage() {
   const router = useRouter()
   const [selectedServices, setSelectedServices] = useState<SelectedService[]>([])
 
-  const services = [
+  type CheckoutServiceConfig = {
+    id: string
+    name: string
+    description: string
+    priceRange: string
+    priceLabel: string
+    type: 'dropdown' | 'button'
+    options?: string[]
+    optionPrices?: Record<string, number>
+  }
+
+  const services: CheckoutServiceConfig[] = [
     {
       id: 'social-posts',
       name: 'Social Media Posts',
@@ -33,6 +44,7 @@ export default function CheckoutPage() {
       priceLabel: '/ month',
       type: 'dropdown' as const,
       options: ['10 stories', '20 stories', '30 stories'],
+      optionPrices: { '10 stories': 69, '20 stories': 109, '30 stories': 149 },
     },
     {
       id: 'carousel-posts',
@@ -41,6 +53,8 @@ export default function CheckoutPage() {
       priceRange: '$10 – $150',
       priceLabel: '/ month',
       type: 'dropdown' as const,
+      options: ['1 carousel', '5 carousels', '15 carousels'],
+      optionPrices: { '1 carousel': 10, '5 carousels': 50, '15 carousels': 150 },
     },
     {
       id: 'short-form-videos',
@@ -50,6 +64,7 @@ export default function CheckoutPage() {
       priceLabel: '/ month',
       type: 'dropdown' as const,
       options: ['4 videos', '8 videos', '12 videos'],
+      optionPrices: { '4 videos': 199, '8 videos': 349, '12 videos': 499 },
     },
     {
       id: 'instagram-growth',
@@ -57,7 +72,9 @@ export default function CheckoutPage() {
       description: 'Real targeted Instagram followers through manual engagement.',
       priceRange: '$149',
       priceLabel: '/ month',
-      type: 'button' as const,
+      type: 'dropdown' as const,
+      options: ['1 package'],
+      optionPrices: { '1 package': 149 },
     },
     {
       id: 'meta-ads',
@@ -65,7 +82,9 @@ export default function CheckoutPage() {
       description: 'Facebook & Instagram ads management for leads and sales.',
       priceRange: '$499',
       priceLabel: '/ month',
-      type: 'button' as const,
+      type: 'dropdown' as const,
+      options: ['1 campaign'],
+      optionPrices: { '1 campaign': 499 },
     },
     {
       id: 'google-ads',
@@ -73,7 +92,9 @@ export default function CheckoutPage() {
       description: 'Google ads management for lead generation.',
       priceRange: '$499',
       priceLabel: '/ month',
-      type: 'button' as const,
+      type: 'dropdown' as const,
+      options: ['1 campaign'],
+      optionPrices: { '1 campaign': 499 },
     },
     {
       id: 'managed-seo',
@@ -83,6 +104,7 @@ export default function CheckoutPage() {
       priceLabel: '/ month',
       type: 'dropdown' as const,
       options: ['$499', '$999', '$1,499', '$1,999'],
+      optionPrices: { '$499': 499, '$999': 999, '$1,499': 1499, '$1,999': 1999 },
     },
     // {
     //   id: 'conversion-tracking',
@@ -102,33 +124,6 @@ export default function CheckoutPage() {
     //   type: 'button' as const,
     // },
     {
-      id: 'static-ads',
-      name: 'Static Ads',
-      description: 'Static ads for paid social campaigns.',
-      priceRange: '$99 – $379',
-      priceLabel: '/ month',
-      type: 'dropdown' as const,
-      options: ['5 ads', '10 ads', '20 ads'],
-    },
-    {
-      id: 'video-ads',
-      name: 'Video Ads',
-      description: 'High-performing video ads for paid campaigns.',
-      priceRange: '$99 – $389',
-      priceLabel: '/ month',
-      type: 'dropdown' as const,
-      options: ['2 videos', '4 videos', '6 videos'],
-    },
-    {
-      id: 'ugc-videos',
-      name: 'UGC Videos',
-      description: 'User-generated videos created by real creators.',
-      priceRange: '$599 – $1,799',
-      priceLabel: '/ month',
-      type: 'dropdown' as const,
-      options: ['3 videos', '6 videos', '12 videos'],
-    },
-    {
       id: 'email-design',
       name: 'Email Design',
       description: 'Email campaigns and automation design.',
@@ -136,6 +131,7 @@ export default function CheckoutPage() {
       priceLabel: '/ month',
       type: 'dropdown' as const,
       options: ['2 emails', '4 emails', '6 emails'],
+      optionPrices: { '2 emails': 149, '4 emails': 349, '6 emails': 549 },
     },
     {
       id: 'seo-blog',
@@ -145,6 +141,7 @@ export default function CheckoutPage() {
       priceLabel: '/ month',
       type: 'dropdown' as const,
       options: ['1 post', '2 posts', '4 posts'],
+      optionPrices: { '1 post': 99, '2 posts': 199, '4 posts': 379 },
     },
     {
       id: 'seo-backlinks',
@@ -154,6 +151,7 @@ export default function CheckoutPage() {
       priceLabel: '/ month',
       type: 'dropdown' as const,
       options: ['3 backlinks', '6 backlinks', '12 backlinks'],
+      optionPrices: { '3 backlinks': 249, '6 backlinks': 699, '12 backlinks': 1399 },
     },
   ]
 
