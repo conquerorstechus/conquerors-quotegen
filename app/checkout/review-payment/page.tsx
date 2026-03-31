@@ -190,11 +190,20 @@ export default function ReviewPaymentPage() {
                   </label>
 
                   <div className="relative" ref={servicesDropdownRef}>
-                    <button
-                      type="button"
+                    <div
+                      role="button"
+                      tabIndex={0}
+                      aria-expanded={servicesOpen}
+                      aria-haspopup="listbox"
+                      aria-label="Select services"
                       onClick={() => setServicesOpen((v) => !v)}
-                      suppressHydrationWarning
-                      className="w-full px-3 py-2 border border-slate-300 rounded-lg text-left focus:outline-none focus:ring-2 focus:ring-[#1E5AA8] flex flex-wrap gap-2 items-center"
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                          e.preventDefault()
+                          setServicesOpen((v) => !v)
+                        }
+                      }}
+                      className="w-full px-3 py-2 border border-slate-300 rounded-lg text-left focus:outline-none focus:ring-2 focus:ring-[#1E5AA8] flex flex-wrap gap-2 items-center cursor-pointer"
                     >
                       {selectedServices.length === 0 ? (
                         <span className="text-sm text-[#6B7280]">Select services (optional)</span>
@@ -212,7 +221,6 @@ export default function ReviewPaymentPage() {
                                 ev.stopPropagation()
                                 removeService(s)
                               }}
-                                suppressHydrationWarning
                               className="text-[#1E5AA8] hover:text-[#154080] font-bold leading-none"
                             >
                               ×
@@ -220,7 +228,7 @@ export default function ReviewPaymentPage() {
                           </span>
                         ))
                       )}
-                    </button>
+                    </div>
 
                     {servicesOpen && (
                       <div className="absolute left-0 right-0 mt-2 bg-white border border-slate-300 rounded-lg shadow-sm z-10 p-3">

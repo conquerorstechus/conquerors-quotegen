@@ -2,46 +2,41 @@ import Link from 'next/link'
 
 const plans = [
   {
-    name: 'Startup',
-    price: '499',
-    description: 'Perfect for businesses starting with Meta ads',
+    name: 'Starter',
+    price: '549',
+    description: 'One active campaign—ideal for single-offer testing',
     features: [
-      'Up to 2 campaigns',
-      'Facebook & Instagram ads',
-      'Monthly reporting',
-      'Basic optimization',
-      'Email support',
+      '1 Facebook & Instagram campaign',
+      'Account structure, tracking, and launch support',
+      'Ongoing optimization & testing roadmap',
+      'Performance reporting in plain language',
+      'Strategic creative and audience guidance',
     ],
     highlighted: false,
   },
   {
-    name: 'Growth',
-    price: '549',
-    description: 'Most popular for scaling businesses',
+    name: 'Standard',
+    price: '749',
+    description: 'Two campaigns—scale winners without splitting focus',
     features: [
-      'Up to 10 campaigns',
-      'Full Meta platform coverage',
-      'Bi-weekly reporting',
-      'Advanced optimization & A/B testing',
-      'Priority email & chat support',
-      'Audience analysis',
-      'Dedicated account manager',
+      '2 coordinated Meta campaigns',
+      'Full platform coverage for your scope',
+      'Structured experiments on creative & targeting',
+      'Bi-weekly optimization rhythm',
+      'Priority support channel access',
     ],
     highlighted: true,
   },
   {
-    name: 'Enterprise',
-    price: 'Custom',
-    description: 'For large scale operations',
+    name: 'Plus',
+    price: '999',
+    description: 'Three campaigns—maximum surface area for growth teams',
     features: [
-      'Unlimited campaigns',
-      'Full Meta platform + cross-channel',
-      'Weekly reporting & calls',
-      'Full optimization & strategy',
-      'Phone & chat support',
-      'Advanced analytics dashboard',
-      'Dedicated account manager',
-      'Custom integrations',
+      '3 managed Meta campaigns',
+      'Advanced scaling & budget choreography',
+      'Deeper creative iteration backlog',
+      'Executive-ready performance summaries',
+      'Hands-on strategic reviews',
     ],
     highlighted: false,
   },
@@ -56,7 +51,7 @@ export function MetaAdsPricing() {
             Simple, Transparent Pricing
           </h2>
           <p className="text-xl text-[#6B7280] max-w-2xl mx-auto">
-            No hidden fees. No surprises. Cancel anytime.
+            Management fees only—ad spend is billed directly by Meta.
           </p>
         </div>
 
@@ -82,7 +77,7 @@ export function MetaAdsPricing() {
 
                 <div className="mb-6">
                   <span className="text-4xl font-bold text-[#1E5AA8]">${plan.price}</span>
-                  {plan.price !== 'Custom' && <span className="text-[#6B7280]">/month</span>}
+                  <span className="text-[#6B7280]">/month</span>
                 </div>
 
                 <Link href="/schedule-demo" className="w-full block mb-8">

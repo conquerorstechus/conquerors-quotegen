@@ -183,10 +183,10 @@ export const metaAdsPageContent: DedicatedServicePageContent = {
   },
   included: {
     items: [
+      "1–3 managed campaigns (Starter / Standard / Plus tiers)",
       "Facebook & Instagram ads management",
       "Ongoing optimization and testing roadmap",
-      "Performance reporting",
-      "Strategic guidance on account structure and creative",
+      "Performance reporting & strategic guidance",
     ],
   },
   examples: {
@@ -204,7 +204,8 @@ export const metaAdsPageContent: DedicatedServicePageContent = {
     ],
   },
   pricing: {
-    teaser: "Management fee covers strategy and optimization; your ad spend is paid directly to Meta.",
+    teaser:
+      "Starter (1 campaign) from $549/mo, Standard (2) $749/mo, Plus (3) $999/mo. Management fee only—your ad spend is paid directly to Meta.",
     priceDisplay: "From $549/mo",
     planNameForCheckout: "Meta Ads Management",
     checkoutPrice: 549,
@@ -234,8 +235,8 @@ export const googleAdsPageContent: DedicatedServicePageContent = {
   },
   included: {
     items: [
-      "Google Ads campaign management",
-      "Search & performance coverage",
+      "1–3 managed campaigns (Starter / Standard / Plus tiers)",
+      "Google Ads campaign management & search coverage",
       "Bid, keyword, and ad iteration",
       "Conversion-focused structure and reporting",
     ],
@@ -255,7 +256,8 @@ export const googleAdsPageContent: DedicatedServicePageContent = {
     ],
   },
   pricing: {
-    teaser: "Management fee is separate from your Google Ads spend.",
+    teaser:
+      "Starter (1 campaign) from $549/mo, Standard (2) $749/mo, Plus (3) $999/mo. Management fee is separate from your Google Ads spend.",
     priceDisplay: "From $549/mo",
     planNameForCheckout: "Google Ads Management",
     checkoutPrice: 549,
@@ -285,9 +287,9 @@ export const seoServicesPageContent: DedicatedServicePageContent = {
   },
   included: {
     items: [
-      "SEO blog posts (2/mo tier available)",
-      "SEO backlinks—3/mo from DA20–65 publishers (tier)",
-      "SEO—full ongoing program (tier)",
+      "SEO blog posts—2, 4, or 6 articles/mo (Starter / Standard / Plus)",
+      "SEO backlinks—3, 6, or 9/mo from DA20–65 publishers",
+      "Managed SEO—full ongoing program from $549/mo",
       "Reporting you can actually use",
     ],
   },
@@ -306,8 +308,9 @@ export const seoServicesPageContent: DedicatedServicePageContent = {
     ],
   },
   pricing: {
-    teaser: "Mix blog posts, backlinks, and managed SEO on the Pricing page—pick what fits your stage.",
-    priceDisplay: "From $149/mo for content tiers",
+    teaser:
+      "Blog posts scale from 2 ($149/mo) to 6 ($349/mo); managed SEO full program from $549/mo. Mix modules on the Pricing page.",
+    priceDisplay: "From $149/mo · Managed SEO from $549/mo",
     planNameForCheckout: "SEO Services",
     checkoutPrice: 149,
   },
@@ -315,13 +318,13 @@ export const seoServicesPageContent: DedicatedServicePageContent = {
 
 export const shortFormVideosPageContent: DedicatedServicePageContent = {
   path: "/videos",
-  metaTitle: "Short-Form Videos — 4/mo from $149 | Conquerors",
+  metaTitle: "Short-Form Videos — 4–8/mo from $149 | Conquerors",
   metaDescription:
-    "15–60 second videos for TikTok, Instagram Reels, and YouTube Shorts—monthly delivery, on-brand.",
+    "15–60 second videos for TikTok, Instagram Reels, and YouTube Shorts—Starter through Plus tiers, on-brand.",
   hero: {
     badge: "Social video",
     title: "Short-Form Videos",
-    tagline: "Vertical video that fits Reels, TikTok, and Shorts—four pieces per month, ready to post.",
+    tagline: "Vertical video for Reels, TikTok, and Shorts—4, 6, or 8 pieces per month, ready to post.",
   },
   whatIs: {
     body: "Short-form video is the fastest way to stay visible in social feeds. We produce platform-native clips each month so you can maintain momentum without editing late nights yourself.",
@@ -336,7 +339,7 @@ export const shortFormVideosPageContent: DedicatedServicePageContent = {
   },
   included: {
     items: [
-      "4 short-form videos (15–60 sec) per month",
+      "4, 6, or 8 short-form videos (15–60 sec) per month by tier",
       "Captions and on-screen text",
       "Platform-native aspect ratios",
       "Monthly delivery cadence",
@@ -352,12 +355,12 @@ export const shortFormVideosPageContent: DedicatedServicePageContent = {
   whyDifferent: {
     points: [
       { title: "Built for algorithms", description: "Pacing and structure aimed at retention, not just aesthetics." },
-      { title: "Affordable volume", description: "Four clips monthly at a fraction of traditional production." },
+      { title: "Affordable volume", description: "4–8 clips monthly across tiers at a fraction of traditional production." },
       { title: "Real editors", description: "Human cuts and judgment—not one-click auto montages." },
     ],
   },
   pricing: {
-    teaser: "Four videos per month. Add other services at checkout.",
+    teaser: "Starter 4 videos ($149/mo), Standard 6 ($199/mo), Plus 8 ($249/mo). Add other services at checkout.",
     priceDisplay: "From $149/mo",
     planNameForCheckout: "Short-Form Videos",
     checkoutPrice: 149,
@@ -368,11 +371,11 @@ export const instagramGrowthPageContent: DedicatedServicePageContent = {
   path: "/instagram-growth",
   metaTitle: "Instagram Growth from $179/mo | Conquerors",
   metaDescription:
-    "Targeted Instagram growth—ethical, engagement-led strategies without bots or risky automation.",
+    "Starter, Standard, and Plus growth programs—ethical, engagement-led strategies without bots or risky automation.",
   hero: {
     badge: "Social growth",
     title: "Instagram Growth",
-    tagline: "Grow with the right followers—strategy and execution that respect platform rules.",
+    tagline: "Grow with the right followers—Starter, Standard, or Plus engagement depth, all platform-safe.",
   },
   whatIs: {
     body: "Instagram growth isn’t about buying empty followers. We focus on people likely to care about your brand, using compliant outreach and content guidance so your account looks healthier and more active over time.",
@@ -387,10 +390,10 @@ export const instagramGrowthPageContent: DedicatedServicePageContent = {
   },
   included: {
     items: [
-      "Targeted follower growth program",
-      "Audience alignment with your niche",
-      "Engagement-led growth strategy",
-      "Platform-rules-friendly approach",
+      "Starter: Basic growth ($179/mo)",
+      "Standard: Moderate growth ($249/mo)",
+      "Plus: Advanced growth ($349/mo)",
+      "Audience alignment & platform-rules-friendly execution",
     ],
   },
   examples: {
@@ -408,7 +411,7 @@ export const instagramGrowthPageContent: DedicatedServicePageContent = {
     ],
   },
   pricing: {
-    teaser: "Monthly program. Pair with content services for best results.",
+    teaser: "Starter $179/mo, Standard $249/mo, Plus $349/mo. Pair with content services for best results.",
     priceDisplay: "From $179/mo",
     planNameForCheckout: "Instagram Growth",
     checkoutPrice: 179,
@@ -417,13 +420,13 @@ export const instagramGrowthPageContent: DedicatedServicePageContent = {
 
 export const emailDesignPageContent: DedicatedServicePageContent = {
   path: "/email-design",
-  metaTitle: "Email Design — 2 Custom Emails/mo from $199 | Conquerors",
+  metaTitle: "Email Design — 2–6 Custom Emails/mo from $199 | Conquerors",
   metaDescription:
-    "On-brand, responsive email design and copy—ready for your ESP and campaigns.",
+    "On-brand, responsive email design and copy—Starter through Plus tiers, ready for your ESP and campaigns.",
   hero: {
     badge: "Email marketing",
     title: "Email Design",
-    tagline: "Emails people actually want to open—clean layouts, strong copy, and mobile-first design.",
+    tagline: "Emails people actually want to open—2, 4, or 6 custom layouts per month with mobile-first design.",
   },
   whatIs: {
     body: "Email design is how your newsletters, promos, and automations look in the inbox. We deliver custom templates each month that match your brand, read well on phones, and support your CTAs—whether you use Mailchimp, Klaviyo, HubSpot, or another ESP.",
@@ -438,7 +441,7 @@ export const emailDesignPageContent: DedicatedServicePageContent = {
   },
   included: {
     items: [
-      "2 custom designed emails per month",
+      "2, 4, or 6 custom designed emails per month by tier",
       "Brand-aligned layouts and persuasive copy",
       "Responsive, mobile-friendly structure",
       "Implementation guidance for your ESP",
@@ -459,7 +462,7 @@ export const emailDesignPageContent: DedicatedServicePageContent = {
     ],
   },
   pricing: {
-    teaser: "Two custom emails monthly. Add more services on the Pricing page.",
+    teaser: "Starter 2 emails ($199/mo), Standard 4 ($299/mo), Plus 6 ($399/mo). Add more services on the Pricing page.",
     priceDisplay: "From $199/mo",
     planNameForCheckout: "Email Design",
     checkoutPrice: 199,

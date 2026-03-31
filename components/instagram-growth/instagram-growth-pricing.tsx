@@ -3,45 +3,40 @@ import Link from 'next/link'
 const plans = [
   {
     name: 'Starter',
-    price: '99',
-    description: 'Perfect for small accounts and micro-influencers',
+    price: '179',
+    description: 'Basic growth velocity for newer accounts',
     features: [
-      'Up to 150 followers per month',
-      'Basic engagement services',
-      'Monthly performance report',
-      'Email support',
-      'Niche targeting',
+      'Basic engagement & visibility program',
+      'Targeted follower acquisition roadmap',
+      'Audience alignment with your niche',
+      'Manual, rules-friendly execution',
+      'Monthly performance recap',
     ],
     highlighted: false,
   },
   {
-    name: 'Growth',
-    price: '179',
-    description: 'Most popular for accounts scaling fast',
+    name: 'Standard',
+    price: '249',
+    description: 'Moderate growth for brands gaining traction',
     features: [
-      'Up to 400+ followers per month',
-      'Advanced engagement strategies',
-      'Bi-weekly detailed reports',
-      'Priority support',
-      'Niche and competitor analysis',
-      'Content calendar guidance',
-      'Dedicated growth specialist',
+      'Moderate growth acceleration playbook',
+      'Expanded targeting experiments',
+      'Content cadence coaching',
+      'Bi-weekly optimization checkpoints',
+      'Priority strategist access',
     ],
     highlighted: true,
   },
   {
-    name: 'Influencer',
-    price: 'Custom',
-    description: 'For established brands and creators',
+    name: 'Plus',
+    price: '349',
+    description: 'Advanced growth when pace needs to compound',
     features: [
-      'Unlimited follower growth',
-      'Premium engagement services',
-      'Weekly detailed analytics',
-      'Dedicated account manager',
-      'Advanced competitor insights',
-      'Custom content strategy',
-      'Priority features and support',
-      'Brand partnership opportunities',
+      'Advanced depth across outreach & engagement',
+      'Competitor & community signal monitoring',
+      'Collaborative campaign bursts with your promos',
+      'Weekly performance snapshots',
+      'Quarterly strategic reset sessions',
     ],
     highlighted: false,
   },
@@ -56,7 +51,7 @@ export function InstagramGrowthPricing() {
             Simple, Flexible Pricing
           </h2>
           <p className="text-xl text-[#6B7280] max-w-2xl mx-auto">
-            Choose the plan that fits your growth goals
+            Starter, Standard, and Plus programs tuned to your growth stage
           </p>
         </div>
 
@@ -82,7 +77,7 @@ export function InstagramGrowthPricing() {
 
                 <div className="mb-6">
                   <span className="text-4xl font-bold text-[#1E5AA8]">${plan.price}</span>
-                  {plan.price !== 'Custom' && <span className="text-[#6B7280]">/month</span>}
+                  <span className="text-[#6B7280]">/month</span>
                 </div>
 
                 <Link href="/schedule-demo" className="w-full block mb-8">

@@ -21,6 +21,14 @@ import {
   ChevronDown,
 } from "lucide-react"
 
+type ServiceQuantityOption = {
+  quantity: number
+  price: number
+  /** Full dropdown row; when set, overrides auto label */
+  label?: string
+  billing?: "monthly" | "per-post"
+}
+
 interface ServiceCardConfig {
   id: string
   title: string
@@ -29,7 +37,7 @@ interface ServiceCardConfig {
   badge: string
   badgeColor: string
   basePrice: number
-  quantityOptions: { quantity: number; price: number }[]
+  quantityOptions: ServiceQuantityOption[]
   link: string
   category: string
 }
@@ -40,7 +48,7 @@ const serviceCardsData: ServiceCardConfig[] = [
     title: "Social Media Posts",
     icon: <ImageIcon className="w-5 h-5" />,
     description:
-      "4, 8, or 12 posts per month for 2 social channels (FB/Insta)—on-brand static posts with captions and hashtags.",
+      "4, 8, or 12 posts per month for 2 channels (FB/Insta)—on-brand static posts with captions and hashtags.",
     badge: "SOCIAL MEDIA",
     badgeColor: "bg-blue-100 text-blue-700",
     basePrice: 99,
@@ -56,11 +64,15 @@ const serviceCardsData: ServiceCardConfig[] = [
     id: "short-form-videos",
     title: "Short-Form Videos",
     icon: <Video className="w-5 h-5" />,
-    description: "4 videos (15–60 sec) per month for Reels, TikTok, and Shorts.",
+    description: "4–8 videos (15–60 sec) per month for Reels, TikTok, and Shorts.",
     badge: "SOCIAL MEDIA",
     badgeColor: "bg-blue-100 text-blue-700",
     basePrice: 149,
-    quantityOptions: [{ quantity: 4, price: 149 }],
+    quantityOptions: [
+      { quantity: 4, price: 149 },
+      { quantity: 6, price: 199 },
+      { quantity: 8, price: 249 },
+    ],
     link: "/videos",
     category: "videos",
   },
@@ -68,11 +80,15 @@ const serviceCardsData: ServiceCardConfig[] = [
     id: "blog-post",
     title: "SEO Blog Posts",
     icon: <FileText className="w-5 h-5" />,
-    description: "2 SEO-optimized blog posts per month for your website.",
+    description: "2–6 SEO-optimized blog posts per month for your website.",
     badge: "SEO",
     badgeColor: "bg-emerald-100 text-emerald-700",
     basePrice: 149,
-    quantityOptions: [{ quantity: 2, price: 149 }],
+    quantityOptions: [
+      { quantity: 2, price: 149 },
+      { quantity: 4, price: 249 },
+      { quantity: 6, price: 349 },
+    ],
     link: "/services/blogs",
     category: "blogs",
   },
@@ -80,11 +96,15 @@ const serviceCardsData: ServiceCardConfig[] = [
     id: "email-design",
     title: "Email Design",
     icon: <Mail className="w-5 h-5" />,
-    description: "2 custom designed emails per month. Works with any email platform.",
+    description: "2–6 custom designed emails per month. Works with any email platform.",
     badge: "EMAIL MARKETING",
     badgeColor: "bg-purple-100 text-purple-700",
     basePrice: 199,
-    quantityOptions: [{ quantity: 2, price: 199 }],
+    quantityOptions: [
+      { quantity: 2, price: 199 },
+      { quantity: 4, price: 299 },
+      { quantity: 6, price: 399 },
+    ],
     link: "/services/emails",
     category: "emails",
   },
@@ -92,11 +112,15 @@ const serviceCardsData: ServiceCardConfig[] = [
     id: "seo-backlinks",
     title: "SEO Backlinks",
     icon: <Link2 className="w-5 h-5" />,
-    description: "3 backlinks per month (DA20–65) to strengthen authority and rankings.",
+    description: "3–9 backlinks per month (DA20–65) to strengthen authority and rankings.",
     badge: "SEO",
     badgeColor: "bg-emerald-100 text-emerald-700",
     basePrice: 299,
-    quantityOptions: [{ quantity: 3, price: 299 }],
+    quantityOptions: [
+      { quantity: 3, price: 299 },
+      { quantity: 6, price: 499 },
+      { quantity: 9, price: 699 },
+    ],
     link: "/services/backlinks",
     category: "backlinks",
   },
@@ -104,11 +128,15 @@ const serviceCardsData: ServiceCardConfig[] = [
     id: "instagram-growth",
     title: "Instagram Growth",
     icon: <TrendingUp className="w-5 h-5" />,
-    description: "Targeted follower growth through compliant, engagement-led strategy—no bots.",
+    description: "Targeted follower growth—Starter (basic), Standard (moderate), or Plus (advanced) engagement.",
     badge: "SOCIAL MEDIA",
     badgeColor: "bg-blue-100 text-blue-700",
     basePrice: 179,
-    quantityOptions: [{ quantity: 1, price: 179 }],
+    quantityOptions: [
+      { quantity: 1, price: 179, label: "Starter — Basic growth" },
+      { quantity: 2, price: 249, label: "Standard — Moderate growth" },
+      { quantity: 3, price: 349, label: "Plus — Advanced growth" },
+    ],
     link: "/services/instagram-growth",
     category: "instagram-growth",
   },
@@ -116,11 +144,15 @@ const serviceCardsData: ServiceCardConfig[] = [
     id: "meta-ads",
     title: "Meta Ads Management",
     icon: <Target className="w-5 h-5" />,
-    description: "Facebook & Instagram ads management—campaign setup, testing, and optimization.",
+    description: "Facebook & Instagram ads management—1–3 campaigns, setup, testing, and optimization.",
     badge: "PAID ADS",
     badgeColor: "bg-orange-100 text-orange-700",
     basePrice: 549,
-    quantityOptions: [{ quantity: 1, price: 549 }],
+    quantityOptions: [
+      { quantity: 1, price: 549, label: "Starter — 1 campaign" },
+      { quantity: 2, price: 749, label: "Standard — 2 campaigns" },
+      { quantity: 3, price: 999, label: "Plus — 3 campaigns" },
+    ],
     link: "/services/meta-ads",
     category: "meta-ads",
   },
@@ -128,11 +160,15 @@ const serviceCardsData: ServiceCardConfig[] = [
     id: "google-ads",
     title: "Google Ads Management",
     icon: <Search className="w-5 h-5" />,
-    description: "Google Ads campaign management to drive qualified leads and sales.",
+    description: "Google Ads campaign management—1–3 campaigns for qualified leads and sales.",
     badge: "PAID ADS",
     badgeColor: "bg-orange-100 text-orange-700",
     basePrice: 549,
-    quantityOptions: [{ quantity: 1, price: 549 }],
+    quantityOptions: [
+      { quantity: 1, price: 549, label: "Starter — 1 campaign" },
+      { quantity: 2, price: 749, label: "Standard — 2 campaigns" },
+      { quantity: 3, price: 999, label: "Plus — 3 campaigns" },
+    ],
     link: "/services/google-ads",
     category: "google-ads",
   },
@@ -173,6 +209,7 @@ const serviceCardsData: ServiceCardConfig[] = [
     link: "/video-ads",
     category: "video-ads",
   },
+  /* UGC Videos — hidden from pricing / All Services grid
   {
     id: "ugc-videos",
     title: "UGC Videos",
@@ -185,9 +222,14 @@ const serviceCardsData: ServiceCardConfig[] = [
     link: "/services/ugc-videos",
     category: "videos",
   },
+  */
 ]
 
-function optionLabel(config: ServiceCardConfig, option: { quantity: number; price: number }) {
+function optionLabel(config: ServiceCardConfig, option: ServiceQuantityOption) {
+  const suffix = option.billing === "per-post" ? "/post" : "/mo"
+  if (option.label) {
+    return `${option.label} — $${option.price}${suffix}`
+  }
   const unit = config.title.toLowerCase().includes("video")
     ? "videos"
     : config.title.toLowerCase().includes("post")
@@ -197,15 +239,18 @@ function optionLabel(config: ServiceCardConfig, option: { quantity: number; pric
         : config.title.toLowerCase().includes("email")
           ? "emails"
           : config.title.toLowerCase().includes("blog")
-            ? "Blog Posts"
-            : "units"
-  return `${option.quantity} ${unit} - $${option.price}/mo`
+            ? "blog posts"
+            : config.title.toLowerCase().includes("meta ads") || config.title.toLowerCase().includes("google ads")
+              ? "campaigns"
+              : "units"
+  return `${option.quantity} ${unit} — $${option.price}${suffix}`
 }
 
 function ServiceCard({ config }: { config: ServiceCardConfig }) {
   const [selectedOption, setSelectedOption] = useState(0)
   const [selectReady, setSelectReady] = useState(false)
   const currentOption = config.quantityOptions[selectedOption]
+  const priceSuffix = currentOption.billing === "per-post" ? "/post" : "/mo"
 
   useEffect(() => {
     setSelectReady(true)
@@ -227,7 +272,7 @@ function ServiceCard({ config }: { config: ServiceCardConfig }) {
 
       <div className="mb-1">
         <span className="text-2xl font-bold text-[#3B82F6]">${currentOption.price}</span>
-        <span className="text-gray-500 text-sm">/mo</span>
+        <span className="text-gray-500 text-sm">{priceSuffix}</span>
       </div>
       <p className="text-xs text-gray-400 mb-3">Pricing from</p>
 

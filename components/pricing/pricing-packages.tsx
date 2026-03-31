@@ -34,7 +34,7 @@ const includedFeatures = [
   { icon: "📝", text: "Captions & hashtags" },
  
   { icon: "✅", text: "2 social channel included" },
-  { icon: "📋", text: "$60/mo additional social channel" },
+  { icon: "📋", text: "$10/mo additional social channel" },
  
 ];
 

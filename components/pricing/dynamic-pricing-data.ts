@@ -89,10 +89,12 @@ export const dynamicPricingContent: Record<DynamicPricingTabId, DynamicPricingSe
   videos: {
     title: "Short-Form Videos",
     description:
-      "4 short-form videos (15–60 sec) per month for Instagram Reels, TikTok, and YouTube Shorts.",
+      "4–8 short-form videos (15–60 sec) per month for Instagram Reels, TikTok, and YouTube Shorts.",
     sliderLabel: "Select monthly number of videos",
     tiers: [
       { quantity: 4, price: 149, tickLabel: "4", selectionLabel: "4 videos" },
+      { quantity: 6, price: 199, tickLabel: "6", selectionLabel: "6 videos" },
+      { quantity: 8, price: 249, tickLabel: "8", selectionLabel: "8 videos" },
     ],
     features: [
       { icon: "video", text: "Videos in your branding" },
@@ -142,9 +144,13 @@ export const dynamicPricingContent: Record<DynamicPricingTabId, DynamicPricingSe
   emails: {
     title: "Email Design",
     description:
-      "2 custom designed emails per month—on-brand layouts and copy for your campaigns.",
+      "2–6 custom designed emails per month—on-brand layouts and copy for your campaigns.",
     sliderLabel: "Select monthly number of emails",
-    tiers: [{ quantity: 2, price: 199, tickLabel: "2", selectionLabel: "2 custom designed emails" }],
+    tiers: [
+      { quantity: 2, price: 199, tickLabel: "2", selectionLabel: "2 custom designed emails" },
+      { quantity: 4, price: 299, tickLabel: "4", selectionLabel: "4 custom designed emails" },
+      { quantity: 6, price: 399, tickLabel: "6", selectionLabel: "6 custom designed emails" },
+    ],
     features: [
       { icon: "palette", text: "Emails in your branding" },
       { icon: "pen", text: "Design & persuasive copy" },
@@ -159,9 +165,13 @@ export const dynamicPricingContent: Record<DynamicPricingTabId, DynamicPricingSe
   blogs: {
     title: "SEO Blog Posts",
     description:
-      "2 SEO-optimized blog posts per month—research-backed content structured to rank and read well.",
+      "2–6 SEO-optimized blog posts per month—research-backed content structured to rank and read well.",
     sliderLabel: "Select monthly number of articles",
-    tiers: [{ quantity: 2, price: 149, tickLabel: "2", selectionLabel: "2 SEO-optimized blog posts" }],
+    tiers: [
+      { quantity: 2, price: 149, tickLabel: "2", selectionLabel: "2 SEO-optimized blog posts" },
+      { quantity: 4, price: 249, tickLabel: "4", selectionLabel: "4 SEO-optimized blog posts" },
+      { quantity: 6, price: 349, tickLabel: "6", selectionLabel: "6 SEO-optimized blog posts" },
+    ],
     features: [
       { icon: "search", text: "Keyword-informed outlines" },
       { icon: "pen", text: "Long-form SEO content & structure" },
@@ -176,9 +186,13 @@ export const dynamicPricingContent: Record<DynamicPricingTabId, DynamicPricingSe
   backlinks: {
     title: "SEO Backlinks",
     description:
-      "3 backlinks per month from real sites (DA20–65) to strengthen authority and support organic growth.",
+      "3–9 backlinks per month from real sites (DA20–65) to strengthen authority and support organic growth.",
     sliderLabel: "Select monthly backlink volume",
-    tiers: [{ quantity: 3, price: 299, tickLabel: "3", selectionLabel: "3 backlinks (DA20–65)" }],
+    tiers: [
+      { quantity: 3, price: 299, tickLabel: "3", selectionLabel: "3 backlinks (DA20–65)" },
+      { quantity: 6, price: 499, tickLabel: "6", selectionLabel: "6 backlinks (DA20–65)" },
+      { quantity: 9, price: 699, tickLabel: "9", selectionLabel: "9 backlinks (DA20–65)" },
+    ],
     features: [
       { icon: "shield", text: "Real outreach—not spam directories" },
       { icon: "link", text: "DA20–65 publisher quality" },
@@ -194,14 +208,11 @@ export const dynamicPricingContent: Record<DynamicPricingTabId, DynamicPricingSe
     title: "Meta Ads Management",
     description:
       "Facebook & Instagram ads management—strategy, setup, testing, and ongoing optimization. Ad spend is billed separately by Meta.",
-    sliderLabel: "Select management tier",
+    sliderLabel: "Select number of campaigns managed",
     tiers: [
-      {
-        quantity: 1,
-        price: 549,
-        tickLabel: "1",
-        selectionLabel: "Facebook & Instagram ads management",
-      },
+      { quantity: 1, price: 549, tickLabel: "1", selectionLabel: "1 campaign" },
+      { quantity: 2, price: 749, tickLabel: "2", selectionLabel: "2 campaigns" },
+      { quantity: 3, price: 999, tickLabel: "3", selectionLabel: "3 campaigns" },
     ],
     features: [
       { icon: "target", text: "Facebook & Instagram campaign management" },
@@ -217,14 +228,11 @@ export const dynamicPricingContent: Record<DynamicPricingTabId, DynamicPricingSe
     title: "Google Ads Management",
     description:
       "Google Ads campaign management—search and performance campaigns tuned for qualified leads and efficient spend.",
-    sliderLabel: "Select management tier",
+    sliderLabel: "Select number of campaigns managed",
     tiers: [
-      {
-        quantity: 1,
-        price: 549,
-        tickLabel: "1",
-        selectionLabel: "Google Ads campaign management",
-      },
+      { quantity: 1, price: 549, tickLabel: "1", selectionLabel: "1 campaign" },
+      { quantity: 2, price: 749, tickLabel: "2", selectionLabel: "2 campaigns" },
+      { quantity: 3, price: 999, tickLabel: "3", selectionLabel: "3 campaigns" },
     ],
     features: [
       { icon: "search", text: "Google Ads campaign management" },
@@ -242,7 +250,11 @@ export const dynamicPricingContent: Record<DynamicPricingTabId, DynamicPricingSe
     description:
       "Targeted follower growth through strategic, compliant engagement—no bots or risky automation.",
     sliderLabel: "Select growth package",
-    tiers: [{ quantity: 1, price: 179, tickLabel: "1", selectionLabel: "Targeted follower growth" }],
+    tiers: [
+      { quantity: 1, price: 179, tickLabel: "Starter", selectionLabel: "Basic growth" },
+      { quantity: 2, price: 249, tickLabel: "Standard", selectionLabel: "Moderate growth" },
+      { quantity: 3, price: 349, tickLabel: "Plus", selectionLabel: "Advanced growth" },
+    ],
     features: [
       { icon: "users", text: "Targeted follower growth" },
       { icon: "target", text: "Audience alignment with your niche" },

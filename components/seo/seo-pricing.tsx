@@ -4,21 +4,21 @@ import { Button } from "@/components/ui/button"
 
 const tiers = [
   {
-    name: "Starter SEO",
-    price: "$99/mo",
-    bullets: ["Monthly audits", "On-page optimization", "Basic technical fixes"],
+    name: "Starter",
+    price: "$149/mo",
+    bullets: ["2 SEO blog posts each month", "Keyword-informed outlines & drafts", "Meta title and description options"],
     highlighted: false,
   },
   {
-    name: "Growth SEO",
-    price: "$149/mo",
-    bullets: ["Everything in Starter", "Content + internal linking plan", "Advanced technical improvements"],
+    name: "Standard",
+    price: "$249/mo",
+    bullets: ["4 SEO blog posts each month", "Editorial-calendar-friendly batches", "Internal linking recommendations"],
     highlighted: true,
   },
   {
-    name: "Scale SEO",
-    price: "$199/mo",
-    bullets: ["Everything in Growth", "Priority optimization", "Ongoing SEO reporting + next steps"],
+    name: "Plus",
+    price: "$349/mo",
+    bullets: ["6 SEO blog posts each month", "Scaled topical coverage", "Priority briefing cadence"],
     highlighted: false,
   },
 ]
@@ -64,8 +64,10 @@ export default function SeoPricing() {
             </div>
           ))}
         </div>
+        <p className="mt-8 text-center text-sm text-muted-foreground max-w-2xl mx-auto">
+          Need backlinks or full managed SEO instead? Backlinks start at 3/mo ($299) through 9/mo ($699), and managed SEO runs $549/mo on the main Pricing page.
+        </p>
       </div>
     </section>
   )
 }
-

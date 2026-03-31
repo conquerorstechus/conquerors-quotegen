@@ -42,6 +42,10 @@ interface ServiceConfig {
   quantityOptions: number[]
   pricePerUnit?: number
   pricingTiers?: Record<number, number>
+  /** Shown in the quantity row when set (e.g. "1 campaigns") */
+  quantityUnit?: string
+  /** Button labels for tier-style quantities (e.g. Instagram Starter/Standard/Plus) */
+  tierLabels?: Record<number, string>
   features: { icon: React.ReactNode; text: string }[]
   platforms?: { icon: React.ReactNode; name: string }[]
   videoUrls?: string[]
@@ -69,7 +73,7 @@ const serviceConfigs: ServiceConfig[] = [
       { icon: <CalendarCheck className="w-4 h-4" />, text: "Posted for you (optional)" },
       { icon: <Phone className="w-4 h-4" />, text: "Onboarding call (optional)" },
       { icon: <BadgeCheck className="w-4 h-4" />, text: "2 social channels (FB/Insta)" },
-      { icon: <CopyCheck className="w-4 h-4" />, text: "+$60/mo each additional social channel" },
+      { icon: <CopyCheck className="w-4 h-4" />, text: "+$10/mo each additional social channel" },
     ],
     platforms: [
       { icon: <Facebook className="w-5 h-5" />, name: "Facebook" },
@@ -101,11 +105,11 @@ const serviceConfigs: ServiceConfig[] = [
     title: "Short-Form Videos",
     icon: <Video className="w-6 h-6" />,
     description:
-      "4 short-form videos (15–60 sec) per month for Instagram Reels, TikTok, and YouTube Shorts. Edited with premium stock footage or client-provided footage.",
+      "4–8 short-form videos (15–60 sec) per month for Instagram Reels, TikTok, and YouTube Shorts. Edited with premium stock footage or client-provided footage.",
     baseQuantity: 4,
     basePrice: 149,
-    quantityOptions: [4],
-    pricingTiers: { 4: 149 },
+    quantityOptions: [4, 6, 8],
+    pricingTiers: { 4: 149, 6: 199, 8: 249 },
     pricePerUnit: 37.25,
     features: [
       { icon: <Paintbrush className="w-4 h-4" />, text: "Videos in your branding" },
@@ -183,11 +187,11 @@ const serviceConfigs: ServiceConfig[] = [
     title: "Email Design",
     icon: <Mail className="w-6 h-6" />,
     description:
-      "2 custom designed emails per month—responsive, on-brand templates ready for your ESP.",
+      "2–6 custom designed emails per month—responsive, on-brand templates ready for your ESP.",
     baseQuantity: 2,
     basePrice: 199,
-    quantityOptions: [2],
-    pricingTiers: { 2: 199 },
+    quantityOptions: [2, 4, 6],
+    pricingTiers: { 2: 199, 4: 299, 6: 399 },
     pricePerUnit: 99.5,
     features: [
       { icon: <Paintbrush className="w-4 h-4" />, text: "Custom email templates" },
@@ -204,12 +208,12 @@ const serviceConfigs: ServiceConfig[] = [
     baseQuantity: 2,
     basePrice: 149,
     pricePerUnit: 74.5,
-    quantityOptions: [2],
-    pricingTiers: { 2: 149 },
-    description: "2 SEO-optimized blog posts per month to increase search visibility.",
+    quantityOptions: [2, 4, 6],
+    pricingTiers: { 2: 149, 4: 249, 6: 349 },
+    description: "2–6 SEO-optimized blog posts per month to increase search visibility.",
     features: [
       { icon: <FileSearch className="w-4 h-4" />, text: "Keyword-informed outlines" },
-      { icon: <FileSearch className="w-4 h-4" />, text: "2 SEO-optimized blog posts" },
+      { icon: <FileSearch className="w-4 h-4" />, text: "Scaled SEO-optimized blog volume" },
       { icon: <FileSearch className="w-4 h-4" />, text: "On-page SEO optimization" },
       { icon: <FileSearch className="w-4 h-4" />, text: "Content formatting" }
     ],
@@ -219,14 +223,14 @@ const serviceConfigs: ServiceConfig[] = [
     id: "seo-backlinks",
     title: "SEO Backlinks",
     icon: <Link2 className="w-6 h-6" />,
-    description: "3 backlinks per month (DA20–65) to improve authority and rankings.",
+    description: "3–9 backlinks per month (DA20–65) to improve site authority and rankings.",
     baseQuantity: 3,
     basePrice: 299,
     pricePerUnit: 99.67,
-    quantityOptions: [3],
-    pricingTiers: { 3: 299 },
+    quantityOptions: [3, 6, 9],
+    pricingTiers: { 3: 299, 6: 499, 9: 699 },
     features: [
-      { icon: <FileSearch className="w-4 h-4" />, text: "3 backlinks" },
+      { icon: <FileSearch className="w-4 h-4" />, text: "Real DA20–65 backlinks" },
       { icon: <FileSearch className="w-4 h-4" />, text: "DA20–65 websites" },
       { icon: <FileSearch className="w-4 h-4" />, text: "White-hat link building" },
       { icon: <FileSearch className="w-4 h-4" />, text: "SEO performance improvement" }
@@ -255,11 +259,13 @@ const serviceConfigs: ServiceConfig[] = [
     title: "Meta Ads Management",
     icon: <Target className="w-6 h-6" />,
     description:
-      "Facebook & Instagram ads management—campaign setup, testing, and ongoing optimization.",
+      "Facebook & Instagram ads management—1–3 campaigns, setup, testing, and ongoing optimization.",
     baseQuantity: 1,
     basePrice: 549,
-    quantityOptions: [1],
+    quantityOptions: [1, 2, 3],
+    pricingTiers: { 1: 549, 2: 749, 3: 999 },
     pricePerUnit: 549,
+    quantityUnit: "campaigns",
     features: [
       { icon: <FileSearch className="w-4 h-4" />, text: "Campaign strategy" },
       { icon: <CalendarCheck className="w-4 h-4" />, text: "Daily optimization" },
@@ -273,11 +279,13 @@ const serviceConfigs: ServiceConfig[] = [
     title: "Google Ads Management",
     icon: <Search className="w-6 h-6" />,
     description:
-      "Google Ads campaign management—search and performance campaigns with ongoing optimization.",
+      "Google Ads campaign management—1–3 search and performance campaigns with ongoing optimization.",
     baseQuantity: 1,
     basePrice: 549,
-    quantityOptions: [1],
+    quantityOptions: [1, 2, 3],
+    pricingTiers: { 1: 549, 2: 749, 3: 999 },
     pricePerUnit: 549,
+    quantityUnit: "campaigns",
     features: [
       { icon: <FileSearch className="w-4 h-4" />, text: "Keyword research" },
       { icon: <CalendarCheck className="w-4 h-4" />, text: "Bid management" },
@@ -290,11 +298,13 @@ const serviceConfigs: ServiceConfig[] = [
     id: "instagram-growth",
     title: "Instagram Growth",
     icon: <TrendingUp className="w-6 h-6" />,
-    description: "Targeted follower growth through compliant, engagement-led strategy.",
+    description: "Targeted follower growth—Starter (basic), Standard (moderate), or Plus (advanced) programs.",
     baseQuantity: 1,
     basePrice: 179,
     pricePerUnit: 179,
-    quantityOptions: [1],
+    quantityOptions: [1, 2, 3],
+    pricingTiers: { 1: 179, 2: 249, 3: 349 },
+    tierLabels: { 1: "Starter", 2: "Standard", 3: "Plus" },
     features: [
       { icon: <Check className="w-4 h-4" />, text: "Targeted follower growth" },
       { icon: <Check className="w-4 h-4" />, text: "Audience alignment with your niche" },
@@ -323,10 +333,31 @@ const serviceConfigs: ServiceConfig[] = [
   },
 ]
 
+function quantitySubtitle(config: ServiceConfig, quantity: number) {
+  if (config.tierLabels?.[quantity]) {
+    const growth =
+      quantity === 1 ? "Basic growth" : quantity === 2 ? "Moderate growth" : quantity === 3 ? "Advanced growth" : "Growth tier"
+    return `${config.tierLabels[quantity]} — ${growth}`
+  }
+  if (config.quantityUnit) {
+    return `${quantity} ${config.quantityUnit}`
+  }
+  if (config.id === "ugc" || config.id === "ugc-videos") {
+    return `${quantity} UGC Videos`
+  }
+  return `${quantity} ${config.title.toLowerCase()}`
+}
+
+function quantityPromptLabel(config: ServiceConfig) {
+  if (config.id === "instagram-growth") return "Select growth package"
+  if (config.quantityUnit === "campaigns") return "Select number of campaigns"
+  if (config.id === "ugc" || config.id === "ugc-videos") return "Select monthly number of UGC Videos"
+  return `Select monthly number of ${config.title.toLowerCase()}`
+}
+
 function ServiceCard({ config }: { config: ServiceConfig }) {
   const [quantity, setQuantity] = useState(config.baseQuantity)
   const [selectedVideoIndex, setSelectedVideoIndex] = useState(0)
-  const quantityIndex = config.quantityOptions.indexOf(quantity)
 
   const calculatePrice = () => {
     if (config.pricingTiers) {
@@ -350,9 +381,7 @@ function ServiceCard({ config }: { config: ServiceConfig }) {
             </div>
             <div>
               <h3 className="text-lg font-semibold text-foreground">{config.title}</h3>
-              <p className="text-sm text-muted-foreground">
-                {quantity} {config.id === "ugc" ? "UGC Videos" : config.title.toLowerCase()}
-              </p>
+              <p className="text-sm text-muted-foreground">{quantitySubtitle(config, quantity)}</p>
             </div>
           </div>
           <div className="text-right">
@@ -417,9 +446,7 @@ function ServiceCard({ config }: { config: ServiceConfig }) {
 
         {/* Quantity Selector */}
         <div className="mb-4">
-          <p className="text-sm font-medium text-foreground mb-3">
-            Select monthly number of {config.id === "ugc" ? "UGC Videos" : config.title.toLowerCase()}
-          </p>
+          <p className="text-sm font-medium text-foreground mb-3">{quantityPromptLabel(config)}</p>
           <div className="flex flex-wrap gap-2">
             {config.quantityOptions.map((qty) => (
               <button
@@ -434,7 +461,7 @@ function ServiceCard({ config }: { config: ServiceConfig }) {
                   }
                 `}
               >
-                {qty}
+                {config.tierLabels?.[qty] ?? qty}
               </button>
             ))}
           </div>

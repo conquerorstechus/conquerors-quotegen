@@ -2,45 +2,41 @@ import Link from 'next/link'
 
 const plans = [
   {
-    name: 'Startup',
-    price: '499',
-    description: 'Perfect for new businesses',
+    name: 'Starter',
+    price: '549',
+    description: 'One core campaign—perfect for proving funnels',
     features: [
-      'Search & Display campaigns',
-      'Up to 5 campaigns',
-      'Monthly optimization',
-      'Basic reporting',
-      'Email support',
+      '1 Google Ads campaign',
+      'Search & performance coverage inside your scope',
+      'Keyword, bid, and ad copy iteration',
+      'Conversion tracking QA',
+      'Monthly performance recap',
     ],
     highlighted: false,
   },
   {
-    name: 'Growth',
-    price: '549',
-    description: 'Best for scaling businesses',
+    name: 'Standard',
+    price: '749',
+    description: 'Two campaigns—capture parallel intent streams',
     features: [
-      'All ad types included',
-      'Unlimited campaigns',
-      'Weekly optimization',
-      'Advanced analytics',
-      'Priority support',
-      'Conversion tracking',
-      'Dedicated manager',
+      '2 coordinated Google Ads campaigns',
+      'Deeper query mining & negatives hygiene',
+      'Landing page message-match coaching',
+      'Bi-weekly optimization checkpoints',
+      'Priority support access',
     ],
     highlighted: true,
   },
   {
-    name: 'Enterprise',
-    price: 'Custom',
-    description: 'For large-scale operations',
+    name: 'Plus',
+    price: '999',
+    description: 'Three campaigns—enterprise-lite breadth',
     features: [
-      'Custom strategy',
-      'Multiple accounts',
-      'Daily optimization',
-      'Real-time alerts',
-      '24/7 phone support',
-      'Custom integrations',
-      'Quarterly strategy reviews',
+      '3 managed Google Ads campaigns',
+      'Portfolio-level budget allocation guidance',
+      'Aggressive creative & RSA testing cadence',
+      'Executive-ready reporting pack',
+      'Quarterly strategic roadmapping',
     ],
     highlighted: false,
   },
@@ -81,7 +77,7 @@ export function GoogleAdsPricing() {
 
                 <div className="mb-6">
                   <span className="text-4xl font-bold text-[#1E5AA8]">${plan.price}</span>
-                  {plan.price !== 'Custom' && <span className="text-[#6B7280]">/month</span>}
+                  <span className="text-[#6B7280]">/month</span>
                 </div>
 
                 <Link href="/schedule-demo" className="w-full block mb-8">
