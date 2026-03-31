@@ -1,6 +1,6 @@
 import { Star } from "lucide-react"
 
-const brands = ["Butterfly Pharmacy", "Rik Promo", "Utsav Catering", "Tampa Realty Pros", "Pawsitively pilates.", "Water Pediatric Center"]
+const brands = ["Butterfly Pharmacy", "Rik Promo", "Utsav Catering", "Tampa Realty Pros", "Pawsitively pilates", "Water Pediatric Center"]
 
 export function TrustSection() {
   return (
