@@ -4,75 +4,191 @@ import { Button } from "@/components/ui/button"
 import { Check, Star } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
-import { useState } from "react"
+import type { PortfolioExample } from "@/data/portfolio-examples"
+import { portfolioExamples } from "@/data/portfolio-examples"
 
-const carouselCards = [
-  {
-    id: 1,
-    title: "Carousel Post",
-    color: "bg-gradient-to-br from-purple-500 to-pink-500",
-    image: "/social-media-post-design-professional.jpg",
-  },
-  {
-    id: 2,
-    title: "Instagram Stories",
-    color: "bg-gradient-to-br from-orange-500 to-red-500",
-    image: "/instagram-post-business-marketing.jpg",
-  },
-  {
-    id: 3,
-    title: "Meta Ads",
-    color: "bg-gradient-to-br from-blue-500 to-cyan-500",
-    image: "/social-media-content-design.jpg",
-  },
-  {
-    id: 4,
-    title: "Videos",
-    color: "bg-gradient-to-br from-green-500 to-teal-500",
-    image: "/instagram-carousel-design.jpg",
-  },
-  {
-    id: 5,
-    title: "SEO Blog Posts",
-    color: "bg-gradient-to-br from-yellow-500 to-orange-500",
-    image: "/social-media-post-design-professional.jpg",
-  },
-  {
-    id: 6,
-    title: "Email Design",
-    color: "bg-gradient-to-br from-indigo-500 to-purple-500",
-    image: "/instagram-post-business-marketing.jpg",
-  },
-]
+/** Same items as Our Work default grid (all categories) */
+const heroWorkItems = portfolioExamples
 
-function CarouselColumn({ items, delay, speed }: { items: any[]; delay: number; speed: "normal" | "slow" | "slower" }) {
+function splitIntoThree<T>(arr: T[]): [T[], T[], T[]] {
+  const n = arr.length
+  if (n === 0) return [[], [], []]
+  const i1 = Math.ceil(n / 3)
+  const i2 = Math.ceil((2 * n) / 3)
+  return [arr.slice(0, i1), arr.slice(i1, i2), arr.slice(i2)]
+}
+
+function splitIntoTwo<T>(arr: T[]): [T[], T[]] {
+  const mid = Math.ceil(arr.length / 2)
+  return [arr.slice(0, mid), arr.slice(mid)]
+}
+
+type MarqueeSpeed = "normal" | "slow" | "slower"
+
+function HeroOurWorkCardDesktop({ example }: { example: PortfolioExample }) {
   return (
-    <div className={`flex flex-col gap-4 carousel-column ${speed}`} style={{ animationDelay: `${delay}s` }}>
-      {[...items, ...items].map((card, index) => (
-        <div
-          key={`${card.id}-${index}`}
-          className="group relative bg-card border border-border rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all hover:border-primary/50 flex-shrink-0 w-72 h-96 flex flex-col"
-        >
-          <div className={`absolute inset-0 ${card.color} opacity-20 group-hover:opacity-30 transition-opacity`} />
-          <div className="relative w-full h-full flex flex-col items-center justify-center p-6 text-center">
+    <div className="bg-white rounded-2xl border border-blue-100 overflow-hidden shadow-lg hover:shadow-xl transition-shadow hover:border-primary/50 flex-shrink-0 w-72 cursor-default">
+      <div className="px-3 py-3 border-b border-blue-100 flex items-center justify-between">
+        <div className="flex items-center gap-2 min-w-0">
+          <div className="w-14 h-14 rounded-full flex items-center justify-center flex-shrink-0">
             <Image
-              src={card.image}
-              alt={card.title}
-              fill
-              className="object-cover group-hover:scale-110 transition-transform duration-300"
+              src="/logo-conquerors-dark.png"
+              alt="Conquerors"
+              width={44}
+              height={44}
+              className="object-contain"
             />
-            <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-colors flex items-center justify-center">
-              <div className="text-center">
-                <h3 className="text-xl font-bold text-white mb-2">{card.title}</h3>
-                <p className="text-white/80 text-sm">Sample {card.title}</p>
-              </div>
-            </div>
           </div>
+          <span className="font-semibold text-[#0B2A4A] text-xs truncate">Conquerors</span>
         </div>
+        <span className="text-[#6B7280] flex-shrink-0">
+          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden>
+            <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+          </svg>
+        </span>
+      </div>
+      <div className="relative aspect-square bg-[#F5F9FF] overflow-hidden">
+        <Image
+          src={example.image}
+          alt={example.title}
+          fill
+          className="object-cover"
+          sizes="18rem"
+        />
+      </div>
+      <div className="px-3 py-2 flex items-center gap-3">
+        <span className="text-red-500">
+          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden>
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+          </svg>
+        </span>
+        <span className="text-[#6B7280]">
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+          </svg>
+        </span>
+        <span className="text-[#6B7280]">
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
+          </svg>
+        </span>
+        <div className="ml-auto">
+          <span className="text-[#6B7280]">
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 5a2 2 0 012-2h6a2 2 0 012 2v14l-5-2.5L5 19V5z" />
+            </svg>
+          </span>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function HeroOurWorkCardMobile({ example }: { example: PortfolioExample }) {
+  return (
+    <div className="bg-white rounded-xl border border-blue-100 overflow-hidden shadow-md hover:shadow-lg transition-shadow hover:border-primary/50 flex-shrink-0 w-full cursor-default">
+      <div className="px-2 py-2 border-b border-blue-100 flex items-center justify-between">
+        <div className="flex items-center gap-1.5 min-w-0">
+          <div className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0">
+            <Image
+              src="/logo-conquerors-dark.png"
+              alt="Conquerors"
+              width={32}
+              height={32}
+              className="object-contain"
+            />
+          </div>
+          <span className="font-semibold text-[#0B2A4A] text-[10px] truncate">Conquerors</span>
+        </div>
+        <span className="text-[#6B7280] flex-shrink-0">
+          <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden>
+            <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+          </svg>
+        </span>
+      </div>
+      <div className="relative h-32 sm:h-40 bg-[#F5F9FF] overflow-hidden">
+        <Image
+          src={example.image}
+          alt={example.title}
+          fill
+          className="object-cover"
+          sizes="(max-width: 640px) 45vw, 30vw"
+        />
+      </div>
+      <div className="px-2 py-1.5 flex items-center gap-2">
+        <span className="text-red-500">
+          <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden>
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+          </svg>
+        </span>
+        <span className="text-[#6B7280]">
+          <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+          </svg>
+        </span>
+        <span className="text-[#6B7280]">
+          <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
+          </svg>
+        </span>
+        <div className="ml-auto">
+          <span className="text-[#6B7280]">
+            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 5a2 2 0 012-2h6a2 2 0 012 2v14l-5-2.5L5 19V5z" />
+            </svg>
+          </span>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function HeroWorkMarqueeDesktop({
+  items,
+  delay,
+  speed,
+}: {
+  items: PortfolioExample[]
+  delay: number
+  speed: MarqueeSpeed
+}) {
+  const loop = [...items, ...items]
+  return (
+    <div
+      className={`flex flex-col gap-4 carousel-column ${speed}`}
+      style={{ animationDelay: `${delay}s` }}
+    >
+      {loop.map((example, index) => (
+        <HeroOurWorkCardDesktop key={`${example.id}-${index}`} example={example} />
       ))}
     </div>
   )
 }
+
+function HeroWorkMarqueeMobile({
+  items,
+  delay,
+  speed,
+}: {
+  items: PortfolioExample[]
+  delay: number
+  speed: MarqueeSpeed
+}) {
+  const loop = [...items, ...items]
+  return (
+    <div
+      className={`flex flex-col gap-4 carousel-column ${speed}`}
+      style={{ animationDelay: `${delay}s` }}
+    >
+      {loop.map((example, index) => (
+        <HeroOurWorkCardMobile key={`m-${example.id}-${index}`} example={example} />
+      ))}
+    </div>
+  )
+}
+
+const [heroCol1, heroCol2, heroCol3] = splitIntoThree(heroWorkItems)
+const [heroMob1, heroMob2] = splitIntoTwo(heroWorkItems)
 
 export function HeroSection() {
   return (
@@ -155,40 +271,34 @@ export function HeroSection() {
             <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-[#0B2A4A] to-transparent z-20 pointer-events-none" />
 
             {/* Column 1 */}
-            <div className="flex-1 overflow-hidden">
-              <CarouselColumn items={carouselCards.slice(0, 2)} delay={0} speed="normal" />
+            <div className="flex-1 overflow-hidden min-w-0">
+              <HeroWorkMarqueeDesktop items={heroCol1} delay={0} speed="normal" />
             </div>
 
             {/* Column 2 */}
-            <div className="flex-1 overflow-hidden">
-              <CarouselColumn items={carouselCards.slice(2, 4)} delay={2} speed="slow" />
+            <div className="flex-1 overflow-hidden min-w-0">
+              <HeroWorkMarqueeDesktop items={heroCol2} delay={2} speed="slow" />
             </div>
 
             {/* Column 3 */}
-            <div className="flex-1 overflow-hidden">
-              <CarouselColumn items={carouselCards.slice(4, 6)} delay={4} speed="slower" />
+            <div className="flex-1 overflow-hidden min-w-0">
+              <HeroWorkMarqueeDesktop items={heroCol3} delay={4} speed="slower" />
             </div>
           </div>
         </div>
 
-        {/* Mobile Carousel Preview */}
-        <div className="lg:hidden mt-12 grid grid-cols-2 sm:grid-cols-3 gap-4">
-          {carouselCards.map((card) => (
-            <div
-              key={card.id}
-              className="group relative bg-white border border-blue-200 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all h-40 sm:h-48"
-            >
-              <Image
-                src={card.image}
-                alt={card.title}
-                fill
-                className="object-cover group-hover:scale-105 transition-transform"
-              />
-              <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-colors flex items-center justify-center">
-                <p className="text-white font-semibold text-center text-sm">{card.title}</p>
-              </div>
+        {/* Mobile: auto-scrolling Our Work cards */}
+        <div className="lg:hidden mt-12 relative h-[22rem] sm:h-[26rem] overflow-hidden">
+          <div className="absolute top-0 left-0 right-0 h-12 bg-gradient-to-b from-[#0B2A4A] to-transparent z-20 pointer-events-none" />
+          <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-[#0B2A4A] to-transparent z-20 pointer-events-none" />
+          <div className="flex gap-4 h-full">
+            <div className="flex-1 overflow-hidden min-w-0">
+              <HeroWorkMarqueeMobile items={heroMob1} delay={0} speed="normal" />
             </div>
-          ))}
+            <div className="flex-1 overflow-hidden min-w-0">
+              <HeroWorkMarqueeMobile items={heroMob2} delay={2} speed="slow" />
+            </div>
+          </div>
         </div>
       </div>
     </section>

@@ -135,12 +135,13 @@
 }
 
 /* Carousel animations */
+/* Hero social marquee: duplicate item stack, then animate -50% for seamless loop */
 @keyframes scroll-up {
   from {
     transform: translateY(0);
   }
   to {
-    transform: translateY(-100%);
+    transform: translateY(-50%);
   }
 }
 
@@ -149,7 +150,7 @@
     transform: translateY(0);
   }
   to {
-    transform: translateY(-100%);
+    transform: translateY(-50%);
   }
 }
 
@@ -158,20 +159,21 @@
     transform: translateY(0);
   }
   to {
-    transform: translateY(-100%);
+    transform: translateY(-50%);
   }
 }
 
+/* Hero work marquee: ~20–25s per loop, linear, seamless -50% */
 .carousel-column {
-  animation: scroll-up 40s linear infinite;
+  animation: scroll-up 22s linear infinite;
 }
 
 .carousel-column.slow {
-  animation: scroll-up-slow 50s linear infinite;
+  animation: scroll-up-slow 24s linear infinite;
 }
 
 .carousel-column.slower {
-  animation: scroll-up-slower 60s linear infinite;
+  animation: scroll-up-slower 25s linear infinite;
 }
 
 .carousel-column:hover {

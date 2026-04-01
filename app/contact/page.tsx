@@ -9,7 +9,6 @@ export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    subject: '',
     message: ''
   })
   const [submitted, setSubmitted] = useState(false)
@@ -24,7 +23,7 @@ export default function ContactPage() {
     // Handle form submission
     setSubmitted(true)
     setTimeout(() => {
-      setFormData({ name: '', email: '', subject: '', message: '' })
+      setFormData({ name: '', email: '', message: '' })
       setSubmitted(false)
     }, 3000)
   }
@@ -75,17 +74,6 @@ export default function ContactPage() {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium mb-2">Subject</label>
-                  <Input
-                    type="text"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleChange}
-                    placeholder="How can we help?"
-                    required
-                  />
-                </div>
-                <div>
                   <label className="block text-sm font-medium mb-2">Message</label>
                   <textarea
                     name="message"
@@ -113,7 +101,7 @@ export default function ContactPage() {
                 <Mail className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" />
                 <div>
                   <h3 className="font-semibold mb-1">Email</h3>
-                  <p className="text-gray-600">support@conquerorsdigital.com</p>
+                  <p className="text-gray-600">contact@conquerorstech.us</p>
                   <p className="text-sm text-gray-500">We'll respond within 24 hours</p>
                 </div>
               </div>
@@ -121,7 +109,7 @@ export default function ContactPage() {
                 <Phone className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" />
                 <div>
                   <h3 className="font-semibold mb-1">Phone</h3>
-                  <p className="text-gray-600">+1 (555) 123-4567</p>
+                  <p className="text-gray-600">+1 908-922-1063</p>
                   <p className="text-sm text-gray-500">Mon-Fri, 9am-6pm EST</p>
                 </div>
               </div>
@@ -129,8 +117,8 @@ export default function ContactPage() {
                 <MapPin className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" />
                 <div>
                   <h3 className="font-semibold mb-1">Office</h3>
-                  <p className="text-gray-600">123 Digital Avenue</p>
-                  <p className="text-gray-600">San Francisco, CA 94102</p>
+                  <p className="text-gray-600">19046 Bruce B. Downs Blvd. #1376, Tampa, Florida 33647,</p>
+                  <p className="text-gray-600">United States., Tampa, FL, United States, 33647</p>
                 </div>
               </div>
             </div>
