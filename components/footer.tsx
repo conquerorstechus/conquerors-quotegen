@@ -34,14 +34,15 @@ const servicesGroups = [
 ]
 
 const supportLinks = [
+    { label: "Contact Us", href: "/contact" },
   { label: "Help Center", href: "/help" },
-  { label: "Contact Us", href: "/contact" },
+
   { label: "Privacy Policy", href: "/privacy" },
   { label: "Terms of Service", href: "/terms" },
 ]
 
 const socialLinks = [
-  { icon: Instagram, href: "https://www.instagram.com/conquerors_tech_us?igsh=MWV2cXlhd3FvaTExOA%3D%3D" },
+  { icon: Instagram, href: "https://www.instagram.com/conquerorstechus?igsh=MXJzNDk0eXo2NHVydA==" },
   { icon: Facebook, href: "https://www.facebook.com/profile.php?id=61583952656144" },
   { icon: X, href: "#" },
   { icon: Linkedin, href: "#" },

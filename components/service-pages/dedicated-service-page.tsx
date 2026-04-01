@@ -32,36 +32,8 @@ export function DedicatedServicePage({ content }: DedicatedServicePageProps) {
     <>
       <Header />
       <main className="min-h-screen bg-white">
-        {/* 1. Hero */}
-        <section className="pt-24 sm:pt-28 pb-14 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#F5F9FF] to-white">
-          <div className="max-w-4xl mx-auto text-center">
-            {content.hero.badge ? (
-              <p className="inline-block text-sm font-semibold text-[#1E5AA8] bg-blue-50 px-4 py-1.5 rounded-full mb-6">
-                {content.hero.badge}
-              </p>
-            ) : null}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#0B2A4A] text-balance mb-6">
-              {content.hero.title}
-            </h1>
-            <p className="text-lg sm:text-xl text-[#6B7280] leading-relaxed max-w-2xl mx-auto mb-10">
-              {content.hero.tagline}
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button className="bg-[#1E5AA8] hover:bg-[#154080] text-white px-8 py-6 text-base rounded-lg" asChild>
-                <Link href={checkoutHref}>
-                  Get started
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-              <Button variant="outline" className="border-[#1E5AA8] text-[#1E5AA8] hover:bg-blue-50 px-8 py-6 text-base rounded-lg" asChild>
-                <Link href={pricingHref}>View full pricing</Link>
-              </Button>
-            </div>
-          </div>
-        </section>
-
-        {/* 1.5 Stacked quick cards */}
-        <section className="pb-6 md:pb-0 px-4 sm:px-6 lg:px-8">
+        {/* Stacked quick cards (placed below header/logo) */}
+        <section className="pt-24 pb-2 px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto relative">
             <div className="hidden md:block absolute -left-20 lg:-left-28 top-0 z-20">
               <div className="service-stack-container group">
@@ -109,6 +81,34 @@ export function DedicatedServicePage({ content }: DedicatedServicePageProps) {
                   </Link>
                 )
               })}
+            </div>
+          </div>
+        </section>
+
+        {/* 1. Hero */}
+        <section className="pt-6 sm:pt-10 pb-14 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#F5F9FF] to-white">
+          <div className="max-w-4xl mx-auto text-center">
+            {content.hero.badge ? (
+              <p className="inline-block text-sm font-semibold text-[#1E5AA8] bg-blue-50 px-4 py-1.5 rounded-full mb-6">
+                {content.hero.badge}
+              </p>
+            ) : null}
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#0B2A4A] text-balance mb-6">
+              {content.hero.title}
+            </h1>
+            <p className="text-lg sm:text-xl text-[#6B7280] leading-relaxed max-w-2xl mx-auto mb-10">
+              {content.hero.tagline}
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Button className="bg-[#1E5AA8] hover:bg-[#154080] text-white px-8 py-6 text-base rounded-lg" asChild>
+                <Link href={checkoutHref}>
+                  Get started
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+              <Button variant="outline" className="border-[#1E5AA8] text-[#1E5AA8] hover:bg-blue-50 px-8 py-6 text-base rounded-lg" asChild>
+                <Link href={pricingHref}>View full pricing</Link>
+              </Button>
             </div>
           </div>
         </section>
