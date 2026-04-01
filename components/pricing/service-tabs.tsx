@@ -9,7 +9,6 @@ import {
   Film,
   Mail,
   FileText,
-  Link2,
   Target,
   Search,
   TrendingUp,
@@ -22,7 +21,6 @@ export const services = [
   { id: "video-ads", label: "Video Ads", icon: Film, link: "/video-ads" },
   { id: "emails", label: "Emails", icon: Mail, link: "/email-design" },
   { id: "blogs", label: "Blogs", icon: FileText, link: "/blog" },
-  { id: "backlinks", label: "Backlinks", icon: Link2, link: "/seo" },
   { id: "meta-ads", label: "Meta Ads", icon: Target, link: "/meta-ads" },
   { id: "google-ads", label: "Google Ads", icon: Search, link: "/google-ads" },
   { id: "instagram-growth", label: "Instagram Growth", icon: TrendingUp, link: "/instagram-growth" },
@@ -92,9 +90,6 @@ export function ServiceTabs({ activeTab, onTabChange, navigateOnClick = false }:
             )
           })}
         </div>
-        <p className="text-center text-sm text-muted-foreground mt-4">
-          Combine any services & add-ons during checkout
-        </p>
       </div>
     </section>
   )

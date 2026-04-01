@@ -21,10 +21,21 @@ export function OrderSummary({ selectedServices, onRemoveService }: OrderSummary
     () => selectedServices.reduce((sum, s) => sum + lineTotal(s), 0),
     [selectedServices],
   )
+  const uniqueServicesCount = selectedServices.length
+  const selectedItemsCount = useMemo(
+    () => selectedServices.reduce((sum, s) => sum + (s.lineQty ?? 1), 0),
+    [selectedServices],
+  )
 
   return (
     <div className="bg-white border border-slate-200 rounded-xl p-6 shadow-sm h-fit w-full">
       <h2 className="text-xl font-bold text-[#0B2A4A] mb-6">Summary</h2>
+      <div className="mb-4 rounded-lg border border-slate-100 bg-slate-50 px-3 py-2">
+        <p className="text-xs text-[#64748B]">
+          Selected services: <span className="font-semibold text-[#0B2A4A]">{uniqueServicesCount}</span> | Items:{' '}
+          <span className="font-semibold text-[#0B2A4A]">{selectedItemsCount}</span>
+        </p>
+      </div>
 
       <div className="mb-6">
         <input

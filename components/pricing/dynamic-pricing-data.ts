@@ -60,7 +60,6 @@ export const DYNAMIC_PRICING_TAB_ORDER: DynamicPricingTabId[] = [
   */
   "emails",
   "blogs",
-  "backlinks",
   "meta-ads",
   "google-ads",
   "instagram-growth",
@@ -81,6 +80,7 @@ export const dynamicPricingContent: Record<DynamicPricingTabId, DynamicPricingSe
       { icon: "users", text: "2 social channels (FB/Insta)" },
       { icon: "check", text: "Posts in your branding" },
       { icon: "hash", text: "Captions & hashtags" },
+      { icon: "check", text: "$10 for extra channel" },
     ],
     timelineUrl: "/help",
     examplesUrl: "/services/posts",

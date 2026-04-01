@@ -70,10 +70,10 @@ const serviceConfigs: ServiceConfig[] = [
     features: [
       { icon: <Paintbrush className="w-4 h-4" />, text: "Posts in your branding" },
       { icon: <FileSearch className="w-4 h-4" />, text: "Captions and hashtags" },
+      { icon: <CopyCheck className="w-4 h-4" />, text: "$10 for extra channel" },
       { icon: <CalendarCheck className="w-4 h-4" />, text: "Posted for you (optional)" },
       { icon: <Phone className="w-4 h-4" />, text: "Onboarding call (optional)" },
       { icon: <BadgeCheck className="w-4 h-4" />, text: "2 social channels (FB/Insta)" },
-      { icon: <CopyCheck className="w-4 h-4" />, text: "+$10/mo each additional social channel" },
     ],
     platforms: [
       { icon: <Facebook className="w-5 h-5" />, name: "Facebook" },

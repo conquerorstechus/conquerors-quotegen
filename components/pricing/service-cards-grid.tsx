@@ -3,7 +3,7 @@
 import type React from "react"
 import { useEffect, useState } from "react"
 import Link from "next/link"
-import { usePathname } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import {
   ArrowRight,
@@ -16,11 +16,12 @@ import {
   Search,
   TrendingUp,
   FileText,
-  Link2,
   Info,
   ChevronDown,
   Share2,
+  ShoppingCart,
 } from "lucide-react"
+import { usePersistedCheckoutCart } from "@/hooks/use-persisted-checkout-cart"
 
 type ServiceQuantityOption = {
   quantity: number
@@ -38,6 +39,8 @@ interface ServiceCardConfig {
   badge: string
   badgeColor: string
   basePrice: number
+  /** Optional display-only range for card header price text. */
+  displayPriceRange?: string
   quantityOptions: ServiceQuantityOption[]
   link: string
   category: string
@@ -53,6 +56,7 @@ const serviceCardsData: ServiceCardConfig[] = [
     badge: "SOCIAL MEDIA",
     badgeColor: "bg-blue-100 text-blue-700",
     basePrice: 99,
+    displayPriceRange: "$99–$199",
     quantityOptions: [
       { quantity: 4, price: 99 },
       { quantity: 8, price: 149 },
@@ -81,6 +85,7 @@ const serviceCardsData: ServiceCardConfig[] = [
     badge: "SOCIAL MEDIA",
     badgeColor: "bg-blue-100 text-blue-700",
     basePrice: 149,
+    displayPriceRange: "$149–$249",
     quantityOptions: [
       { quantity: 4, price: 149 },
       { quantity: 6, price: 199 },
@@ -97,6 +102,7 @@ const serviceCardsData: ServiceCardConfig[] = [
     badge: "SEO",
     badgeColor: "bg-emerald-100 text-emerald-700",
     basePrice: 149,
+    displayPriceRange: "$149–$349",
     quantityOptions: [
       { quantity: 2, price: 149 },
       { quantity: 4, price: 249 },
@@ -113,6 +119,7 @@ const serviceCardsData: ServiceCardConfig[] = [
     badge: "EMAIL MARKETING",
     badgeColor: "bg-purple-100 text-purple-700",
     basePrice: 199,
+    displayPriceRange: "$199–$399",
     quantityOptions: [
       { quantity: 2, price: 199 },
       { quantity: 4, price: 299 },
@@ -122,22 +129,6 @@ const serviceCardsData: ServiceCardConfig[] = [
     category: "emails",
   },
   {
-    id: "seo-backlinks",
-    title: "SEO Backlinks",
-    icon: <Link2 className="w-5 h-5" />,
-    description: "3–9 backlinks per month (DA20–65) to strengthen authority and rankings.",
-    badge: "SEO",
-    badgeColor: "bg-emerald-100 text-emerald-700",
-    basePrice: 299,
-    quantityOptions: [
-      { quantity: 3, price: 299 },
-      { quantity: 6, price: 499 },
-      { quantity: 9, price: 699 },
-    ],
-    link: "/services/backlinks",
-    category: "backlinks",
-  },
-  {
     id: "instagram-growth",
     title: "Instagram Growth",
     icon: <TrendingUp className="w-5 h-5" />,
@@ -145,6 +136,7 @@ const serviceCardsData: ServiceCardConfig[] = [
     badge: "SOCIAL MEDIA",
     badgeColor: "bg-blue-100 text-blue-700",
     basePrice: 179,
+    displayPriceRange: "$99–$299",
     quantityOptions: [
       { quantity: 1, price: 179, label: "Starter — Basic growth" },
       { quantity: 2, price: 249, label: "Standard — Moderate growth" },
@@ -161,6 +153,7 @@ const serviceCardsData: ServiceCardConfig[] = [
     badge: "PAID ADS",
     badgeColor: "bg-orange-100 text-orange-700",
     basePrice: 549,
+    displayPriceRange: "$199–$499",
     quantityOptions: [
       { quantity: 1, price: 549, label: "Starter — 1 campaign" },
       { quantity: 2, price: 749, label: "Standard — 2 campaigns" },
@@ -177,6 +170,7 @@ const serviceCardsData: ServiceCardConfig[] = [
     badge: "PAID ADS",
     badgeColor: "bg-orange-100 text-orange-700",
     basePrice: 549,
+    displayPriceRange: "$199–$499",
     quantityOptions: [
       { quantity: 1, price: 549, label: "Starter — 1 campaign" },
       { quantity: 2, price: 749, label: "Standard — 2 campaigns" },
@@ -259,15 +253,31 @@ function optionLabel(config: ServiceCardConfig, option: ServiceQuantityOption) {
   return `${option.quantity} ${unit} — $${option.price}${suffix}`
 }
 
-function ServiceCard({ config }: { config: ServiceCardConfig }) {
+function ServiceCard({
+  config,
+  onAddToCart,
+}: {
+  config: ServiceCardConfig
+  onAddToCart: (input: { catalogId: string; name: string; quantity: string; basePrice: number }) => void
+}) {
   const [selectedOption, setSelectedOption] = useState(0)
   const [selectReady, setSelectReady] = useState(false)
   const currentOption = config.quantityOptions[selectedOption]
   const priceSuffix = currentOption.billing === "per-post" ? "/post" : "/mo"
+  const displayPrice = config.displayPriceRange ?? `$${currentOption.price}`
 
   useEffect(() => {
     setSelectReady(true)
   }, [])
+
+  const handleCheckout = () => {
+    onAddToCart({
+      catalogId: config.id,
+      name: config.title,
+      quantity: optionLabel(config, currentOption),
+      basePrice: currentOption.price,
+    })
+  }
 
   return (
     <div className="bg-white border border-gray-200 rounded-xl p-5 flex flex-col hover:border-blue-300 hover:shadow-md transition-all">
@@ -284,7 +294,7 @@ function ServiceCard({ config }: { config: ServiceCardConfig }) {
       <p className="text-xs text-gray-500 mb-4 line-clamp-2 leading-relaxed">{config.description}</p>
 
       <div className="mb-1">
-        <span className="text-2xl font-bold text-[#3B82F6]">${currentOption.price}</span>
+        <span className="text-2xl font-bold text-[#3B82F6]">{displayPrice}</span>
         <span className="text-gray-500 text-sm">{priceSuffix}</span>
       </div>
       <p className="text-xs text-gray-400 mb-3">Pricing from</p>
@@ -313,15 +323,14 @@ function ServiceCard({ config }: { config: ServiceCardConfig }) {
         <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
       </div>
 
-      <Link
-        href={`/checkout?plan=${encodeURIComponent(config.title)}&price=${currentOption.price}&option=${encodeURIComponent(optionLabel(config, currentOption))}`}
-        className="w-full mb-3"
+      <Button
+        type="button"
+        onClick={handleCheckout}
+        className="w-full mb-3 bg-[#3B82F6] hover:bg-[#2563EB] text-white font-medium py-2.5 rounded-lg"
       >
-        <Button className="w-full bg-[#3B82F6] hover:bg-[#2563EB] text-white font-medium py-2.5 rounded-lg">
-          Checkout
-          <ArrowRight className="w-4 h-4 ml-2" />
-        </Button>
-      </Link>
+        Checkout
+        <ArrowRight className="w-4 h-4 ml-2" />
+      </Button>
 
       <Link
         href={config.link}
@@ -344,7 +353,10 @@ const ALL_SERVICES_DESCRIPTION =
   "Browse every service we offer and bundle what you need—mix, match, and add extras at checkout."
 
 export function ServiceCardsGrid({ activeTab = "posts", mode = "filtered" }: ServiceCardsGridProps) {
+  const router = useRouter()
   const pathname = usePathname()
+  const { lines, addOrMergeLine } = usePersistedCheckoutCart()
+  const [cartBounce, setCartBounce] = useState(false)
   const hideOnPricingAll = mode === "all" && pathname === "/pricing"
   /* Temporarily disabled for future use */
   const hiddenOnPricingAllIds = new Set(["static-ads", "video-ads"])
@@ -353,6 +365,24 @@ export function ServiceCardsGrid({ activeTab = "posts", mode = "filtered" }: Ser
     mode === "all"
       ? serviceCardsData.filter((card) => !hideOnPricingAll || !hiddenOnPricingAllIds.has(card.id))
       : serviceCardsData.filter((card) => card.category === activeTab)
+  const selectedCount = lines.reduce((sum, line) => sum + (line.lineQty ?? 1), 0)
+
+  useEffect(() => {
+    if (selectedCount <= 0) return
+    setCartBounce(true)
+    const t = window.setTimeout(() => setCartBounce(false), 280)
+    return () => window.clearTimeout(t)
+  }, [selectedCount])
+
+  const handleAddToCart = (input: { catalogId: string; name: string; quantity: string; basePrice: number }) => {
+    addOrMergeLine({
+      catalogId: input.catalogId,
+      name: input.name,
+      quantity: input.quantity,
+      basePrice: input.basePrice,
+      lineQty: 1,
+    })
+  }
 
   return (
     <section
@@ -370,7 +400,7 @@ export function ServiceCardsGrid({ activeTab = "posts", mode = "filtered" }: Ser
         {filteredCards.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
             {filteredCards.map((config) => (
-              <ServiceCard key={config.id} config={config} />
+              <ServiceCard key={config.id} config={config} onAddToCart={handleAddToCart} />
             ))}
           </div>
         ) : (
@@ -381,6 +411,37 @@ export function ServiceCardsGrid({ activeTab = "posts", mode = "filtered" }: Ser
           </div>
         )}
       </div>
+      {selectedCount > 0 && (
+        <>
+          <button
+            type="button"
+            onClick={() => router.push("/checkout")}
+            className={[
+              "hidden sm:flex fixed bottom-6 right-6 z-40 items-center gap-2 rounded-full",
+              "bg-[#1E5AA8] text-white px-5 py-3 shadow-lg hover:bg-[#154080] transition-all",
+              cartBounce ? "scale-105" : "scale-100",
+            ].join(" ")}
+            aria-label={`Checkout (${selectedCount})`}
+          >
+            <ShoppingCart className="w-4 h-4" />
+            <span className="font-semibold">Checkout ({selectedCount})</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => router.push("/checkout")}
+            className={[
+              "sm:hidden fixed bottom-0 left-0 right-0 z-40 flex items-center justify-center gap-2",
+              "bg-[#1E5AA8] text-white px-4 py-3 shadow-[0_-6px_20px_rgba(15,23,42,0.18)] transition-all",
+              cartBounce ? "scale-[1.01]" : "scale-100",
+            ].join(" ")}
+            aria-label={`Checkout (${selectedCount})`}
+          >
+            <ShoppingCart className="w-4 h-4" />
+            <span className="font-semibold">Checkout ({selectedCount})</span>
+          </button>
+        </>
+      )}
     </section>
   )
 }

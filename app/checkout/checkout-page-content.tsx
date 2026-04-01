@@ -1,12 +1,12 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import Link from 'next/link'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
 import { Button } from '@/components/ui/button'
-import { ArrowLeft } from 'lucide-react'
+import { ArrowLeft, ShoppingCart } from 'lucide-react'
 import { ServiceCard, type SelectedService } from '@/components/checkout/service-card'
 import { OrderSummary } from '@/components/checkout/order-summary'
 import { usePersistedCheckoutCart } from '@/hooks/use-persisted-checkout-cart'
@@ -169,6 +169,12 @@ export function CheckoutPageContent() {
   const searchParams = useSearchParams()
   const { lines, removeLine: handleRemoveService, addOrMergeLine, hydrated } = usePersistedCheckoutCart()
   const [queryConsumed, setQueryConsumed] = useState(false)
+  const [cartBounce, setCartBounce] = useState(false)
+
+  const selectedCount = useMemo(
+    () => lines.reduce((sum, line) => sum + (line.lineQty ?? 1), 0),
+    [lines],
+  )
 
   useEffect(() => {
     if (!hydrated || queryConsumed) return
@@ -214,6 +220,13 @@ export function CheckoutPageContent() {
     setQueryConsumed(true)
     router.replace('/checkout', { scroll: false })
   }, [hydrated, queryConsumed, searchParams, router, addOrMergeLine])
+
+  useEffect(() => {
+    if (selectedCount <= 0) return
+    setCartBounce(true)
+    const t = window.setTimeout(() => setCartBounce(false), 300)
+    return () => window.clearTimeout(t)
+  }, [selectedCount])
 
   const handleAddService = (service: SelectedService) => {
     const catalogId = service.catalogId ?? service.id
@@ -274,18 +287,44 @@ export function CheckoutPageContent() {
             <div className="lg:col-span-1 w-full">
               <div className="lg:sticky lg:top-24 flex flex-col gap-4">
                 <OrderSummary selectedServices={lines} onRemoveService={handleRemoveService} />
-                <Button
-                  onClick={() => router.push('/checkout/review-payment')}
-                  disabled={lines.length === 0}
-                  className="w-full bg-[#1E5AA8] text-white hover:bg-[#154080] py-3 rounded-lg font-semibold disabled:opacity-50 disabled:cursor-not-allowed shadow-sm border border-slate-200"
-                >
-                  Next: Review & Payment →
-                </Button>
               </div>
             </div>
           </div>
         </div>
       </div>
+      {selectedCount > 0 && (
+        <>
+          <button
+            type="button"
+            onClick={() => router.push('/checkout/review-payment')}
+            className={[
+              'hidden sm:flex fixed bottom-6 right-6 z-40 items-center gap-2 rounded-full',
+              'bg-[#1E5AA8] text-white px-5 py-3 shadow-lg hover:bg-[#154080] transition-all',
+              'translate-y-0 opacity-100',
+              cartBounce ? 'scale-105' : 'scale-100',
+            ].join(' ')}
+            aria-label={`Checkout (${selectedCount})`}
+          >
+            <ShoppingCart className="w-4 h-4" />
+            <span className="font-semibold">Checkout ({selectedCount})</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => router.push('/checkout/review-payment')}
+            className={[
+              'sm:hidden fixed bottom-0 left-0 right-0 z-40 flex items-center justify-center gap-2',
+              'bg-[#1E5AA8] text-white px-4 py-3 shadow-[0_-6px_20px_rgba(15,23,42,0.18)]',
+              'transition-all',
+              cartBounce ? 'scale-[1.01]' : 'scale-100',
+            ].join(' ')}
+            aria-label={`Checkout (${selectedCount})`}
+          >
+            <ShoppingCart className="w-4 h-4" />
+            <span className="font-semibold">Checkout ({selectedCount})</span>
+          </button>
+        </>
+      )}
       <Footer />
     </main>
   )

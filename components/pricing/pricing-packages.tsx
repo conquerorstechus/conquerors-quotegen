@@ -32,10 +32,8 @@ const packages = [
 const includedFeatures = [
   { icon: "🎨", text: "Content in your branding" },
   { icon: "📝", text: "Captions & hashtags" },
- 
+  { icon: "📋", text: "$10 for extra channel" },
   { icon: "✅", text: "2 social channel included" },
-  { icon: "📋", text: "$10/mo additional social channel" },
- 
 ];
 
 export function PricingPackages() {
