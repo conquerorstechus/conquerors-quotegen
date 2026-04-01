@@ -1,26 +1,31 @@
 'use client'
 
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import { X } from 'lucide-react'
-import { SelectedService } from './service-card'
+import type { SelectedService } from './service-card'
 
 interface OrderSummaryProps {
   selectedServices: SelectedService[]
   onRemoveService: (id: string) => void
 }
 
-export function OrderSummary({
-  selectedServices,
-  onRemoveService,
-}: OrderSummaryProps) {
+function lineTotal(service: SelectedService): number {
+  const qty = service.lineQty ?? 1
+  return service.basePrice * qty
+}
+
+export function OrderSummary({ selectedServices, onRemoveService }: OrderSummaryProps) {
   const [promoCode, setPromoCode] = useState('')
-  const totalPrice = selectedServices.reduce((sum, service) => sum + service.totalPrice, 0)
+
+  const computedTotal = useMemo(
+    () => selectedServices.reduce((sum, s) => sum + lineTotal(s), 0),
+    [selectedServices],
+  )
 
   return (
-    <div className="bg-white border border-slate-200 rounded-xl p-6 sticky top-24 h-fit">
+    <div className="bg-white border border-slate-200 rounded-xl p-6 shadow-sm h-fit w-full">
       <h2 className="text-xl font-bold text-[#0B2A4A] mb-6">Summary</h2>
 
-      {/* Promo Code */}
       <div className="mb-6">
         <input
           type="text"
@@ -31,47 +36,54 @@ export function OrderSummary({
         />
       </div>
 
-      {/* Selected Services */}
-      <div className="space-y-3 mb-6 max-h-96 overflow-y-auto">
+      <div className="space-y-3 mb-6 max-h-96 overflow-y-auto min-h-[4.5rem]">
         {selectedServices.length === 0 ? (
-          <p className="text-sm text-[#6B7280] text-center py-4">No services selected yet</p>
+          <p className="text-sm text-[#6B7280] text-center py-6">No services selected yet</p>
         ) : (
-          selectedServices.map((service) => (
-            <div
-              key={service.id}
-              className="flex items-start justify-between gap-3 pb-3 border-b border-slate-100 last:border-b-0"
-            >
-              <div className="flex-1">
-                <p className="text-sm font-semibold text-[#0B2A4A]">{service.name}</p>
-                {service.quantity && (
-                  <p className="text-xs text-[#6B7280]">{service.quantity}</p>
-                )}
+          selectedServices.map((service) => {
+            const qty = service.lineQty ?? 1
+            const total = lineTotal(service)
+            return (
+              <div
+                key={service.id}
+                className="flex items-start justify-between gap-3 pb-3 border-b border-slate-100 last:border-b-0"
+              >
+                <div className="flex-1 min-w-0">
+                  <p className="text-sm font-semibold text-[#0B2A4A]">{service.name}</p>
+                  {service.quantity ? (
+                    <p className="text-xs text-[#6B7280] mt-0.5">
+                      <span className="font-medium text-[#64748B]">Package: </span>
+                      {service.quantity}
+                      {qty > 1 ? ` × ${qty}` : ''}
+                    </p>
+                  ) : qty > 1 ? (
+                    <p className="text-xs text-[#6B7280] mt-0.5">Quantity: {qty}</p>
+                  ) : null}
+                </div>
+                <div className="flex items-center gap-3 shrink-0">
+                  <p className="text-sm font-semibold text-[#0B2A4A] tabular-nums">${total.toFixed(2)}</p>
+                  <button
+                    type="button"
+                    onClick={() => onRemoveService(service.id)}
+                    className="text-[#6B7280] hover:text-red-600 transition-colors p-0.5"
+                    aria-label={`Remove ${service.name}`}
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+                </div>
               </div>
-              <div className="flex items-center gap-3">
-                <p className="text-sm font-semibold text-[#0B2A4A]">
-                  ${service.totalPrice}
-                </p>
-                <button
-                  onClick={() => onRemoveService(service.id)}
-                  className="text-[#6B7280] hover:text-red-600 transition-colors"
-                >
-                  <X className="w-4 h-4" />
-                </button>
-              </div>
-            </div>
-          ))
+            )
+          })
         )}
       </div>
 
-      {/* Divider */}
       <div className="border-t border-slate-200 pt-4 mb-4">
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center gap-4">
           <span className="font-semibold text-[#0B2A4A]">Total</span>
-          <span className="text-2xl font-bold text-[#1E5AA8]">${totalPrice}</span>
+          <span className="text-2xl font-bold text-[#1E5AA8] tabular-nums">${computedTotal.toFixed(2)}</span>
         </div>
         <p className="text-xs text-[#6B7280] mt-1">USD</p>
       </div>
-
     </div>
   )
 }

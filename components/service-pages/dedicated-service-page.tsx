@@ -13,7 +13,7 @@ type DedicatedServicePageProps = {
 }
 
 export function DedicatedServicePage({ content }: DedicatedServicePageProps) {
-  const checkoutHref = `/checkout?plan=${encodeURIComponent(content.pricing.planNameForCheckout)}&price=${content.pricing.checkoutPrice}`
+  const checkoutHref = `/checkout?plan=${encodeURIComponent(content.pricing.planNameForCheckout)}&price=${content.pricing.checkoutPrice}&option=${encodeURIComponent(content.pricing.priceDisplay)}`
   const exploreLinks = EXPLORE_SERVICE_LINKS.filter((l) => l.href !== content.path)
   const exploreByCategory = exploreLinks.reduce(
     (acc, item) => {

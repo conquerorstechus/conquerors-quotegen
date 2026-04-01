@@ -493,7 +493,10 @@ function ServiceCard({ config }: { config: ServiceConfig }) {
               </Button>
             </Link>
           )}
-          <Link href={`/checkout?plan=${config.title}&price=${price}`} className={config.link ? "w-full" : "col-span-2 w-full"}>
+          <Link
+            href={`/checkout?plan=${encodeURIComponent(config.title)}&price=${price}&option=${encodeURIComponent(quantitySubtitle(config, quantity))}`}
+            className={config.link ? "w-full" : "col-span-2 w-full"}
+          >
             <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90 group">
               Checkout
               <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />

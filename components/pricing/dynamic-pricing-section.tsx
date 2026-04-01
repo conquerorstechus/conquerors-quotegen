@@ -113,7 +113,7 @@ export function DynamicPricingSection({
     el.scrollBy({ left: delta, behavior: "smooth" })
   }, [])
 
-  const checkoutHref = `/checkout?plan=${encodeURIComponent(service.title)}&price=${tier.price}`
+  const checkoutHref = `/checkout?plan=${encodeURIComponent(service.title)}&price=${tier.price}&option=${encodeURIComponent(tier.selectionLabel)}`
   const activeTabMeta = tabConfigs.find((t) => t.id === activeTab)
   const TabIcon = activeTabMeta?.icon
 

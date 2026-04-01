@@ -130,7 +130,9 @@ export function PricingPackages() {
                 <strong>Pricing is in USD.</strong> Cancel anytime.
               </p>
 
-              <Link href={`/checkout?plan=${selected?.name}&price=${selected?.price}`}>
+              <Link
+                href={`/checkout?plan=${encodeURIComponent(selected?.name ?? '')}&price=${selected?.price ?? 0}&option=${encodeURIComponent(selected?.features?.join(', ') ?? '')}`}
+              >
                 <Button className="w-full">
                   Checkout
                   <ArrowRight className="w-4 h-4 ml-2" />

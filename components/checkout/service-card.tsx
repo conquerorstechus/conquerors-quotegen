@@ -37,10 +37,14 @@ interface ServiceCardProps {
 
 export interface SelectedService {
   id: string
+  /** Catalog id (e.g. social-posts); used to merge duplicate lines. */
+  catalogId?: string
   name: string
   quantity?: string
   basePrice: number
   totalPrice: number
+  /** Cart line quantity when adding from the card stepper (default 1). */
+  lineQty?: number
 }
 
 /** Presentation-only icons keyed by service id (no change to service data). */
@@ -110,10 +114,12 @@ export function ServiceCard({
 
     onAddService({
       id,
+      catalogId: id,
       name,
       quantity: selectedOption || `${quantity}x`,
       basePrice,
       totalPrice,
+      lineQty: quantity,
     })
   }
 

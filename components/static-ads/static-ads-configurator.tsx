@@ -109,7 +109,10 @@ export function StaticAdsConfigurator() {
 
               <p className="text-xs text-[#6B7280] mb-6">Cancel anytime</p>
 
-              <Link href={`/checkout?plan=Static%20Ads&price=${price}&qty=${quantity}`} className="block">
+              <Link
+                href={`/checkout?plan=${encodeURIComponent('Static Ads')}&price=${price}&option=${encodeURIComponent(`${quantity} static ads`)}`}
+                className="block"
+              >
                 <Button className="w-full bg-[#1E5AA8] text-white hover:bg-[#154080] group">
                   Checkout
                   <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />

@@ -1,42 +1,90 @@
 'use client'
 
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { ArrowLeft, User, Send, MessageSquare } from 'lucide-react'
+import { ArrowLeft, Send, Trash2, User } from 'lucide-react'
+import { usePersistedCheckoutCart } from '@/hooks/use-persisted-checkout-cart'
+import {
+  CHECKOUT_REVIEW_FORM_STORAGE_KEY,
+  ORDER_DATA_STORAGE_KEY,
+  lineItemTotal,
+  type StoredOrderData,
+} from '@/components/checkout/checkout-cart-storage'
+
+const SERVICE_OPTIONS = [
+  'Static Ads',
+  'Video Ads',
+  'Meta Ads Management',
+  'Google Ads Management',
+  'SEO',
+  'Videos',
+  'Instagram Growth',
+  'Email Design',
+  'Landing Page Design',
+] as const
+
+type ReviewFormState = {
+  fullName: string
+  email: string
+  phoneNumber: string
+  serviceInterestedIn: string
+  message: string
+}
+
+const defaultForm: ReviewFormState = {
+  fullName: '',
+  email: '',
+  phoneNumber: '',
+  serviceInterestedIn: '',
+  message: '',
+}
 
 export default function ReviewPaymentPage() {
-  const [formData, setFormData] = useState({
-    fullName: '',
-    email: '',
-    phoneNumber: '',
-    message: '',
-  })
-
-  const [selectedServices, setSelectedServices] = useState<string[]>([])
-  const [servicesOpen, setServicesOpen] = useState(false)
-  const servicesDropdownRef = useRef<HTMLDivElement | null>(null)
-
+  const router = useRouter()
+  const { lines, removeLine, hydrated: cartHydrated } = usePersistedCheckoutCart()
+  const [formData, setFormData] = useState<ReviewFormState>(defaultForm)
+  const [formHydrated, setFormHydrated] = useState(false)
+  const [promoCode, setPromoCode] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [isSuccess, setIsSuccess] = useState(false)
 
-  const serviceOptions = useMemo(() => {
-    const base = [
-      'Static Ads',
-      'Video Ads',
-      'Meta Ads Management',
-      'Google Ads Management',
-      'SEO',
-      'Videos',
-      'Instagram Growth',
-      'Email Design',
-      'Landing Page Design',
-    ]
-    return Array.from(new Set(base))
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+    try {
+      const raw = localStorage.getItem(CHECKOUT_REVIEW_FORM_STORAGE_KEY)
+      if (raw) {
+        const parsed = JSON.parse(raw) as Partial<ReviewFormState>
+        setFormData((prev) => ({
+          ...prev,
+          ...parsed,
+          fullName: typeof parsed.fullName === 'string' ? parsed.fullName : prev.fullName,
+          email: typeof parsed.email === 'string' ? parsed.email : prev.email,
+          phoneNumber: typeof parsed.phoneNumber === 'string' ? parsed.phoneNumber : prev.phoneNumber,
+          serviceInterestedIn:
+            typeof parsed.serviceInterestedIn === 'string' ? parsed.serviceInterestedIn : prev.serviceInterestedIn,
+          message: typeof parsed.message === 'string' ? parsed.message : prev.message,
+        }))
+      }
+    } catch {
+      /* ignore */
+    }
+    setFormHydrated(true)
   }, [])
+
+  useEffect(() => {
+    if (!formHydrated || typeof window === 'undefined') return
+    try {
+      localStorage.setItem(CHECKOUT_REVIEW_FORM_STORAGE_KEY, JSON.stringify(formData))
+    } catch {
+      /* ignore */
+    }
+  }, [formData, formHydrated])
+
+  const subtotal = useMemo(() => lines.reduce((sum, s) => sum + lineItemTotal(s), 0), [lines])
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
@@ -45,37 +93,46 @@ export default function ReviewPaymentPage() {
     setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
-  const toggleService = (service: string) => {
-    setSelectedServices((prev) =>
-      prev.includes(service) ? prev.filter((s) => s !== service) : [...prev, service],
-    )
-  }
-
-  const removeService = (service: string) => {
-    setSelectedServices((prev) => prev.filter((s) => s !== service))
-  }
-
-  useEffect(() => {
-    if (!servicesOpen) return
-    const onMouseDown = (event: MouseEvent) => {
-      const target = event.target as Node
-      if (!servicesDropdownRef.current) return
-      if (!servicesDropdownRef.current.contains(target)) setServicesOpen(false)
-    }
-    document.addEventListener('mousedown', onMouseDown)
-    return () => document.removeEventListener('mousedown', onMouseDown)
-  }, [servicesOpen])
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!formData.fullName.trim() || !formData.email.trim() || !formData.phoneNumber.trim()) return
+    if (lines.length === 0) return
 
     setIsSubmitting(true)
+
+    const submittedAtIso = new Date().toISOString()
+    const submissionDate = new Date().toLocaleDateString()
+
+    const orderData: StoredOrderData = {
+      fullName: formData.fullName.trim(),
+      email: formData.email.trim(),
+      phoneNumber: formData.phoneNumber.trim(),
+      message: formData.message.trim() || undefined,
+      serviceInterestedIn: formData.serviceInterestedIn.trim() || undefined,
+      promoCode: promoCode.trim() || undefined,
+      submissionDate,
+      submittedAtIso,
+      selectedServices: lines.map((s) => ({
+        name: s.name,
+        selectedPackage: s.quantity
+          ? `${s.quantity}${(s.lineQty ?? 1) > 1 ? ` × ${s.lineQty}` : ''}`
+          : undefined,
+        price: lineItemTotal(s),
+      })),
+      totalPrice: subtotal,
+    }
+
+    try {
+      localStorage.setItem(ORDER_DATA_STORAGE_KEY, JSON.stringify(orderData))
+    } catch (e) {
+      console.error('Failed to save order confirmation:', e)
+      setIsSubmitting(false)
+      return
+    }
+
     try {
       const webhookUrl =
-        process.env.NEXT_PUBLIC_LEAD_WEBHOOK_URL ||
-        process.env.NEXT_PUBLIC_WEBHOOK_URL ||
-        ''
+        process.env.NEXT_PUBLIC_LEAD_WEBHOOK_URL || process.env.NEXT_PUBLIC_WEBHOOK_URL || ''
 
       if (webhookUrl) {
         await fetch(webhookUrl, {
@@ -83,27 +140,43 @@ export default function ReviewPaymentPage() {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             ...formData,
-            selectedServices,
+            promoCode: orderData.promoCode,
+            cartLines: lines.map((s) => ({
+              id: s.id,
+              name: s.name,
+              package: s.quantity,
+              basePrice: s.basePrice,
+              lineQty: s.lineQty ?? 1,
+              lineTotal: lineItemTotal(s),
+            })),
+            subtotal,
             source: 'checkout/review-payment',
-            submittedAt: new Date().toISOString(),
+            submittedAt: submittedAtIso,
           }),
         })
       }
     } catch (err) {
-      // Webhook is optional; still show success to the user.
       console.error('Webhook submit failed:', err)
     } finally {
       setIsSubmitting(false)
-      setIsSuccess(true)
+      router.push('/checkout/success')
     }
   }
 
+  const formReady = cartHydrated && formHydrated
+  const canSubmit =
+    formReady &&
+    lines.length > 0 &&
+    formData.fullName.trim() &&
+    formData.email.trim() &&
+    formData.phoneNumber.trim() &&
+    !isSubmitting
+
   return (
-    <main className="min-h-screen bg-slate-50">
+    <main className="min-h-screen bg-slate-50 transition-colors duration-200">
       <Header />
       <div className="pt-24 pb-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          {/* Back Link */}
           <Link
             href="/checkout"
             className="inline-flex items-center gap-2 text-[#1E5AA8] hover:text-[#154080] mb-8 transition-colors"
@@ -112,30 +185,26 @@ export default function ReviewPaymentPage() {
             Back to Services
           </Link>
 
-          {/* Main Layout */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* Left Column - Lead Capture Form */}
-            <div className="lg:col-span-2">
-              <form onSubmit={handleSubmit} className="space-y-6">
-                {isSuccess && (
-                  <div className="bg-green-50 border border-green-100 rounded-2xl p-5 shadow-sm">
-                    <p className="text-[#0B2A4A] font-semibold text-lg">
-                      Thank you! Our agent will reach out to you shortly.
-                    </p>
-                  </div>
-                )}
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8 items-stretch">
+            {/* 1 — User details */}
+            <section className="order-1 h-full">
+              <form
+                id="checkout-review-form"
+                onSubmit={handleSubmit}
+                className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 sm:p-7 h-full flex flex-col transition-shadow duration-200 hover:shadow-md"
+              >
+                <div className="flex items-center gap-3 mb-6">
+                  <User className="w-5 h-5 text-[#1E5AA8]" aria-hidden />
+                  <h2 className="text-lg font-bold text-[#0B2A4A]">Your Details</h2>
+                </div>
 
-                {/* Full Name */}
-                <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
-                  <div className="flex items-center gap-3 mb-6">
-                    <User className="w-5 h-5 text-[#1E5AA8]" />
-                    <h2 className="text-lg font-bold text-[#0B2A4A]">Your Details</h2>
-                  </div>
+                <div className="space-y-5 flex-1">
                   <div>
-                    <label className="block text-sm font-medium text-[#0B2A4A] mb-2">
+                    <label htmlFor="fullName" className="block text-sm font-medium text-[#0B2A4A] mb-2">
                       Full Name
                     </label>
                     <Input
+                      id="fullName"
                       type="text"
                       name="fullName"
                       value={formData.fullName}
@@ -143,202 +212,190 @@ export default function ReviewPaymentPage() {
                       placeholder="John Doe"
                       required
                       className="w-full"
+                      autoComplete="name"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-[#0B2A4A] mb-2">
+                      Email
+                    </label>
+                    <Input
+                      id="email"
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      placeholder="john@example.com"
+                      required
+                      autoComplete="email"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="phoneNumber" className="block text-sm font-medium text-[#0B2A4A] mb-2">
+                      Phone Number
+                    </label>
+                    <Input
+                      id="phoneNumber"
+                      type="tel"
+                      name="phoneNumber"
+                      value={formData.phoneNumber}
+                      onChange={handleInputChange}
+                      placeholder="+1 (555) 123-4567"
+                      required
+                      autoComplete="tel"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="serviceInterestedIn" className="block text-sm font-medium text-[#0B2A4A] mb-2">
+                      Service Interested In <span className="text-[#6B7280] font-normal">(optional)</span>
+                    </label>
+                    <select
+                      id="serviceInterestedIn"
+                      name="serviceInterestedIn"
+                      value={formData.serviceInterestedIn}
+                      onChange={handleInputChange}
+                      className="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-[#0B2A4A] focus:outline-none focus:ring-2 focus:ring-[#1E5AA8]"
+                    >
+                      <option value="">Select services (optional)</option>
+                      {SERVICE_OPTIONS.map((opt) => (
+                        <option key={opt} value={opt}>
+                          {opt}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                  <div>
+                    <label htmlFor="message" className="block text-sm font-medium text-[#0B2A4A] mb-2">
+                      Message <span className="text-[#6B7280] font-normal">(optional)</span>
+                    </label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      placeholder="Tell us what you’re looking for, any goals, and your timeline."
+                      rows={5}
+                      className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1E5AA8]"
                     />
                   </div>
                 </div>
-
-                {/* Email + Phone */}
-                <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-sm font-medium text-[#0B2A4A] mb-2">
-                        Email
-                      </label>
-                      <Input
-                        type="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleInputChange}
-                        placeholder="john@example.com"
-                        required
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-[#0B2A4A] mb-2">
-                        Phone Number
-                      </label>
-                      <Input
-                        type="tel"
-                        name="phoneNumber"
-                        value={formData.phoneNumber}
-                        onChange={handleInputChange}
-                        placeholder="+1 (555) 123-4567"
-                        required
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                {/* Service Interested In */}
-                <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
-                  <div className="flex items-center gap-3 mb-4">
-                    <Send className="w-5 h-5 text-[#1E5AA8]" />
-                    <h2 className="text-lg font-bold text-[#0B2A4A]">Service Interested In</h2>
-                  </div>
-                  <label className="block text-sm font-medium text-[#0B2A4A] mb-2">
-                    Optional
-                  </label>
-
-                  <div className="relative" ref={servicesDropdownRef}>
-                    <div
-                      role="button"
-                      tabIndex={0}
-                      aria-expanded={servicesOpen}
-                      aria-haspopup="listbox"
-                      aria-label="Select services"
-                      onClick={() => setServicesOpen((v) => !v)}
-                      onKeyDown={(e) => {
-                        if (e.key === 'Enter' || e.key === ' ') {
-                          e.preventDefault()
-                          setServicesOpen((v) => !v)
-                        }
-                      }}
-                      className="w-full px-3 py-2 border border-slate-300 rounded-lg text-left focus:outline-none focus:ring-2 focus:ring-[#1E5AA8] flex flex-wrap gap-2 items-center cursor-pointer"
-                    >
-                      {selectedServices.length === 0 ? (
-                        <span className="text-sm text-[#6B7280]">Select services (optional)</span>
-                      ) : (
-                        selectedServices.map((s) => (
-                          <span
-                            key={s}
-                            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#1E5AA8]/10 text-[#0B2A4A] text-sm"
-                          >
-                            {s}
-                            <button
-                              type="button"
-                              aria-label={`Remove ${s}`}
-                              onClick={(ev) => {
-                                ev.stopPropagation()
-                                removeService(s)
-                              }}
-                              className="text-[#1E5AA8] hover:text-[#154080] font-bold leading-none"
-                            >
-                              ×
-                            </button>
-                          </span>
-                        ))
-                      )}
-                    </div>
-
-                    {servicesOpen && (
-                      <div className="absolute left-0 right-0 mt-2 bg-white border border-slate-300 rounded-lg shadow-sm z-10 p-3">
-                        <div className="space-y-2 max-h-56 overflow-auto pr-1">
-                          {serviceOptions.map((opt) => {
-                            const checked = selectedServices.includes(opt)
-                            return (
-                              <label
-                                key={opt}
-                                className="flex items-center gap-3 cursor-pointer text-sm text-[#0B2A4A]"
-                              >
-                                <input
-                                  type="checkbox"
-                                  checked={checked}
-                                  onChange={() => toggleService(opt)}
-                                suppressHydrationWarning
-                                  className="w-4 h-4 rounded border-slate-300 text-[#1E5AA8]"
-                                />
-                                <span className="leading-tight">{opt}</span>
-                              </label>
-                            )
-                          })}
-                        </div>
-                        {selectedServices.length > 0 && (
-                          <div className="pt-3">
-                            <button
-                              type="button"
-                              onClick={() => setSelectedServices([])}
-                              suppressHydrationWarning
-                              className="text-sm font-medium text-[#1E5AA8] hover:text-[#154080]"
-                            >
-                              Clear selection
-                            </button>
-                          </div>
-                        )}
-                      </div>
-                    )}
-                  </div>
-                </div>
-
-                {/* Message */}
-                <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
-                  <div className="flex items-center gap-3 mb-4">
-                    <MessageSquare className="w-5 h-5 text-[#1E5AA8]" />
-                    <h2 className="text-lg font-bold text-[#0B2A4A]">Message</h2>
-                  </div>
-                  <label className="block text-sm font-medium text-[#0B2A4A] mb-2">
-                    Optional
-                  </label>
-                  <textarea
-                    name="message"
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    placeholder="Tell us what you’re looking for, any goals, and your timeline."
-                    className="w-full min-h-[120px] px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E5AA8]"
-                  />
-                </div>
-
-                {/* Submit Button */}
-                <Button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full bg-[#1E5AA8] text-white hover:bg-[#154080] py-4 rounded-lg font-semibold text-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
-                >
-                  <Send className="w-4 h-4" />
-                  {isSubmitting ? 'Submitting...' : 'Submit Request →'}
-                </Button>
               </form>
-            </div>
+            </section>
 
-            {/* Right Column - Selected Services (No Pricing) */}
-            <div className="lg:col-span-1">
-              <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 sticky top-24">
-                <h2 className="text-lg font-bold text-[#0B2A4A] mb-6">Selected Services</h2>
-
-                <div className="space-y-3">
-                  {selectedServices.length === 0 ? (
-                    <p className="text-sm text-[#6B7280]">No services selected.</p>
+            {/* 2 — Selected services (editable) */}
+            <section className="order-2 h-full">
+              <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 sm:p-7 h-full flex flex-col transition-shadow duration-200 hover:shadow-md">
+                <h2 className="text-lg font-bold text-[#0B2A4A] mb-6">Selected services</h2>
+                <div className="flex-1 min-h-[12rem] space-y-3">
+                  {lines.length === 0 ? (
+                    <p className="text-sm text-[#6B7280] text-center py-10">No services selected</p>
                   ) : (
-                    selectedServices.map((service) => (
-                      <div key={service} className="flex justify-between items-start gap-3">
-                        <span className="text-sm text-[#6B7280]">{service}</span>
-                      </div>
-                    ))
+                    lines.map((s) => {
+                      const total = lineItemTotal(s)
+                      const pkg = s.quantity
+                      return (
+                        <div
+                          key={s.id}
+                          className="flex gap-3 items-start justify-between rounded-xl border border-slate-100 bg-slate-50/80 px-4 py-3"
+                        >
+                          <div className="min-w-0 flex-1">
+                            <p className="text-sm font-semibold text-[#0B2A4A]">{s.name}</p>
+                            {pkg ? (
+                              <p className="text-xs text-[#6B7280] mt-1">
+                                Package: {pkg}
+                                {(s.lineQty ?? 1) > 1 ? ` × ${s.lineQty}` : ''}
+                              </p>
+                            ) : null}
+                            <p className="text-sm font-semibold text-[#1E5AA8] mt-2 tabular-nums">${total.toFixed(2)}</p>
+                          </div>
+                          <button
+                            type="button"
+                            onClick={() => removeLine(s.id)}
+                            className="shrink-0 rounded-lg p-2 text-[#6B7280] hover:bg-red-50 hover:text-red-600 transition-colors"
+                            aria-label={`Remove ${s.name}`}
+                          >
+                            <Trash2 className="w-4 h-4" />
+                          </button>
+                        </div>
+                      )
+                    })
                   )}
                 </div>
+              </div>
+            </section>
 
-                <div className="pt-6">
-                  <p className="text-xs text-[#6B7280] leading-relaxed">
+            {/* 3 — Summary + CTA (sticky on desktop) */}
+            <section className="order-3 md:col-span-2 xl:col-span-1 md:order-3 h-full">
+              <div className="xl:sticky xl:top-24 flex flex-col gap-4 h-full">
+                <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 sm:p-7 flex flex-col transition-shadow duration-200 hover:shadow-md">
+                  <h2 className="text-lg font-bold text-[#0B2A4A] mb-6">Summary</h2>
+
+                  <div className="mb-4 max-h-48 overflow-y-auto space-y-2 pr-1">
+                    {lines.length === 0 ? (
+                      <p className="text-sm text-[#6B7280]">No items in summary</p>
+                    ) : (
+                      lines.map((s) => (
+                        <div key={s.id} className="flex justify-between gap-2 text-sm">
+                          <span className="text-[#6B7280] truncate" title={s.name}>
+                            {s.name}
+                          </span>
+                          <span className="font-medium text-[#0B2A4A] tabular-nums shrink-0">
+                            ${lineItemTotal(s).toFixed(2)}
+                          </span>
+                        </div>
+                      ))
+                    )}
+                  </div>
+
+                  <div className="border-t border-slate-200 pt-4 space-y-3">
+                    <div className="flex justify-between text-sm text-[#0B2A4A]">
+                      <span>Subtotal</span>
+                      <span className="font-semibold tabular-nums">${subtotal.toFixed(2)}</span>
+                    </div>
+                    <div className="flex justify-between items-baseline gap-4 pt-2 border-t border-slate-100">
+                      <span className="text-base font-bold text-[#0B2A4A]">Total</span>
+                      <span className="text-2xl font-bold text-[#1E5AA8] tabular-nums">${subtotal.toFixed(2)}</span>
+                    </div>
+                    <p className="text-xs text-[#6B7280]">USD</p>
+                  </div>
+
+                  <div className="mt-6">
+                    <label htmlFor="promoCode" className="block text-xs font-medium text-[#0B2A4A] mb-2">
+                      Promo code
+                    </label>
+                    <Input
+                      id="promoCode"
+                      type="text"
+                      value={promoCode}
+                      onChange={(e) => setPromoCode(e.target.value)}
+                      placeholder="Enter promo code"
+                      className="w-full"
+                      autoComplete="off"
+                    />
+                  </div>
+
+                  <Button
+                    type="submit"
+                    form="checkout-review-form"
+                    disabled={!canSubmit}
+                    className="mt-6 w-full bg-[#1E5AA8] text-white hover:bg-[#154080] py-3.5 rounded-lg font-semibold text-base transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                  >
+                    <Send className="w-4 h-4" />
+                    {isSubmitting ? 'Submitting...' : 'Submit Request →'}
+                  </Button>
+
+                  {lines.length === 0 && formReady && (
+                    <p className="mt-3 text-center text-xs text-amber-700">
+                      Add at least one service on the previous step to continue.
+                    </p>
+                  )}
+
+                  <p className="mt-4 text-xs text-[#6B7280] leading-relaxed">
                     By submitting, you’re requesting a consultation. No payment will be processed.
                   </p>
                 </div>
-
-                {/* Testimonial Card */}
-                <div className="mt-6 bg-gradient-to-br from-blue-50 to-slate-50 border border-blue-100 rounded-lg p-4">
-                  <div className="mb-3">
-                    <p className="text-sm text-[#0B2A4A] italic font-medium">
-                      "Conquerors creates marketing content that is better and more cost effective than doing it in-house."
-                    </p>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-[#1E5AA8]" />
-                    <div>
-                      <p className="text-xs font-semibold text-[#0B2A4A]">Happy Customer</p>
-                      <p className="text-xs text-[#6B7280]">✓ Verified Review</p>
-                    </div>
-                  </div>
-                </div>
               </div>
-            </div>
+            </section>
           </div>
         </div>
       </div>

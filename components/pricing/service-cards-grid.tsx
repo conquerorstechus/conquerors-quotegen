@@ -313,7 +313,10 @@ function ServiceCard({ config }: { config: ServiceCardConfig }) {
         <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
       </div>
 
-      <Link href={`/checkout?plan=${encodeURIComponent(config.title)}&price=${currentOption.price}`} className="w-full mb-3">
+      <Link
+        href={`/checkout?plan=${encodeURIComponent(config.title)}&price=${currentOption.price}&option=${encodeURIComponent(optionLabel(config, currentOption))}`}
+        className="w-full mb-3"
+      >
         <Button className="w-full bg-[#3B82F6] hover:bg-[#2563EB] text-white font-medium py-2.5 rounded-lg">
           Checkout
           <ArrowRight className="w-4 h-4 ml-2" />
