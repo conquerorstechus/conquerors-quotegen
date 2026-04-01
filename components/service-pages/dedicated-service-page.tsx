@@ -2,11 +2,8 @@ import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Check, Film, LayoutGrid, Mail, Search, SearchCheck, Target, TrendingUp, Video, ChevronRight } from "lucide-react"
-import {
-  type DedicatedServicePageContent,
-  EXPLORE_SERVICE_LINKS,
-} from "@/components/service-pages/dedicated-service-config"
+import { ArrowRight, Check, Mail, Search, SearchCheck, Target, TrendingUp, Video } from "lucide-react"
+import { type DedicatedServicePageContent } from "@/components/service-pages/dedicated-service-config"
 
 type DedicatedServicePageProps = {
   content: DedicatedServicePageContent
@@ -14,101 +11,29 @@ type DedicatedServicePageProps = {
 
 export function DedicatedServicePage({ content }: DedicatedServicePageProps) {
   const checkoutHref = `/checkout?plan=${encodeURIComponent(content.pricing.planNameForCheckout)}&price=${content.pricing.checkoutPrice}&option=${encodeURIComponent(content.pricing.priceDisplay)}`
-  const exploreLinks = EXPLORE_SERVICE_LINKS.filter((l) => l.href !== content.path)
-  const exploreByCategory = exploreLinks.reduce(
-    (acc, item) => {
-      if (!acc[item.category]) acc[item.category] = []
-      acc[item.category].push(item)
-      return acc
-    },
-    {} as Record<string, typeof exploreLinks>,
-  )
-
-  const exploreCategoryOrder = ["Ads", "SEO", "Videos", "Social Media Management"]
-  const sortedExploreCategories = exploreCategoryOrder.filter((c) => exploreByCategory[c]?.length)
-
-  const iconByHref: Record<string, React.ComponentType<{ className?: string }>> = {
-    "/static-ads": LayoutGrid,
-    "/video-ads": Film,
-    "/meta-ads": Target,
-    "/google-ads": Search,
-    "/seo": SearchCheck,
-    "/videos": Video,
-    "/instagram-growth": TrendingUp,
-    "/email-design": Mail,
+  const quickCards = [
+    { label: "Meta Ads Management", href: "/meta-ads", icon: Target, subtitle: "Explore deliverables & pricing" },
+    { label: "Google Ads Management", href: "/google-ads", icon: Search, subtitle: "Explore deliverables & pricing" },
+    { label: "SEO Services", href: "/seo", icon: SearchCheck, subtitle: "Explore deliverables & pricing" },
+    { label: "Videos", href: "/videos", icon: Video, subtitle: "Explore deliverables & pricing" },
+    { label: "Instagram Growth", href: "/instagram-growth", icon: TrendingUp, subtitle: "Explore deliverables & pricing" },
+    { label: "Email Design", href: "/email-design", icon: Mail, subtitle: "Explore deliverables & pricing" },
+  ]
+  const pricingSectionHashByPath: Record<string, string> = {
+    "/meta-ads": "meta-ads",
+    "/google-ads": "google-ads",
+    "/videos": "videos",
+    "/instagram-growth": "instagram-growth",
+    "/email-design": "email-design",
   }
-
-  const featuredByHref = new Set(["/meta-ads", "/google-ads", "/instagram-growth"])
+  const pricingHref = `/pricing${pricingSectionHashByPath[content.path] ? `#${pricingSectionHashByPath[content.path]}` : ""}`
 
   return (
     <>
       <Header />
       <main className="min-h-screen bg-white">
-        {/* Explore other services (moved to top) */}
-        <section className="pt-24 pb-6 px-4 sm:px-6 lg:px-8 bg-white border-b border-slate-100">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-xl sm:text-2xl font-bold text-[#0B2A4A] mb-1 text-center">
-              Explore other services
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-              {exploreLinks.map((link) => {
-                const Icon = iconByHref[link.href]
-                const isFeatured = featuredByHref.has(link.href)
-
-                const tag =
-                  link.category === "Social Media Management"
-                    ? "Social"
-                    : link.category === "Videos"
-                      ? "Videos"
-                      : link.category === "SEO"
-                        ? "SEO"
-                        : "Ads"
-
-                return (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className={[
-                      "group rounded-2xl border transition-all h-[74px] px-4 py-3 flex items-center",
-                      "bg-white hover:shadow-sm hover:border-[#1E5AA8]/40",
-                      isFeatured ? "bg-[#1E5AA8]/5 border-[#1E5AA8]/25" : "border-slate-200",
-                    ].join(" ")}
-                  >
-                    <div className="flex items-center gap-3 w-full">
-                      <div
-                        className={[
-                          "w-10 h-10 rounded-xl flex items-center justify-center shrink-0",
-                          "bg-[#1E5AA8]/10 text-[#1E5AA8] group-hover:bg-[#1E5AA8] group-hover:text-white transition-colors",
-                        ].join(" ")}
-                      >
-                        {Icon ? <Icon className="w-4 h-4" /> : <Check className="w-4 h-4" />}
-                      </div>
-
-                      <div className="min-w-0 flex-1">
-                        <div className="flex items-center gap-2">
-                          <span className="text-[10px] font-bold uppercase tracking-wider text-[#1E5AA8] bg-[#1E5AA8]/10 px-2 py-0.5 rounded-full">
-                            {tag}
-                          </span>
-                          <span className="text-sm font-semibold text-[#0B2A4A] truncate">
-                            {link.label}
-                          </span>
-                        </div>
-                        <p className="text-[11px] text-[#6B7280] truncate mt-1">
-                          Explore deliverables & pricing tiers
-                        </p>
-                      </div>
-
-                      <ArrowRight className="ml-auto h-4 w-4 text-[#1E5AA8] opacity-80 group-hover:opacity-100 transition-opacity" />
-                    </div>
-                  </Link>
-                )
-              })}
-            </div>
-          </div>
-        </section>
-
         {/* 1. Hero */}
-        <section className="pt-10 sm:pt-14 pb-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#F5F9FF] to-white">
+        <section className="pt-24 sm:pt-28 pb-14 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#F5F9FF] to-white">
           <div className="max-w-4xl mx-auto text-center">
             {content.hero.badge ? (
               <p className="inline-block text-sm font-semibold text-[#1E5AA8] bg-blue-50 px-4 py-1.5 rounded-full mb-6">
@@ -129,8 +54,61 @@ export function DedicatedServicePage({ content }: DedicatedServicePageProps) {
                 </Link>
               </Button>
               <Button variant="outline" className="border-[#1E5AA8] text-[#1E5AA8] hover:bg-blue-50 px-8 py-6 text-base rounded-lg" asChild>
-                <Link href="/pricing">View full pricing</Link>
+                <Link href={pricingHref}>View full pricing</Link>
               </Button>
+            </div>
+          </div>
+        </section>
+
+        {/* 1.5 Stacked quick cards */}
+        <section className="pb-6 md:pb-0 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto relative">
+            <div className="hidden md:block absolute -left-20 lg:-left-28 top-0 z-20">
+              <div className="service-stack-container group">
+                {quickCards.map((item, idx) => {
+                  const Icon = item.icon
+                  const isCurrent = item.href === content.path
+                  return (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className={`service-stack-card ${isCurrent ? "service-stack-card-active" : ""}`}
+                      style={{ ["--card-index" as string]: idx } as Record<string, number>}
+                    >
+                      <div className="flex items-center gap-2">
+                        <Icon className="w-4 h-4 shrink-0" />
+                        <span className="font-semibold">{item.label}</span>
+                      </div>
+                      <span className="text-xs opacity-90">{item.subtitle}</span>
+                    </Link>
+                  )
+                })}
+              </div>
+            </div>
+
+            <div className="md:hidden space-y-2 mt-2">
+              {quickCards.map((item) => {
+                const Icon = item.icon
+                const isCurrent = item.href === content.path
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className={[
+                      "flex items-center justify-between rounded-xl px-4 py-3 border transition-colors",
+                      isCurrent
+                        ? "bg-[#1E5AA8] text-white border-[#1E5AA8]"
+                        : "bg-white text-[#0B2A4A] border-slate-200 hover:border-[#1E5AA8]/40",
+                    ].join(" ")}
+                  >
+                    <span className="inline-flex items-center gap-2 text-sm font-medium">
+                      <Icon className="w-4 h-4 shrink-0" />
+                      {item.label}
+                    </span>
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                )
+              })}
             </div>
           </div>
         </section>
@@ -232,7 +210,7 @@ export function DedicatedServicePage({ content }: DedicatedServicePageProps) {
                 className="bg-white text-[#0B2A4A] hover:bg-blue-50 px-8 py-6 text-base"
                 asChild
               >
-                <Link href="/pricing">Compare all plans</Link>
+                <Link href={pricingHref}>Compare all plans</Link>
               </Button>
             </div>
           </div>
