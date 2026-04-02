@@ -383,9 +383,9 @@ export const instagramGrowthPageContent: DedicatedServicePageContent = {
   },
   included: {
     items: [
-      "Starter: Basic growth ($179/mo)",
-      "Standard: Moderate growth ($249/mo)",
-      "Plus: Advanced growth ($349/mo)",
+      "Real Followers",
+      "Handmade Growth",
+      "Increase Engagement",
       "Audience alignment & platform-rules-friendly execution",
     ],
   },
@@ -418,7 +418,7 @@ export const emailDesignPageContent: DedicatedServicePageContent = {
     "On-brand, responsive email design and copy—Starter through Plus tiers, ready for your ESP and campaigns.",
   hero: {
     title: "Email Design",
-    tagline: "Emails people actually want to open—2, 4, or 6 custom layouts per month with mobile-first design.",
+    tagline: "Turn your email marketing into a revenue engine with expert-built, conversion-focused campaigns that consistently deliver value, capture attention, and drive results from idea to inbox.",
   },
   whatIs: {
     body: "Email design is how your newsletters, promos, and automations look in the inbox. We deliver custom templates each month that match your brand, read well on phones, and support your CTAs—whether you use Mailchimp, Klaviyo, HubSpot, or another ESP.",
@@ -433,7 +433,7 @@ export const emailDesignPageContent: DedicatedServicePageContent = {
   },
   included: {
     items: [
-      "2, 4, or 6 custom designed emails per month by tier",
+      "Custom Designed Emails",
       "Brand-aligned layouts and persuasive copy",
       "Responsive, mobile-friendly structure",
       "Implementation guidance for your ESP",

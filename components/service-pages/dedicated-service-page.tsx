@@ -27,6 +27,10 @@ export function DedicatedServicePage({ content }: DedicatedServicePageProps) {
     "/email-design": "email-design",
   }
   const pricingHref = `/pricing${pricingSectionHashByPath[content.path] ? `#${pricingSectionHashByPath[content.path]}` : ""}`
+  const viewFullPricingHref =
+    content.path === "/meta-ads"
+      ? "/pricing?tab=meta-ads"
+      : pricingHref
 
   return (
     <>
@@ -107,7 +111,7 @@ export function DedicatedServicePage({ content }: DedicatedServicePageProps) {
                 </Link>
               </Button>
               <Button variant="outline" className="border-[#1E5AA8] text-[#1E5AA8] hover:bg-blue-50 px-8 py-6 text-base rounded-lg" asChild>
-                <Link href={pricingHref}>View full pricing</Link>
+                <Link href={viewFullPricingHref}>View full pricing</Link>
               </Button>
             </div>
           </div>

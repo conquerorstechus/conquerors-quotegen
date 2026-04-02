@@ -73,6 +73,15 @@ export function DynamicPricingSection({
     setTierIndex(defaultIndex)
   }, [activeTab])
 
+  // If landing from a deep-link like `/pricing?tab=meta-ads`, scroll to the tabs section
+  // so the selected cards are visible immediately (smooth, no layout changes).
+  useEffect(() => {
+    if (typeof document === "undefined") return
+    if (defaultTabId !== "meta-ads") return
+    const el = document.getElementById("pricing-tabs")
+    el?.scrollIntoView({ behavior: "smooth", block: "start" })
+  }, [defaultTabId])
+
   const service = content[activeTab]
   const tier = service.tiers[tierIndex] ?? service.tiers[0]
   const maxTier = Math.max(0, service.tiers.length - 1)
@@ -94,7 +103,7 @@ export function DynamicPricingSection({
   const checkoutHref = `/checkout?plan=${encodeURIComponent(service.title)}&price=${tier.price}&option=${encodeURIComponent(tier.selectionLabel)}`
 
   return (
-    <section className="py-8 px-4 sm:px-6 lg:px-8">
+    <section id="pricing-tabs" className="py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
         {/* Scrollable tabs */}
         <div className="relative mb-4">
