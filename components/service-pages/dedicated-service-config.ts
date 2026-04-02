@@ -180,7 +180,7 @@ export const metaAdsPageContent: DedicatedServicePageContent = {
   },
   included: {
     items: [
-      "1–3 managed campaigns (Starter / Standard / Plus tiers)",
+      " Managed campaigns ",
       "Facebook & Instagram ads management",
       "Ongoing optimization and testing roadmap",
       "Performance reporting & strategic guidance",
@@ -231,7 +231,7 @@ export const googleAdsPageContent: DedicatedServicePageContent = {
   },
   included: {
     items: [
-      "1–3 managed campaigns (Starter / Standard / Plus tiers)",
+      " Managed campaigns",
       "Google Ads campaign management & search coverage",
       "Bid, keyword, and ad iteration",
       "Conversion-focused structure and reporting",
