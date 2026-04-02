@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { ChevronDown, ChevronUp } from 'lucide-react'
+import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 
 export default function HelpCenter() {
@@ -46,6 +47,11 @@ export default function HelpCenter() {
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
       {/* Hero Section */}
       <div className="max-w-4xl mx-auto px-4 py-16">
+        <div className="flex justify-center mb-6">
+          <Button asChild className="bg-blue-600 hover:bg-blue-700 text-white w-full sm:w-auto">
+            <Link href="/#footer">← Back</Link>
+          </Button>
+        </div>
         <h1 className="text-4xl md:text-5xl font-bold text-center mb-4">Help Center</h1>
         <p className="text-center text-gray-600 text-lg mb-8">
           Find answers to common questions about our services

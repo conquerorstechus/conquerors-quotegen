@@ -59,7 +59,7 @@ export const DYNAMIC_PRICING_TAB_ORDER: DynamicPricingTabId[] = [
     "video-ads",
   */
   "emails",
-  "blogs",
+  "SEO blogs",
   "meta-ads",
   "google-ads",
   "instagram-growth",

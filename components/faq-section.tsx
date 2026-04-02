@@ -7,7 +7,7 @@ const faqItems = [
   {
     id: 1,
     question: "What services do you offer in digital marketing and creative solutions?",
-    answer: "We provide full-service digital marketing solutions, including social media management, web development, SEO services, graphic design, content writing, branding, and lead generation strategies to help businesses grow online."
+    answer: "We provide full-service digital marketing solutions, including social media management,  SEO services, graphic design, content writing, branding, and lead generation strategies to help businesses grow online."
   },
   {
     id: 2,
@@ -56,7 +56,7 @@ const faqItems = [
   },
   {
     id: 11,
-    question: "How do I get started with your web development or marketing services?",
+    question: "How do I get started with your  marketing services?",
     answer: "Simply schedule a Free Demo Call. We'll analyze your current online presence, identify growth opportunities, and recommend the best digital marketing strategy tailored to your business goals."
   },
   {
@@ -67,7 +67,7 @@ const faqItems = [
   {
     id: 13,
     question: "Do I need to provide content?",
-    answer: "No. Our team handles the creative work."
+    answer: "No, you don’t need to provide the content—our team will take care of the creative work. However, if you’d like to share any content, you’re welcome to do so."
   },
   {
     id: 14,

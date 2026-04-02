@@ -16,23 +16,10 @@ import {
   type StoredOrderData,
 } from '@/components/checkout/checkout-cart-storage'
 
-const SERVICE_OPTIONS = [
-  'Static Ads',
-  'Video Ads',
-  'Meta Ads Management',
-  'Google Ads Management',
-  'SEO',
-  'Videos',
-  'Instagram Growth',
-  'Email Design',
-  'Landing Page Design',
-] as const
-
 type ReviewFormState = {
   fullName: string
   email: string
   phoneNumber: string
-  serviceInterestedIn: string
   message: string
 }
 
@@ -40,7 +27,6 @@ const defaultForm: ReviewFormState = {
   fullName: '',
   email: '',
   phoneNumber: '',
-  serviceInterestedIn: '',
   message: '',
 }
 
@@ -64,8 +50,6 @@ export default function ReviewPaymentPage() {
           fullName: typeof parsed.fullName === 'string' ? parsed.fullName : prev.fullName,
           email: typeof parsed.email === 'string' ? parsed.email : prev.email,
           phoneNumber: typeof parsed.phoneNumber === 'string' ? parsed.phoneNumber : prev.phoneNumber,
-          serviceInterestedIn:
-            typeof parsed.serviceInterestedIn === 'string' ? parsed.serviceInterestedIn : prev.serviceInterestedIn,
           message: typeof parsed.message === 'string' ? parsed.message : prev.message,
         }))
       }
@@ -108,7 +92,6 @@ export default function ReviewPaymentPage() {
       email: formData.email.trim(),
       phoneNumber: formData.phoneNumber.trim(),
       message: formData.message.trim() || undefined,
-      serviceInterestedIn: formData.serviceInterestedIn.trim() || undefined,
       promoCode: promoCode.trim() || undefined,
       submissionDate,
       submittedAtIso,
@@ -244,25 +227,6 @@ export default function ReviewPaymentPage() {
                       required
                       autoComplete="tel"
                     />
-                  </div>
-                  <div>
-                    <label htmlFor="serviceInterestedIn" className="block text-sm font-medium text-[#0B2A4A] mb-2">
-                      Service Interested In <span className="text-[#6B7280] font-normal">(optional)</span>
-                    </label>
-                    <select
-                      id="serviceInterestedIn"
-                      name="serviceInterestedIn"
-                      value={formData.serviceInterestedIn}
-                      onChange={handleInputChange}
-                      className="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-[#0B2A4A] focus:outline-none focus:ring-2 focus:ring-[#1E5AA8]"
-                    >
-                      <option value="">Select services (optional)</option>
-                      {SERVICE_OPTIONS.map((opt) => (
-                        <option key={opt} value={opt}>
-                          {opt}
-                        </option>
-                      ))}
-                    </select>
                   </div>
                   <div>
                     <label htmlFor="message" className="block text-sm font-medium text-[#0B2A4A] mb-2">

@@ -1,8 +1,16 @@
+import Link from 'next/link'
+import { Button } from '@/components/ui/button'
+
 export default function TermsOfService() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
       {/* Hero Section */}
       <div className="max-w-4xl mx-auto px-4 py-16">
+        <div className="flex justify-center mb-6">
+          <Button asChild className="bg-blue-600 hover:bg-blue-700 text-white w-full sm:w-auto">
+            <Link href="/#footer">← Back </Link>
+          </Button>
+        </div>
         <h1 className="text-4xl md:text-5xl font-bold mb-4">Terms of Service</h1>
         <p className="text-gray-600">Last updated: March 9, 2026</p>
       </div>
@@ -98,7 +106,8 @@ export default function TermsOfService() {
           <section>
             <h2 className="text-2xl font-bold mb-4">11. Contact Us</h2>
             <p className="text-gray-700">
-              If you have any questions about these terms of service, please contact us at support@conquerorsdigital.com or visit our Contact page.
+              If you have any questions about these terms of service, please contact us at contact@conquerorstech.us
+              or visit our Contact page.
             </p>
           </section>
         </div>

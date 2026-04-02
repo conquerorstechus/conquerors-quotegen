@@ -99,7 +99,7 @@ export function WhyChooseUsSection() {
             {/* Highlighted Quote */}
             <div className="bg-gradient-to-r from-emerald-50 to-teal-50 border border-emerald-200 rounded-2xl p-4">
               <p className="text-[#0B2A4A] font-semibold italic text-sm">
-                You approve the content — we handle the rest, starting @ Just $99/month.
+                You approve the content — we handle the rest starting @ Just $99/month.
               </p>
             </div>
           </div>

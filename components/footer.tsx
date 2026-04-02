@@ -51,7 +51,7 @@ const socialLinks = [
 
 export function Footer() {
   return (
-    <footer className="bg-gradient-to-r from-[#0B2A4A] to-[#1E5AA8] py-16 px-4 sm:px-6 lg:px-8">
+    <footer id="footer" className="bg-gradient-to-r from-[#0B2A4A] to-[#1E5AA8] py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
           {/* Brand */}
@@ -65,7 +65,7 @@ export function Footer() {
                 className="h-12 w-auto invert brightness-0"
               />
             </Link>
-            <p className="text-blue-100 text-sm mb-6">Expert social media management from only $99/mo</p>
+            <p className="text-blue-100 text-sm mb-6">Expert social media management starts @ $99/mo</p>
             <div className="flex items-center gap-4">
               {socialLinks.map((social, index) => (
                 <Link

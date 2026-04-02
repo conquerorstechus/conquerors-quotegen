@@ -282,9 +282,9 @@ export const seoServicesPageContent: DedicatedServicePageContent = {
   },
   included: {
     items: [
-      "SEO blog posts—2, 4, or 6 articles/mo (Starter / Standard / Plus)",
+      "SEO blog posts",
       "Get SEO Backlinks.",
-      "Managed SEO—full ongoing program from $549/mo",
+      "Managed SEO",
       "Reports that you can actually use.",
     ],
   },
