@@ -114,27 +114,8 @@ export default function ScheduleDemoPage() {
     }
   }
 
-  const handleSubmit = async () => {
+  const handleSubmit = () => {
     if (validateForm()) {
-      try {
-        const webhookUrl = process.env.NEXT_PUBLIC_LEAD_WEBHOOK_URL || ''
-        if (webhookUrl) {
-          await fetch(webhookUrl, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              ...formData,
-              selectedDate: selectedDate ? selectedDate.toISOString() : null,
-              selectedTime,
-              timezone,
-              source: 'schedule-demo',
-              submittedAt: new Date().toISOString(),
-            }),
-          })
-        }
-      } catch (err) {
-        console.error('Webhook error:', err)
-      }
       setStep(4)
     }
   }

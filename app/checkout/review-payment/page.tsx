@@ -35,7 +35,6 @@ export default function ReviewPaymentPage() {
   const { lines, removeLine, hydrated: cartHydrated } = usePersistedCheckoutCart()
   const [formData, setFormData] = useState<ReviewFormState>(defaultForm)
   const [formHydrated, setFormHydrated] = useState(false)
-  const [promoCode, setPromoCode] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
 
   useEffect(() => {
@@ -92,7 +91,6 @@ export default function ReviewPaymentPage() {
       email: formData.email.trim(),
       phoneNumber: formData.phoneNumber.trim(),
       message: formData.message.trim() || undefined,
-      promoCode: promoCode.trim() || undefined,
       submissionDate,
       submittedAtIso,
       selectedServices: lines.map((s) => ({
@@ -123,7 +121,6 @@ export default function ReviewPaymentPage() {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             ...formData,
-            promoCode: orderData.promoCode,
             cartLines: lines.map((s) => ({
               id: s.id,
               name: s.name,
@@ -323,20 +320,6 @@ export default function ReviewPaymentPage() {
                     <p className="text-xs text-[#6B7280]">USD</p>
                   </div>
 
-                  <div className="mt-6">
-                    <label htmlFor="promoCode" className="block text-xs font-medium text-[#0B2A4A] mb-2">
-                      Promo code
-                    </label>
-                    <Input
-                      id="promoCode"
-                      type="text"
-                      value={promoCode}
-                      onChange={(e) => setPromoCode(e.target.value)}
-                      placeholder="Enter promo code"
-                      className="w-full"
-                      autoComplete="off"
-                    />
-                  </div>
 
                   <Button
                     type="submit"

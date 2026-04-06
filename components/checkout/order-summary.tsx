@@ -1,6 +1,6 @@
 'use client'
 
-import { useMemo, useState } from 'react'
+import { useMemo } from 'react'
 import { X } from 'lucide-react'
 import type { SelectedService } from './service-card'
 
@@ -15,8 +15,6 @@ function lineTotal(service: SelectedService): number {
 }
 
 export function OrderSummary({ selectedServices, onRemoveService }: OrderSummaryProps) {
-  const [promoCode, setPromoCode] = useState('')
-
   const computedTotal = useMemo(
     () => selectedServices.reduce((sum, s) => sum + lineTotal(s), 0),
     [selectedServices],
@@ -37,15 +35,6 @@ export function OrderSummary({ selectedServices, onRemoveService }: OrderSummary
         </p>
       </div>
 
-      <div className="mb-6">
-        <input
-          type="text"
-          placeholder="Enter promo code"
-          value={promoCode}
-          onChange={(e) => setPromoCode(e.target.value)}
-          className="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#1E5AA8]"
-        />
-      </div>
 
       <div className="space-y-3 mb-6 max-h-96 overflow-y-auto min-h-[4.5rem]">
         {selectedServices.length === 0 ? (
