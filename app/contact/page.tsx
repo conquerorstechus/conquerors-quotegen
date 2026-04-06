@@ -19,9 +19,24 @@ export default function ContactPage() {
     setFormData(prev => ({ ...prev, [name]: value }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission
+    try {
+      const webhookUrl = process.env.NEXT_PUBLIC_LEAD_WEBHOOK_URL || ''
+      if (webhookUrl) {
+        await fetch(webhookUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            ...formData,
+            source: 'contact-us',
+            submittedAt: new Date().toISOString(),
+          }),
+        })
+      }
+    } catch (err) {
+      console.error('Webhook error:', err)
+    }
     setSubmitted(true)
     setTimeout(() => {
       setFormData({ name: '', email: '', message: '' })
