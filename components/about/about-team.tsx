@@ -29,10 +29,12 @@ export function AboutTeam() {
 
           {/* Right - Image */}
           <div className="order-1 lg:order-2">
-            <div className="bg-gradient-to-br from-[#E8F0FB] to-[#D4E6F7] rounded-2xl aspect-square flex items-center justify-center overflow-hidden">
-              <svg className="w-48 h-48 text-[#1E5AA8] opacity-20" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-              </svg>
+            <div className="rounded-2xl overflow-hidden aspect-square">
+              <img
+                src="/about-team-results.png"
+                alt="Our team collaborating to deliver the best results"
+                className="w-full h-full object-cover"
+              />
             </div>
           </div>
         </div>
