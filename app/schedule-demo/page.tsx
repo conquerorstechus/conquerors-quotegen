@@ -22,7 +22,6 @@ export default function ScheduleDemoPage() {
     name: '',
     email: '',
     phone: '',
-    website: '',
     expectations: '',
     services: [] as string[],
   })
@@ -394,17 +393,6 @@ export default function ScheduleDemoPage() {
                         placeholder="+1 (555) 000-0000"
                       />
                       {errors.phone && <p className="text-sm text-red-600 mt-1">{errors.phone}</p>}
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-semibold text-[#0B2A4A] mb-2">Website / Social Link</label>
-                      <input
-                        type="url"
-                        value={formData.website}
-                        onChange={(e) => handleFormChange('website', e.target.value)}
-                        className="w-full border border-blue-200 rounded-lg px-4 py-2 text-[#0B2A4A] focus:outline-none focus:ring-2 focus:ring-[#1E5AA8]"
-                        placeholder="https://yoursite.com"
-                      />
                     </div>
 
                     <div>
