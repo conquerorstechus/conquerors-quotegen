@@ -113,10 +113,32 @@ export default function ScheduleDemoPage() {
     }
   }
 
-  const handleSubmit = () => {
-    if (validateForm()) {
-      setStep(4)
+  const handleSubmit = async () => {
+    if (!validateForm()) return
+    try {
+      const res = await fetch('https://n8n.srv1393511.hstgr.cloud/webhook/f5207162-9dad-4d57-b6b1-7aa616d73d01', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          message: formData.expectations,
+          services: formData.services,
+          selectedDate: selectedDate ? selectedDate.toISOString() : null,
+          selectedTime,
+          timezone,
+          source: 'schedule-demo',
+          submittedAt: new Date().toISOString(),
+        }),
+      })
+      if (!res.ok) throw new Error('Request failed')
+    } catch (err) {
+      console.error('Webhook error:', err)
+      alert('Submission failed')
+      return
     }
+    setStep(4)
   }
 
   return (
