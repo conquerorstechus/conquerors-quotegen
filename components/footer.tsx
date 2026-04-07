@@ -42,8 +42,8 @@ const supportLinks = [
 ]
 
 const socialLinks = [
-  { icon: Instagram, href: "https://www.instagram.com/conquerorstechus?igsh=MXJzNDk0eXo2NHVydA==" },
   { icon: Facebook, href: "https://www.facebook.com/profile.php?id=61583952656144" },
+  { icon: Instagram, href: "https://www.instagram.com/conquerorstechus?igsh=MXJzNDk0eXo2NHVydA==" },
   { icon: X, href: "#" },
   { icon: Linkedin, href: "#" },
   { icon: Youtube, href: "#" },
@@ -65,7 +65,6 @@ export function Footer() {
                 className="h-12 w-auto invert brightness-0"
               />
             </Link>
-            <p className="text-blue-100 text-sm mb-6">Expert social media management starts @ $99/mo</p>
             <div className="flex items-center gap-4">
               {socialLinks.map((social, index) => (
                 <Link

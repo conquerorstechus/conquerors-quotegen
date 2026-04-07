@@ -253,6 +253,25 @@ function optionLabel(config: ServiceCardConfig, option: ServiceQuantityOption) {
   return `${option.quantity} ${unit} — $${option.price}${suffix}`
 }
 
+// Maps pricing-grid IDs → canonical checkout IDs so both pages share the same cart slot
+const CANONICAL_ID_MAP: Record<string, string> = {
+  'social-media-posts': 'social-posts',
+  'blog-post': 'seo-blog',
+  'short-form-videos': 'short-form-videos',
+  'email-design': 'email-design',
+  'instagram-growth': 'instagram-growth',
+  'meta-ads': 'meta-ads',
+  'google-ads': 'google-ads',
+  'managed-seo': 'managed-seo',
+  'static-ads': 'static-ads',
+  'video-ads': 'video-ads',
+  'additional-social-channel': 'additional-social-channel',
+}
+
+function canonicalId(id: string): string {
+  return CANONICAL_ID_MAP[id] ?? id
+}
+
 function ServiceCard({
   config,
   onAddToCart,
@@ -272,7 +291,7 @@ function ServiceCard({
 
   const handleCheckout = () => {
     onAddToCart({
-      catalogId: config.id,
+      catalogId: canonicalId(config.id),
       name: config.title,
       quantity: optionLabel(config, currentOption),
       basePrice: currentOption.price,
@@ -382,6 +401,7 @@ export function ServiceCardsGrid({ activeTab = "posts", mode = "filtered" }: Ser
       basePrice: input.basePrice,
       lineQty: 1,
     })
+    router.push('/checkout')
   }
 
   return (

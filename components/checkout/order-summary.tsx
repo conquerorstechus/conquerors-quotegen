@@ -1,7 +1,8 @@
 'use client'
 
 import { useMemo } from 'react'
-import { X } from 'lucide-react'
+import { useRouter } from 'next/navigation'
+import { X, ArrowRight } from 'lucide-react'
 import type { SelectedService } from './service-card'
 
 interface OrderSummaryProps {
@@ -15,6 +16,7 @@ function lineTotal(service: SelectedService): number {
 }
 
 export function OrderSummary({ selectedServices, onRemoveService }: OrderSummaryProps) {
+  const router = useRouter()
   const computedTotal = useMemo(
     () => selectedServices.reduce((sum, s) => sum + lineTotal(s), 0),
     [selectedServices],
@@ -84,6 +86,24 @@ export function OrderSummary({ selectedServices, onRemoveService }: OrderSummary
         </div>
         <p className="text-xs text-[#6B7280] mt-1">USD</p>
       </div>
+
+      <button
+        type="button"
+        disabled={selectedServices.length === 0}
+        onClick={() => router.push('/checkout/review-payment')}
+        className={[
+          'w-full flex items-center justify-center gap-2 rounded-xl py-3 px-4 text-sm font-semibold transition-all',
+          selectedServices.length === 0
+            ? 'bg-slate-100 text-slate-400 cursor-not-allowed'
+            : 'bg-[#1E5AA8] hover:bg-[#154080] text-white shadow-sm hover:shadow-md',
+        ].join(' ')}
+      >
+        Submit Request
+        <ArrowRight className="w-4 h-4" />
+      </button>
+      {selectedServices.length === 0 && (
+        <p className="text-xs text-[#94A3B8] text-center mt-2">Add at least one service to continue</p>
+      )}
     </div>
   )
 }
