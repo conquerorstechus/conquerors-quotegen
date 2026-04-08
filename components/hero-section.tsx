@@ -219,7 +219,7 @@ export function HeroSection() {
 
             {/* Subheading and Description */}
             <p className="text-lg text-blue-100 mb-8 leading-relaxed">
-              Stop struggling with social media. Get <strong>15+ high-quality posts every month</strong> — without hiring a marketing team. We create, design, and schedule your content so your brand stays active, visible, and growing.
+              Stop struggling with social media. Get <strong>8+ high-quality posts every month</strong> — without hiring a marketing team. We create, design, and schedule your content so your brand stays active, visible, and growing.
             </p>
 
             {/* What You Get Section */}

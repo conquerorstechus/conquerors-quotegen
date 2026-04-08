@@ -229,10 +229,6 @@ export default function ScheduleDemoPage() {
                   <Star className="w-5 h-5 text-[#1E5AA8] flex-shrink-0 mt-0.5" />
                   <span className="text-[#0B2A4A]">700+ 5-star reviews</span>
                 </div>
-                <div className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-[#1E5AA8] flex-shrink-0 mt-0.5" />
-                  <span className="text-[#0B2A4A]">20,000+ clients served</span>
-                </div>
               </div>
 
               <p className="text-[#6B7280] mb-6 leading-relaxed">
