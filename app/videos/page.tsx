@@ -13,18 +13,17 @@ export default function ShortFormVideosPage() {
   return (
     <>
       <Header />
-      <main className="w-full bg-white">
-        <section className="w-full h-[80vh] flex items-center justify-center relative overflow-hidden">
+      <main className="w-full bg-white pt-24 pb-16 px-4 flex items-center justify-center">
+        <div className="w-full max-w-3xl rounded-2xl overflow-hidden shadow-2xl">
           <video
             src={videoSrc}
             autoPlay
             loop
             muted
             playsInline
-            className="absolute inset-0 w-full h-full object-cover"
+            className="w-full h-auto object-contain"
           />
-          <div className="absolute inset-0 bg-black/30 pointer-events-none" />
-        </section>
+        </div>
       </main>
       <Footer />
     </>
