@@ -156,7 +156,9 @@ export function DynamicPricingSection({
           onSelectPlan={(plan) => setTierIndex(plan.tierIndex)}
           checkoutHref={checkoutHref}
           featureIcons={FEATURE_ICONS}
+          showAddOns={activeTab === "posts"}
         />
+
       </div>
     </section>
   )

@@ -47,6 +47,24 @@ export interface SelectedService {
   lineQty?: number
 }
 
+/** Presentation-only badges keyed by service id. */
+const SERVICE_BADGES: Record<string, { label: string; className: string }> = {
+  'social-posts':      { label: 'SOCIAL MEDIA',  className: 'bg-blue-100 text-blue-700' },
+  'instagram-stories': { label: 'ADD-ON',         className: 'bg-pink-100 text-pink-700' },
+  'carousel-posts':    { label: 'ADD-ON',         className: 'bg-indigo-100 text-indigo-700' },
+  'short-form-videos': { label: 'VIDEO CONTENT',  className: 'bg-violet-100 text-violet-700' },
+  'instagram-growth':  { label: 'SOCIAL GROWTH',  className: 'bg-fuchsia-100 text-fuchsia-700' },
+  'meta-ads':          { label: 'PAID ADS',        className: 'bg-orange-100 text-orange-700' },
+  'google-ads':        { label: 'PAID ADS',        className: 'bg-orange-100 text-orange-700' },
+  'managed-seo':       { label: 'SEO',             className: 'bg-emerald-100 text-emerald-700' },
+  'static-ads':        { label: 'AD CREATIVE',     className: 'bg-rose-100 text-rose-700' },
+  'video-ads':         { label: 'AD CREATIVE',     className: 'bg-rose-100 text-rose-700' },
+  'ugc-videos':        { label: 'UGC',             className: 'bg-pink-100 text-pink-700' },
+  'email-design':      { label: 'EMAIL',           className: 'bg-purple-100 text-purple-700' },
+  'seo-blog':          { label: 'SEO',             className: 'bg-emerald-100 text-emerald-700' },
+  'seo-backlinks':     { label: 'SEO',             className: 'bg-emerald-100 text-emerald-700' },
+}
+
 /** Presentation-only icons keyed by service id (no change to service data). */
 const SERVICE_ICONS: Record<string, LucideIcon> = {
   'social-posts': ImageIcon,
@@ -125,6 +143,7 @@ export function ServiceCard({
 
   const showTierPricing = optionPrices != null && tierPrice !== null && selectedOption
   const CardIcon = SERVICE_ICONS[id] ?? FileText
+  const badge = SERVICE_BADGES[id]
   const formatOptionLabel = (option: string) => {
     if (!optionPrices || optionPrices[option] === undefined) return option
     return `${option} - $${optionPrices[option]}/mo`
@@ -142,6 +161,11 @@ export function ServiceCard({
         <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-slate-100 text-slate-600 transition-colors group-hover:bg-[#1E5AA8]/10 group-hover:text-[#1E5AA8]">
           <CardIcon className="h-5 w-5" aria-hidden />
         </div>
+        {badge && (
+          <span className={`text-[10px] font-semibold px-2 py-1 rounded ${badge.className}`}>
+            {badge.label}
+          </span>
+        )}
       </div>
 
       <h3 className="text-base font-semibold leading-snug tracking-tight text-[#0B2A4A]">

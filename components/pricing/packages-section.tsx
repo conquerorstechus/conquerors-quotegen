@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { ArrowRight, Calendar, Check, Play, type LucideIcon } from "lucide-react"
+import { ArrowRight, Calendar, Check, Layers, Play, type LucideIcon } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import { type DynamicPricingFeatureIcon, type DynamicPricingServiceContent, type DynamicPricingTier } from "@/components/pricing/dynamic-pricing-data"
@@ -20,6 +20,7 @@ type PackagesSectionProps = {
   onSelectPlan: (plan: PackagePlan) => void
   checkoutHref: string
   featureIcons: Record<DynamicPricingFeatureIcon, LucideIcon>
+  showAddOns?: boolean
 }
 
 export function PackagesSection({
@@ -29,6 +30,7 @@ export function PackagesSection({
   onSelectPlan,
   checkoutHref,
   featureIcons,
+  showAddOns = false,
 }: PackagesSectionProps) {
   const selectedPlan = plans.find((plan) => plan.id === selectedPlanId) ?? plans[plans.length - 1]
 
@@ -87,6 +89,24 @@ export function PackagesSection({
             })}
           </div>
 
+          {showAddOns && (
+            <div className="mt-5 border-t border-border pt-4">
+              <p className="text-sm font-semibold text-foreground mb-3">Add-ons</p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                <div className="flex items-center justify-between gap-3 rounded-xl border border-border bg-background px-3 py-2.5 hover:border-[#1E5AA8]/40 transition-colors">
+                  <div className="flex items-center gap-2">
+                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-indigo-50 text-indigo-600">
+                      <Layers className="h-3.5 w-3.5" />
+                    </div>
+                    <span className="text-sm font-medium text-foreground">Carousel Posts</span>
+                  </div>
+                  <span className="shrink-0 rounded-full border border-border bg-muted px-2.5 py-0.5 text-xs text-muted-foreground">
+                    $5 extra per post
+                  </span>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
 
         <aside className="lg:col-span-3">

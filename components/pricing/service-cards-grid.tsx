@@ -129,6 +129,24 @@ const serviceCardsData: ServiceCardConfig[] = [
     category: "emails",
   },
   {
+    id: "carousel-posts",
+    title: "Carousel Posts",
+    icon: <Mail className="w-5 h-5" />,
+    description: "Additional carousel post—multi-slide creative for social engagement.",
+    badge: "CAROUSEL POSTS",
+    badge: "CAROUSEL  POST",
+    badgeColor: "bg-purple-100 text-purple-700",
+    basePrice: 10,
+    displayPriceRange: "$10–$50",
+    quantityOptions: [
+      { quantity: 2, price: 10},
+      { quantity: 5, price: 25 },
+      { quantity: 10, price: 50 },
+    ],
+    link: "/services/carousel-posts",
+    category: "posts",
+  },
+  {
     id: "instagram-growth",
     title: "Instagram Growth",
     icon: <TrendingUp className="w-5 h-5" />,
@@ -179,6 +197,7 @@ const serviceCardsData: ServiceCardConfig[] = [
     link: "/services/google-ads",
     category: "google-ads",
   },
+  
   {
     id: "managed-seo",
     title: "SEO",
