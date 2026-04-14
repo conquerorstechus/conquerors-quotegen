@@ -136,7 +136,7 @@ export default function ContactPage() {
                 <div>
                   <h3 className="font-semibold mb-1">Office</h3>
                   <p className="text-gray-600">19046 Bruce B. Downs Blvd. #1376, Tampa, Florida 33647,</p>
-                  <p className="text-gray-600">United States., Tampa, FL, United States, 33647</p>
+                  <p className="text-gray-600">United States.</p>
                 </div>
               </div>
             </div>

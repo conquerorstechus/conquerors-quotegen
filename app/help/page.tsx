@@ -11,7 +11,7 @@ export default function HelpCenter() {
   const faqs = [
     {
       question: "What services do you offer?",
-      answer: "We offer comprehensive digital marketing services including static ads, video ads, Meta Ads management, Google Ads management, SEO, short-form videos, UGC videos, Instagram growth, and email design."
+      answer: "We offer comprehensive digital marketing services including Meta Ads management, Google Ads management, SEO, Instagram growth, and email design."
     },
     {
       question: "How much does your service cost?",
@@ -31,7 +31,7 @@ export default function HelpCenter() {
     },
     {
       question: "What's your client satisfaction rate?",
-      answer: "We maintain a 99% client satisfaction rate with over 12,000+ businesses trusting us. We're committed to delivering exceptional results."
+      answer: "We maintain a 99% client satisfaction rate. We're committed to delivering exceptional results."
     },
     {
       question: "How do I get started?",
