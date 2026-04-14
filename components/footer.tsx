@@ -12,7 +12,6 @@ const servicesGroups = [
   {
     heading: "Social Media",
     items: [
-      { label: "Social Media Posts", href: "/services/posts", icon: Video },
       { label: "Instagram Growth", href: "/instagram-growth", icon: TrendingUp },
     ],
   },
