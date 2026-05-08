@@ -120,6 +120,7 @@ export default function ReviewPaymentPage() {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
+            formType: 'qoutegen-backend-pricing',
             ...formData,
             cartLines: lines.map((s) => ({
               id: s.id,

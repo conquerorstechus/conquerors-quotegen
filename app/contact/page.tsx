@@ -28,6 +28,7 @@ export default function ContactPage() {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
+            formType: 'qoutegen-backend-contact',
             name: formData.name,
             email: formData.email,
             message: formData.message,
