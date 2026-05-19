@@ -64,13 +64,13 @@ export function ExamplesSection() {
                   <div className="w-24 h-24 rounded-full flex items-center justify-center">
                     <Image
                       src="/logo-conquerors-dark.png"
-                      alt="Conquerors"
+                      alt="Covenant Soft"
                       width={60}
                       height={60}
                       className="object-contain"
                     />
                   </div>
-                  <span className="font-semibold text-[#0B2A4A] text-sm">Conquerors</span>
+                  <span className="font-semibold text-[#0B2A4A] text-sm">Covenant Soft</span>
                 </div>
                 <button className="text-[#6B7280] hover:text-[#0B2A4A]">
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">

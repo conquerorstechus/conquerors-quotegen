@@ -23,13 +23,13 @@ export const portfolioExamples: PortfolioExample[] = [
   },
   {
     id: 2,
-    title: "Conquerors - Slow Site Performance Flyer",
+    title: "Covenant Soft - Slow Site Performance Flyer",
     description: "Professional marketing flyer addressing website performance",
     image: "/examples/conquerors-slow-site-flyer.jpg",
     category: "Flyers",
     businessCategory: "SaaS & Tech",
     caption:
-      "Losing visitors because your site loads too slowly? At Conquerors Tech, we build technology that works for you. Our smart web solutions are engineered to improve efficiency through task automation, increase online visibility with SEO optimization, generate qualified leads through targeted marketing, and maximize ROI with data-driven analytics.\n\nWhether you're a startup or an established business, we help you grow smarter by ensuring performance issues never cost you customers again.",
+      "Losing visitors because your site loads too slowly? At Covenant Soft Tech, we build technology that works for you. Our smart web solutions are engineered to improve efficiency through task automation, increase online visibility with SEO optimization, generate qualified leads through targeted marketing, and maximize ROI with data-driven analytics.\n\nWhether you're a startup or an established business, we help you grow smarter by ensuring performance issues never cost you customers again.",
   },
   {
     id: 3,
@@ -49,7 +49,7 @@ export const portfolioExamples: PortfolioExample[] = [
     category: "Posts",
     businessCategory: "SaaS & Tech",
     caption:
-      "Build Faster. Automate Smarter. Grow Bigger. Conquerors Tech offers comprehensive digital solutions including mobile apps for iOS and Android, superfast SEO websites, AI automation systems, and integrated social, email, and Google/Meta ads management. Our expertise spans full-stack development ensuring your business stays ahead of the competition.",
+      "Build Faster. Automate Smarter. Grow Bigger. Covenant Soft Tech offers comprehensive digital solutions including mobile apps for iOS and Android, superfast SEO websites, AI automation systems, and integrated social, email, and Google/Meta ads management. Our expertise spans full-stack development ensuring your business stays ahead of the competition.",
   },
   {
     id: 5,
@@ -59,17 +59,17 @@ export const portfolioExamples: PortfolioExample[] = [
     category: "Posts",
     businessCategory: "Professional Services",
     caption:
-      "Your Complete Digital Growth Partner. At Conquerors Tech, we don't just build technology—we build growth engines. Our services include mobile apps built for performance, SEO-optimized websites for higher visibility, AI automation to save time and costs, and comprehensive social, email, Google & Meta ads management.\n\nLet's grow your business the smart way with integrated solutions that deliver measurable results.",
+      "Your Complete Digital Growth Partner. At Covenant Soft Tech, we don't just build technology—we build growth engines. Our services include mobile apps built for performance, SEO-optimized websites for higher visibility, AI automation to save time and costs, and comprehensive social, email, Google & Meta ads management.\n\nLet's grow your business the smart way with integrated solutions that deliver measurable results.",
   },
   {
     id: 6,
-    title: "Conquerors - Turn Digital Ideas Into Business Results",
+    title: "Covenant Soft - Turn Digital Ideas Into Business Results",
     description: "Professional flyer showcasing digital transformation services",
     image: "/examples/conquerors-turn-digital-ideas.jpg",
     category: "Flyers",
     businessCategory: "SaaS & Tech",
     caption:
-      "Turn Digital Ideas into Business Results. Conquerors Tech transforms your vision into measurable growth. Our four core competencies deliver enterprise-level solutions: Smart Automation reduces manual work through AI-powered systems; Seamless Mobile Experiences create user-friendly apps for iOS and Android; High-Performance Websites rank in search results with SEO-optimized, fast-loading design; and Ads That Convert maximize ROI through performance-based digital campaigns.\n\nLet's turn your vision into measurable growth.",
+      "Turn Digital Ideas into Business Results. Covenant Soft Tech transforms your vision into measurable growth. Our four core competencies deliver enterprise-level solutions: Smart Automation reduces manual work through AI-powered systems; Seamless Mobile Experiences create user-friendly apps for iOS and Android; High-Performance Websites rank in search results with SEO-optimized, fast-loading design; and Ads That Convert maximize ROI through performance-based digital campaigns.\n\nLet's turn your vision into measurable growth.",
   },
   {
     id: 7,
@@ -103,7 +103,7 @@ export const portfolioExamples: PortfolioExample[] = [
   },
   {
     id: 10,
-    title: "Conquerors - Turn Traffic Into Revenue",
+    title: "Covenant Soft - Turn Traffic Into Revenue",
     description: "Digital systems and mobile app flyer",
     image: "/examples/conquerors-traffic-revenue.jpg",
     category: "Flyers",
@@ -113,7 +113,7 @@ export const portfolioExamples: PortfolioExample[] = [
   },
   {
     id: 11,
-    title: "Conquerors - Website Should Bring You Leads",
+    title: "Covenant Soft - Website Should Bring You Leads",
     description: "Web design and conversion optimization flyer",
     image: "/examples/conquerors-website-leads.jpg",
     category: "Flyers",

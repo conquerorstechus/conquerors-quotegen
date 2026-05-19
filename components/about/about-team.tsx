@@ -7,7 +7,7 @@ export function AboutTeam() {
           <div className="space-y-6 order-2 lg:order-1">
             <h2 className="text-4xl font-bold text-[#0B2A4A]">Our team always gets the best results</h2>
             <p className="text-lg text-[#6B7280] leading-relaxed">
-              Conquerors Digital is revolutionizing content strategy by combining cutting-edge technology with top content experts and a seamless, fully-managed process — delivering consistent results for businesses across every industry.
+              Covenant Soft Digital is revolutionizing content strategy by combining cutting-edge technology with top content experts and a seamless, fully-managed process — delivering consistent results for businesses across every industry.
             </p>
             <p className="text-lg text-[#6B7280] leading-relaxed">
               We are dedicated to providing high-quality services at an affordable cost, starting at just $99/month. Whether you're a startup, a growing business, or an established enterprise, we have a solution tailored to your needs.

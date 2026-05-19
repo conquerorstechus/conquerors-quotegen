@@ -2,8 +2,7 @@
 
 import type React from "react"
 import { useEffect, useState } from "react"
-import Link from "next/link"
-import { usePathname, useRouter } from "next/navigation"
+import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import {
   ArrowRight,
@@ -16,7 +15,6 @@ import {
   Search,
   TrendingUp,
   FileText,
-  Info,
   ChevronDown,
   Share2,
   ShoppingCart,
@@ -364,19 +362,12 @@ function ServiceCard({
       <Button
         type="button"
         onClick={handleCheckout}
-        className="w-full mb-3 bg-[#3B82F6] hover:bg-[#2563EB] text-white font-medium py-2.5 rounded-lg"
+        className="w-full bg-[#3B82F6] hover:bg-[#2563EB] text-white font-medium py-2.5 rounded-lg"
       >
         Checkout
         <ArrowRight className="w-4 h-4 ml-2" />
       </Button>
 
-      <Link
-        href={config.link}
-        className="flex items-center justify-center gap-1 text-sm text-[#3B82F6] hover:text-[#2563EB] transition-colors"
-      >
-        Learn more
-        <Info className="w-3.5 h-3.5" />
-      </Link>
     </div>
   )
 }
@@ -392,16 +383,11 @@ const ALL_SERVICES_DESCRIPTION =
 
 export function ServiceCardsGrid({ activeTab = "posts", mode = "filtered" }: ServiceCardsGridProps) {
   const router = useRouter()
-  const pathname = usePathname()
   const { lines, addOrMergeLine } = usePersistedCheckoutCart()
   const [cartBounce, setCartBounce] = useState(false)
-  const hideOnPricingAll = mode === "all" && pathname === "/pricing"
-  /* Temporarily disabled for future use */
-  const hiddenOnPricingAllIds = new Set(["static-ads", "video-ads"])
-
   const filteredCards =
     mode === "all"
-      ? serviceCardsData.filter((card) => !hideOnPricingAll || !hiddenOnPricingAllIds.has(card.id))
+      ? serviceCardsData
       : serviceCardsData.filter((card) => card.category === activeTab)
   const selectedCount = lines.reduce((sum, line) => sum + (line.lineQty ?? 1), 0)
 

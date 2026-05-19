@@ -84,7 +84,7 @@ export function FlyerModal({ isOpen, onClose, flyer }: FlyerModalProps) {
                 <div className="flex items-center gap-3">
                   <Image
                     src="/logo-white.png"
-                    alt="Conquerors Logo"
+                    alt="Covenant Soft Logo"
                     width={40}
                     height={40}
                     className="object-contain"

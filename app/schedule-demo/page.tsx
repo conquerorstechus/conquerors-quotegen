@@ -151,7 +151,7 @@ export default function ScheduleDemoPage() {
             <Link href="/" className="flex items-center gap-2">
               <Image
                 src="/logo-dark.png"
-                alt="Conquerors Software Technologies"
+                alt="Covenant Soft Software Technologies"
                 width={280}
                 height={80}
                 className="h-16 w-auto"
@@ -217,7 +217,7 @@ export default function ScheduleDemoPage() {
             {/* Left Card - Info */}
             <div className="bg-white border border-blue-100 rounded-2xl p-8 h-fit">
               <div className="mb-6">
-                <h2 className="text-2xl font-bold text-[#0B2A4A] mb-2">Conquerors Intro</h2>
+                <h2 className="text-2xl font-bold text-[#0B2A4A] mb-2">Covenant Soft Intro</h2>
                 <p className="text-[#6B7280]">20 minutes</p>
               </div>
 
@@ -233,7 +233,7 @@ export default function ScheduleDemoPage() {
               </div>
 
               <p className="text-[#6B7280] mb-6 leading-relaxed">
-                In this 20-minute introductory call, you'll learn how Conquerors Digital helps businesses like yours scale their social media presence with professional content from our top 1% creative talent. We'll discuss your specific needs and show you how our affordable, flexible plans work.
+                In this 20-minute introductory call, you'll learn how Covenant Soft Digital helps businesses like yours scale their social media presence with professional content from our top 1% creative talent. We'll discuss your specific needs and show you how our affordable, flexible plans work.
               </p>
 
               <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">

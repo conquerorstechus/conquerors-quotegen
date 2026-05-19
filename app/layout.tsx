@@ -7,7 +7,7 @@ import "./globals.css"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Conquerors Digital | Expert Social Media Management from $99/mo",
+  title: "Covenant Soft Digital | Expert Social Media Management from $99/mo",
   description:
     "Premium social media management, content creation, and digital marketing services. Trusted By Growing Brands & Businesses. Start from only $99/month.",
   generator: "v0.app",

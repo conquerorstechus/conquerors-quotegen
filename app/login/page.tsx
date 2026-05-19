@@ -56,7 +56,7 @@ export default function LoginPage() {
             <Link href="/" className="flex items-center gap-2">
               <Image
                 src="/logo-dark.png"
-                alt="Conquerors Software Technologies"
+                alt="Covenant Soft Software Technologies"
                 width={280}
                 height={80}
                 className="h-16 w-auto"
@@ -80,7 +80,7 @@ export default function LoginPage() {
           <div className="bg-white border border-blue-100 rounded-2xl p-8 shadow-sm">
             <div className="mb-8">
               <h1 className="text-3xl font-bold text-[#0B2A4A] mb-2">Welcome Back</h1>
-              <p className="text-[#6B7280]">Sign in to your Conquerors Digital account</p>
+              <p className="text-[#6B7280]">Sign in to your Covenant Soft Digital account</p>
             </div>
 
             {/* Login Form */}

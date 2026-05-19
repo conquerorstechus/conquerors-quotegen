@@ -58,7 +58,7 @@ export function Footer() {
             <Link href="/" className="flex items-center gap-2 mb-4">
               <Image
                 src="/logo-dark.png"
-                alt="Conquerors Software Technologies"
+                alt="Covenant Soft Software Technologies"
                 width={200}
                 height={60}
                 className="h-12 w-auto invert brightness-0"
@@ -166,7 +166,7 @@ export function Footer() {
         {/* Bottom */}
         <div className="pt-8 border-t border-blue-400/20">
           <p className="text-center text-blue-100 text-sm">
-            © {new Date().getFullYear()} Conquerors Digital. All rights reserved.
+            © {new Date().getFullYear()} Covenant Soft Digital. All rights reserved.
           </p>
         </div>
       </div>

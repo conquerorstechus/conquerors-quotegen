@@ -6,7 +6,7 @@ import { ChevronLeft, ChevronRight, Award, Users, Zap, Target, Lightbulb, Trendi
 const testimonials = [
   {
     id: 1,
-    quote: "Conquerors Digital has transformed our business operations with their innovative solutions. The team's expertise and dedication to quality is unmatched. Highly recommended for any technology needs.",
+    quote: "Covenant Soft Digital has transformed our business operations with their innovative solutions. The team's expertise and dedication to quality is unmatched. Highly recommended for any technology needs.",
     name: "Sandy",
     title: "Tech Lead",
     company: "TechFlow Solutions",
@@ -15,7 +15,7 @@ const testimonials = [
   },
   {
     id: 2,
-    quote: "Working with Conquerors has been a game-changer for our startup. Their custom software development services helped us scale rapidly while maintaining quality and performance.",
+    quote: "Working with Covenant Soft has been a game-changer for our startup. Their custom software development services helped us scale rapidly while maintaining quality and performance.",
     name: "Sam",
     title: "CEO",
     company: "Startup Solutions",
@@ -24,7 +24,7 @@ const testimonials = [
   },
   {
     id: 3,
-    quote: "The professionalism and attention to detail from the Conquerors team is exceptional. They delivered our project on time and exceeded all expectations. A true partner in success.",
+    quote: "The professionalism and attention to detail from the Covenant Soft team is exceptional. They delivered our project on time and exceeded all expectations. A true partner in success.",
     name: "Sai",
     title: "Marketing Head",
     company: "Digital Innovations Inc",
@@ -33,7 +33,7 @@ const testimonials = [
   },
   {
     id: 4,
-    quote: "Outstanding service and support from Conquerors Digital. They understood our vision and brought it to life with precision. Would definitely work with them again.",
+    quote: "Outstanding service and support from Covenant Soft Digital. They understood our vision and brought it to life with precision. Would definitely work with them again.",
     name: "Michael",
     title: "Director of Operations",
     company: "Global Tech Partners",
@@ -42,7 +42,7 @@ const testimonials = [
   },
   {
     id: 5,
-    quote: "The team at Conquerors Digital is highly skilled and professional. They provided solutions that were not just effective but also cost-efficient. Highly impressed with the results.",
+    quote: "The team at Covenant Soft Digital is highly skilled and professional. They provided solutions that were not just effective but also cost-efficient. Highly impressed with the results.",
     name: "Faisal Harbi Sheikh",
     title: "Product Manager",
     company: "Innovation Labs",
@@ -51,7 +51,7 @@ const testimonials = [
   },
   {
     id: 6,
-    quote: "Conquerors Digital's approach to problem-solving is refreshing. They took the time to understand our needs and delivered a solution that perfectly fit our requirements.",
+    quote: "Covenant Soft Digital's approach to problem-solving is refreshing. They took the time to understand our needs and delivered a solution that perfectly fit our requirements.",
     name: "Rafael Oliveira",
     title: "VP Technology",
     company: "Enterprise Solutions",
@@ -60,7 +60,7 @@ const testimonials = [
   },
   {
     id: 7,
-    quote: "Working with the Conquerors team has been one of the best decisions for our company. Their commitment to excellence and innovation is truly commendable.",
+    quote: "Working with the Covenant Soft team has been one of the best decisions for our company. Their commitment to excellence and innovation is truly commendable.",
     name: "Beauty",
     title: "Chief Strategy Officer",
     company: "Future Ventures",

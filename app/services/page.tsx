@@ -4,7 +4,6 @@ import Link from 'next/link'
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
 import {
-  ArrowRight,
   Mail,
   Search,
   Target,
@@ -104,10 +103,6 @@ function ExploreServiceCard({ service }: { service: ExploreService }) {
           </div>
         </div>
 
-        <div className="mt-5 flex items-center gap-2 text-[#1E5AA8] font-semibold group-hover:text-[#154080]">
-          <span>Learn more</span>
-          <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-        </div>
       </div>
     </Link>
   )

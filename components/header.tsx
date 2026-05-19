@@ -51,7 +51,7 @@ export  function Header() {
           <Link href="/" className="flex items-center gap-2 py-2">
             <Image
               src="/logo-dark.png"
-              alt="Conquerors Software Technologies"
+              alt="Covenant Soft Software Technologies"
               width={280}
               height={80}
               className="h-16 w-auto"

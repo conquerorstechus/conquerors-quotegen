@@ -33,13 +33,13 @@ function HeroOurWorkCardDesktop({ example }: { example: PortfolioExample }) {
           <div className="w-14 h-14 rounded-full flex items-center justify-center flex-shrink-0">
             <Image
               src="/logo-conquerors-dark.png"
-              alt="Conquerors"
+              alt="Covenant Soft"
               width={44}
               height={44}
               className="object-contain"
             />
           </div>
-          <span className="font-semibold text-[#0B2A4A] text-xs truncate">Conquerors</span>
+          <span className="font-semibold text-[#0B2A4A] text-xs truncate">Covenant Soft</span>
         </div>
         <span className="text-[#6B7280] flex-shrink-0">
           <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden>
@@ -92,13 +92,13 @@ function HeroOurWorkCardMobile({ example }: { example: PortfolioExample }) {
           <div className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0">
             <Image
               src="/logo-conquerors-dark.png"
-              alt="Conquerors"
+              alt="Covenant Soft"
               width={32}
               height={32}
               className="object-contain"
             />
           </div>
-          <span className="font-semibold text-[#0B2A4A] text-[10px] truncate">Conquerors</span>
+          <span className="font-semibold text-[#0B2A4A] text-[10px] truncate">Covenant Soft</span>
         </div>
         <span className="text-[#6B7280] flex-shrink-0">
           <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden>
