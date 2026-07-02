@@ -7,8 +7,8 @@ import { AboutValues } from '@/components/about/about-values'
 import { AboutCta } from '@/components/about/about-cta'
 
 export const metadata = {
-  title: 'About Covenant Soft Digital | Affordable Social Media Management',
-  description: 'Learn about Covenant Soft Digital, our mission, team, and values. We make professional social media management affordable for all businesses.',
+  title: 'About Cornerstone Digital Technologies | Affordable Social Media Management',
+  description: 'Learn about Cornerstone Digital Technologies, our mission, team, and values. We make professional social media management affordable for all businesses.',
 }
 
 export default function AboutPage() {

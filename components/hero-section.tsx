@@ -28,18 +28,15 @@ type MarqueeSpeed = "normal" | "slow" | "slower"
 function HeroOurWorkCardDesktop({ example }: { example: PortfolioExample }) {
   return (
     <div className="bg-white rounded-2xl border border-blue-100 overflow-hidden shadow-lg hover:shadow-xl transition-shadow hover:border-primary/50 flex-shrink-0 w-72 cursor-default">
-      <div className="px-3 py-3 border-b border-blue-100 flex items-center justify-between">
-        <div className="flex items-center gap-2 min-w-0">
-          <div className="w-14 h-14 rounded-full flex items-center justify-center flex-shrink-0">
-            <Image
-              src="/logo-conquerors-dark.png"
-              alt="Covenant Soft"
-              width={44}
-              height={44}
-              className="object-contain"
-            />
-          </div>
-          <span className="font-semibold text-[#0B2A4A] text-xs truncate">Covenant Soft</span>
+      <div className="px-3 py-3 border-b border-blue-100 flex items-center justify-between gap-2">
+        <div className="flex items-center min-w-0 flex-1">
+          <Image
+            src="/logo-cornerstone.png"
+            alt="Cornerstone Digital Technologies"
+            width={860}
+            height={290}
+            className="h-7 w-auto max-w-full object-contain object-left"
+          />
         </div>
         <span className="text-[#6B7280] flex-shrink-0">
           <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden>
@@ -87,18 +84,15 @@ function HeroOurWorkCardDesktop({ example }: { example: PortfolioExample }) {
 function HeroOurWorkCardMobile({ example }: { example: PortfolioExample }) {
   return (
     <div className="bg-white rounded-xl border border-blue-100 overflow-hidden shadow-md hover:shadow-lg transition-shadow hover:border-primary/50 flex-shrink-0 w-full cursor-default">
-      <div className="px-2 py-2 border-b border-blue-100 flex items-center justify-between">
-        <div className="flex items-center gap-1.5 min-w-0">
-          <div className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0">
-            <Image
-              src="/logo-conquerors-dark.png"
-              alt="Covenant Soft"
-              width={32}
-              height={32}
-              className="object-contain"
-            />
-          </div>
-          <span className="font-semibold text-[#0B2A4A] text-[10px] truncate">Covenant Soft</span>
+      <div className="px-2 py-2 border-b border-blue-100 flex items-center justify-between gap-1.5">
+        <div className="flex items-center min-w-0 flex-1">
+          <Image
+            src="/logo-cornerstone.png"
+            alt="Cornerstone Digital Technologies"
+            width={860}
+            height={290}
+            className="h-6 w-auto max-w-full object-contain object-left"
+          />
         </div>
         <span className="text-[#6B7280] flex-shrink-0">
           <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden>

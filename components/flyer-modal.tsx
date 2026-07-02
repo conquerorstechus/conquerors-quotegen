@@ -50,7 +50,7 @@ export function FlyerModal({ isOpen, onClose, flyer }: FlyerModalProps) {
       {/* Modal */}
       <div className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none">
         <div
-          className="bg-white rounded-2xl max-w-5xl w-full max-h-[90vh] overflow-y-auto pointer-events-auto animate-in fade-in zoom-in duration-300"
+          className="relative bg-white rounded-2xl max-w-5xl w-full max-h-[90vh] overflow-y-auto pointer-events-auto animate-in fade-in zoom-in duration-300"
           onClick={(e) => e.stopPropagation()}
         >
           {/* Close Button */}
@@ -63,31 +63,29 @@ export function FlyerModal({ isOpen, onClose, flyer }: FlyerModalProps) {
           </button>
 
           {/* Content Container */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 p-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 p-8 lg:items-start">
             {/* Left Side - Image */}
-            <div className="flex items-center justify-center bg-gray-50 rounded-xl overflow-hidden min-h-96">
-              <div className="relative w-full h-96 lg:h-full">
-                <Image
-                  src={flyer.image}
-                  alt={flyer.title}
-                  fill
-                  className="object-cover"
-                  quality={95}
-                />
-              </div>
+            <div className="bg-gray-50 rounded-xl p-4 flex items-start justify-center">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={flyer.image}
+                alt={flyer.title}
+                className="max-w-full w-auto h-auto object-contain"
+              />
             </div>
 
             {/* Right Side - Content */}
             <div className="flex flex-col justify-start space-y-6">
               {/* Header */}
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
+              <div className="flex items-center justify-between gap-4">
+                <div className="flex items-center min-w-0 flex-1">
                   <Image
-                    src="/logo-white.png"
-                    alt="Covenant Soft Logo"
-                    width={40}
-                    height={40}
-                    className="object-contain"
+                    src="/logo-cornerstone.png"
+                    alt="Cornerstone Digital Technologies"
+                    width={860}
+                    height={290}
+                    className="h-12 sm:h-14 w-auto max-w-full object-contain object-left"
+                    priority
                   />
                 </div>
                 <Link href="/schedule-demo">

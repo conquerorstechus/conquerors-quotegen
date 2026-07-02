@@ -16,7 +16,7 @@ export default function PrivacyPolicy() {
           <section>
             <h2 className="text-2xl font-bold mb-4">1. Introduction</h2>
             <p className="text-gray-700">
-              At Covenant Soft Digital ({"\"Covenant Soft,\" \"we,\" \"us,\""} or {"\"our\""}) we respect your privacy and are committed to protecting it through compliance with this policy. This policy describes the types of information we collect from you and how we use it.
+              At Cornerstone Digital Technologies ({"\"Cornerstone Digital Technologies,\" \"we,\" \"us,\""} or {"\"our\""}) we respect your privacy and are committed to protecting it through compliance with this policy. This policy describes the types of information we collect from you and how we use it.
             </p>
           </section>
 

@@ -57,7 +57,7 @@ export const EXPLORE_SERVICE_LINKS: { label: string; href: string; category: str
 
 export const staticAdsPageContent: DedicatedServicePageContent = {
   path: "/static-ads",
-  metaTitle: "Static Ads — 5 Creatives/Month from $149 | Covenant Soft",
+  metaTitle: "Static Ads — 5 Creatives/Month from $149 | Cornerstone Digital Technologies",
   metaDescription:
     "Performance static ad creatives each month: concepts, design, and conversion copy for Meta, TikTok, and display placements.",
   hero: {
@@ -109,7 +109,7 @@ export const staticAdsPageContent: DedicatedServicePageContent = {
 
 export const videoAdsPageContent: DedicatedServicePageContent = {
   path: "/video-ads",
-  metaTitle: "Video Ads — 2 Ads/Month from $149 | Covenant Soft",
+  metaTitle: "Video Ads — 2 Ads/Month from $149 | Cornerstone Digital Technologies",
   metaDescription:
     "Paid social video ads with scripting, editing, and CTA copy—ready for Meta, TikTok, and YouTube campaigns.",
   hero: {
@@ -160,7 +160,7 @@ export const videoAdsPageContent: DedicatedServicePageContent = {
 
 export const metaAdsPageContent: DedicatedServicePageContent = {
   path: "/meta-ads",
-  metaTitle: "Meta Ads Management from $549/mo | Covenant Soft",
+  metaTitle: "Meta Ads Management from $549/mo | Cornerstone Digital Technologies",
   metaDescription:
     "Facebook and Instagram campaign management: structure, testing, optimization, and clear reporting.",
   hero: {
@@ -211,7 +211,7 @@ export const metaAdsPageContent: DedicatedServicePageContent = {
 
 export const googleAdsPageContent: DedicatedServicePageContent = {
   path: "/google-ads",
-  metaTitle: "Google Ads Management from $549/mo | Covenant Soft",
+  metaTitle: "Google Ads Management from $549/mo | Cornerstone Digital Technologies",
   metaDescription:
     "Search and performance campaigns on Google Ads—structure, keywords, bidding, and ongoing improvement.",
   hero: {
@@ -262,7 +262,7 @@ export const googleAdsPageContent: DedicatedServicePageContent = {
 
 export const seoServicesPageContent: DedicatedServicePageContent = {
   path: "/seo",
-  metaTitle: "SEO Services — Content, Links & SEO | Covenant Soft",
+  metaTitle: "SEO Services — Content, Links & SEO | Cornerstone Digital Technologies",
   metaDescription:
     "SEO blog posts, authoritative backlinks, and full SEO to grow organic visibility.",
   hero: {
@@ -313,7 +313,7 @@ export const seoServicesPageContent: DedicatedServicePageContent = {
 
 export const shortFormVideosPageContent: DedicatedServicePageContent = {
   path: "/videos",
-  metaTitle: "Videos — 4–8/mo from $149 | Covenant Soft",
+  metaTitle: "Videos — 4–8/mo from $149 | Cornerstone Digital Technologies",
   metaDescription:
     "15–60 second videos for TikTok, Instagram Reels, and YouTube Shorts—Starter through Plus tiers, on-brand.",
   hero: {
@@ -363,7 +363,7 @@ export const shortFormVideosPageContent: DedicatedServicePageContent = {
 
 export const instagramGrowthPageContent: DedicatedServicePageContent = {
   path: "/instagram-growth",
-  metaTitle: "Instagram Growth from $179/mo | Covenant Soft",
+  metaTitle: "Instagram Growth from $179/mo | Cornerstone Digital Technologies",
   metaDescription:
     "Starter, Standard, and Plus growth programs—ethical, engagement-led strategies without bots or risky automation.",
   hero: {
@@ -413,7 +413,7 @@ export const instagramGrowthPageContent: DedicatedServicePageContent = {
 
 export const emailDesignPageContent: DedicatedServicePageContent = {
   path: "/email-design",
-  metaTitle: "Email Design — 2–6 Custom Emails/mo from $199 | Covenant Soft",
+  metaTitle: "Email Design — 2–6 Custom Emails/mo from $199 | Cornerstone Digital Technologies",
   metaDescription:
     "On-brand, responsive email design and copy—Starter through Plus tiers, ready for your ESP and campaigns.",
   hero: {

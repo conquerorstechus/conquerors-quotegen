@@ -59,18 +59,15 @@ export function ExamplesSection() {
               onClick={() => setSelectedFlyerId(example.id)}
             >
               {/* Card Header with Logo */}
-              <div className="px-4 py-4 border-b border-blue-100 flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <div className="w-24 h-24 rounded-full flex items-center justify-center">
-                    <Image
-                      src="/logo-conquerors-dark.png"
-                      alt="Covenant Soft"
-                      width={60}
-                      height={60}
-                      className="object-contain"
-                    />
-                  </div>
-                  <span className="font-semibold text-[#0B2A4A] text-sm">Covenant Soft</span>
+              <div className="px-4 py-3 border-b border-blue-100 flex items-center justify-between gap-2">
+                <div className="flex items-center min-w-0 flex-1">
+                  <Image
+                    src="/logo-cornerstone.png"
+                    alt="Cornerstone Digital Technologies"
+                    width={860}
+                    height={290}
+                    className="h-8 w-auto max-w-full object-contain object-left"
+                  />
                 </div>
                 <button className="text-[#6B7280] hover:text-[#0B2A4A]">
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">

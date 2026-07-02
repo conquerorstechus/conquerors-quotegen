@@ -166,7 +166,7 @@ export function Footer() {
         {/* Bottom */}
         <div className="pt-8 border-t border-blue-400/20">
           <p className="text-center text-blue-100 text-sm">
-            © {new Date().getFullYear()} Covenant Soft Digital. All rights reserved.
+            © {new Date().getFullYear()} Cornerstone Digital Technologies. All rights reserved.
           </p>
         </div>
       </div>
