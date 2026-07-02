@@ -50,21 +50,21 @@ const socialLinks = [
 
 export function Footer() {
   return (
-    <footer id="footer" className="bg-gradient-to-r from-[#0B2A4A] to-[#1E5AA8] py-16 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
+    <footer id="footer" className="bg-gradient-to-r from-[#0B2A4A] to-[#1E5AA8] py-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
           {/* Brand */}
-          <div>
-            <Link href="/" className="flex items-center gap-2 mb-4">
+          <div className="flex flex-col items-start">
+            <Link href="/" className="inline-flex py-2">
               <Image
-                src="/logo-dark.png"
-                alt="Covenant Soft Software Technologies"
-                width={200}
-                height={60}
-                className="h-12 w-auto invert brightness-0"
+                src="/logo-cornerstone-white.png"
+                alt="Cornerstone Digital Technologies"
+                width={860}
+                height={290}
+                className="h-28 sm:h-32 w-auto"
               />
             </Link>
-            <div className="flex items-center gap-4">
+            <div className="mt-4 flex items-center gap-4">
               {socialLinks.map((social, index) => (
                 <Link
                   key={index}
@@ -80,7 +80,7 @@ export function Footer() {
           </div>
 
           {/* Company */}
-          <div>
+          <div className="md:pl-10 lg:pl-14">
             <h4 className="text-white font-semibold mb-4">Company</h4>
             <ul className="space-y-3">
               {companyLinks.map((item) => (

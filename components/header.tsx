@@ -46,15 +46,15 @@ export  function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-blue-100 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-24">
+        <div className="flex items-center justify-between h-32">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 py-2">
             <Image
-              src="/logo-dark.png"
-              alt="Covenant Soft Software Technologies"
-              width={280}
-              height={80}
-              className="h-16 w-auto"
+              src="/logo-cornerstone.png"
+              alt="Cornerstone Digital Technologies"
+              width={860}
+              height={290}
+              className="h-24 sm:h-28 w-auto"
               priority
             />
           </Link>
