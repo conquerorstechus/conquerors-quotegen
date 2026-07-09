@@ -13,10 +13,10 @@ export default function ScheduleDemoPage() {
           <div className="flex items-center justify-between h-24">
             <Link href="/" className="flex items-center gap-2">
               <Image
-                src="/logo-dark.png"
+                src="/logo-cornerstone.png"
                 alt="Cornerstone Digital Technologies"
-                width={280}
-                height={80}
+                width={860}
+                height={290}
                 className="h-16 w-auto"
                 priority
               />
