@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
+import { SCHEDULE_APPOINTMENT_URL } from '@/lib/utils'
 import { ArrowRight, BadgeCheck, CalendarCheck, CopyCheck, FileSearch, LayoutGrid, Paintbrush } from 'lucide-react'
 
 const STATIC_AD_QUANTITY_OPTIONS = [5, 10, 20, 30]
@@ -124,7 +125,7 @@ export function StaticAdsConfigurator() {
               </button>
 
               <div className="mt-4 pt-4 border-t border-blue-100 text-center">
-                <Link href="/schedule-demo" className="text-sm text-[#1E5AA8] hover:underline">
+                <Link href={SCHEDULE_APPOINTMENT_URL} className="text-sm text-[#1E5AA8] hover:underline">
                   Schedule a demo
                 </Link>
               </div>

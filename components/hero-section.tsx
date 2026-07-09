@@ -1,6 +1,7 @@
 'use client'
 
 import { Button } from "@/components/ui/button"
+import { SCHEDULE_APPOINTMENT_URL } from "@/lib/utils"
 import { Check, Star } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
@@ -243,7 +244,7 @@ export function HeroSection() {
 
             {/* CTA Button */}
             <div className="flex flex-col sm:flex-row gap-4 mb-8">
-              <Link href="/schedule-demo">
+              <Link href={SCHEDULE_APPOINTMENT_URL}>
                 <Button size="lg" className="bg-[#3FA9F5] text-[#0B2A4A] hover:bg-white px-8 py-6 text-lg font-semibold">
                   Schedule a Free Demo Call
                 </Button>

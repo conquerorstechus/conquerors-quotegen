@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button"
+import { SCHEDULE_APPOINTMENT_URL } from "@/lib/utils"
 import { ArrowRight, Sparkles } from "lucide-react"
 import Link from "next/link"
 
@@ -41,7 +42,7 @@ export function CTASection() {
               <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
           </Link>
-          <Link href="/schedule-demo">
+          <Link href={SCHEDULE_APPOINTMENT_URL}>
             <Button
               size="lg"
               className="border-2 border-white text-white hover:bg-white/10 px-10 py-7 text-lg font-bold bg-transparent backdrop-blur-sm transition-all duration-300 transform hover:scale-105"

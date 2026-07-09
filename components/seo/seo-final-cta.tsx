@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { SCHEDULE_APPOINTMENT_URL } from "@/lib/utils"
 import { ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
@@ -21,7 +22,7 @@ export default function SeoFinalCta() {
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
               </Link>
-              <Link href="/schedule-demo" className="w-full sm:w-auto">
+              <Link href={SCHEDULE_APPOINTMENT_URL} className="w-full sm:w-auto">
                 <Button variant="secondary" className="w-full sm:w-auto">
                   Schedule a Demo
                 </Button>

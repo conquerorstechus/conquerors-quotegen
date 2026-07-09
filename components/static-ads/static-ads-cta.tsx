@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { SCHEDULE_APPOINTMENT_URL } from "@/lib/utils"
 
 export function StaticAdsCta() {
   return (
@@ -11,7 +12,7 @@ export function StaticAdsCta() {
           Schedule your free consultation and let's create ads that actually drive results.
         </p>
 
-        <Link href="/schedule-demo">
+        <Link href={SCHEDULE_APPOINTMENT_URL}>
           <button className="bg-white hover:bg-gray-100 text-[#1E5AA8] px-8 py-3 text-lg rounded-lg font-semibold flex items-center gap-2 mx-auto transition-colors">
             Schedule Your Free Consultation
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

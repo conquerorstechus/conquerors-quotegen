@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { ChevronDown } from 'lucide-react'
+import { SCHEDULE_APPOINTMENT_URL } from '@/lib/utils'
 
 const faqItems = [
   {
@@ -133,7 +134,7 @@ export function FAQSection() {
           <p className="text-[#6B7280] mb-4">
             Still have questions? We're here to help!
           </p>
-          <a href="/schedule-demo">
+          <a href={SCHEDULE_APPOINTMENT_URL}>
             <button className="px-8 py-3 bg-[#1E5AA8] text-white font-semibold rounded-lg hover:bg-[#154080] transition-colors">
               Schedule a Free Demo Call
             </button>

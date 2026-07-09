@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { SCHEDULE_APPOINTMENT_URL } from "@/lib/utils"
 
 export function InstagramGrowthHero() {
   return (
@@ -52,7 +53,7 @@ export function InstagramGrowthHero() {
             </ul>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              <Link href="/schedule-demo">
+              <Link href={SCHEDULE_APPOINTMENT_URL}>
                 <button className="bg-[#1E5AA8] hover:bg-[#154080] text-white px-8 py-3 text-lg rounded-lg font-semibold flex items-center gap-2 transition-colors">
                   Schedule a free demo call
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

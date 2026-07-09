@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { ArrowRight, Calendar, Check, Layers, Play, type LucideIcon } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { cn } from "@/lib/utils"
+import { cn, SCHEDULE_APPOINTMENT_URL } from "@/lib/utils"
 import { type DynamicPricingFeatureIcon, type DynamicPricingServiceContent, type DynamicPricingTier } from "@/components/pricing/dynamic-pricing-data"
 
 type PackagePlan = {
@@ -139,7 +139,7 @@ export function PackagesSection({
               </Link>
             </Button>
             <Link
-              href="/schedule-demo"
+              href={SCHEDULE_APPOINTMENT_URL}
               className="mt-3 flex items-center justify-center gap-2 text-sm font-medium text-primary hover:underline"
             >
               <Calendar className="h-4 w-4" />

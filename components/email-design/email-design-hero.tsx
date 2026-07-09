@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { SCHEDULE_APPOINTMENT_URL } from "@/lib/utils"
 
 export function EmailDesignHero() {
   return (
@@ -25,7 +26,7 @@ export function EmailDesignHero() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              <Link href="/schedule-demo">
+              <Link href={SCHEDULE_APPOINTMENT_URL}>
                 <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg rounded-lg font-semibold flex items-center gap-2 transition-colors">
                   Get started
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -33,7 +34,7 @@ export function EmailDesignHero() {
                   </svg>
                 </button>
               </Link>
-              <Link href="/schedule-demo">
+              <Link href={SCHEDULE_APPOINTMENT_URL}>
                 <button className="border-2 border-blue-600 text-blue-600 hover:bg-blue-50 px-8 py-3 text-lg rounded-lg font-semibold flex items-center gap-2 transition-colors">
                   Schedule demo
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

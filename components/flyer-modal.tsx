@@ -4,6 +4,7 @@ import { X } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect } from 'react'
+import { SCHEDULE_APPOINTMENT_URL } from '@/lib/utils'
 
 interface FlyerModalProps {
   isOpen: boolean
@@ -88,7 +89,7 @@ export function FlyerModal({ isOpen, onClose, flyer }: FlyerModalProps) {
                     priority
                   />
                 </div>
-                <Link href="/schedule-demo">
+                <Link href={SCHEDULE_APPOINTMENT_URL}>
                   <button className="px-4 py-2 bg-[#1E5AA8] text-white rounded-full text-sm font-semibold hover:bg-[#154080] transition-colors">
                     Schedule demo
                   </button>

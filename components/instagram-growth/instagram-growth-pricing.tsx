@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { SCHEDULE_APPOINTMENT_URL } from "@/lib/utils"
 
 const plans = [
   {
@@ -80,7 +81,7 @@ export function InstagramGrowthPricing() {
                   <span className="text-[#6B7280]">/month</span>
                 </div>
 
-                <Link href="/schedule-demo" className="w-full block mb-8">
+                <Link href={SCHEDULE_APPOINTMENT_URL} className="w-full block mb-8">
                   <button
                     className={`w-full py-3 rounded-lg font-semibold transition-all ${
                       plan.highlighted
