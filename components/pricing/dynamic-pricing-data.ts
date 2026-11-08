@@ -207,7 +207,7 @@ export const dynamicPricingContent: Record<DynamicPricingTabId, DynamicPricingSe
   "meta-ads": {
     title: "Meta Ads Management",
     description:
-      "Facebook & Instagram ads management—strategy, setup, testing, and ongoing optimization. Ad spend is billed separately by Meta.",
+      "10% ad spend ($99 for under $999 ad spend)",
     sliderLabel: "Select number of campaigns managed",
     tiers: [
       { quantity: 1, price: 549, tickLabel: "1", selectionLabel: "1 campaign" },
@@ -227,7 +227,7 @@ export const dynamicPricingContent: Record<DynamicPricingTabId, DynamicPricingSe
   "google-ads": {
     title: "Google Ads Management",
     description:
-      "Google Ads campaign management—search and performance campaigns tuned for qualified leads and efficient spend.",
+      "10% ad spend ($99 for under $999 ad spend)",
     sliderLabel: "Select number of campaigns managed",
     tiers: [
       { quantity: 1, price: 549, tickLabel: "1", selectionLabel: "1 campaign" },
